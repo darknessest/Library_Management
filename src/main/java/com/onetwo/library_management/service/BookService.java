@@ -1,17 +1,22 @@
 package com.onetwo.library_management.service;
 
-import com.onetwo.library_management.model.Book;
+import com.onetwo.library_management.entity.Book;
 
 import java.util.List;
 
+
 public interface BookService {
-    abstract List<Book> getBooks();
 
-    abstract boolean saveBook(Book book);
+	public List<Book> findAllBooks();
+	
+	public List<Book> searchBooks(String keyword);
 
-    abstract Book getBookById(String id);
+	public Book findBookById(Long id);
 
-    abstract Book getBookByISBN(String ISBN);
+	public void createBook(Book book);
 
-    abstract List<Book> getBooksByAuthor(String author);
+	public void updateBook(Book book);
+
+	public void deleteBook(Long id);
+
 }

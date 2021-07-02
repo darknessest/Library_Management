@@ -1,40 +1,63 @@
 package com.onetwo.library_management.service.impl;
 
-import com.onetwo.library_management.dao.BookDao;
-import com.onetwo.library_management.model.Book;
-import com.onetwo.library_management.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import com.onetwo.library_management.entity.Book;
+import com.onetwo.library_management.exception.NotFoundException;
+import com.onetwo.library_management.repository.BookRepository;
+import com.onetwo.library_management.service.BookService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class BookServiceImpl implements BookService {
-    @Autowired
-    private BookDao bookDao;
 
-    @Override
-    public List<Book> getBooks() {
-        return bookDao.getBooks();
-    }
+	private final BookRepository bookRepository;
 
-    @Override
-    public boolean saveBook(Book book) {
-        return bookDao.saveBook(book);
-    }
+	public BookServiceImpl(BookRepository bookRepository) {
+		this.bookRepository = bookRepository;
+	}
 
-    @Override
-    public Book getBookById(String id) {
-        return bookDao.getBookById(id);
-    }
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+	@Override
+	public List<Book> findAllBooks() {
+		return bookRepository.findAll();
+	}
 
-    @Override
-    public Book getBookByISBN(String ISBN) {
-        return bookDao.getBookByISBN(ISBN);
-    }
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+	@Override
+	public List<Book> searchBooks(String keyword) {
+		if (keyword != null) {
+			return bookRepository.search(keyword);
+		}
+		return bookRepository.findAll();
+	}
 
-    @Override
-    public List<Book> getBooksByAuthor(String author) {
-        return bookDao.getBooksByAuthor(author);
-    }
+	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+	@Override
+	public Book findBookById(Long id) {
+		return bookRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("Book not found with ID %d", id)));
+	}
+
+	@Override
+	public void createBook(Book book) {
+		bookRepository.save(book);
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		bookRepository.save(book);
+	}
+
+	@Override
+	public void deleteBook(Long id) {
+		final Book book = bookRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException(String.format("Book not found with ID %d", id)));
+
+		bookRepository.deleteById(book.getId());
+	}
+
 }
