@@ -10,16 +10,4 @@ public class IndexController {
     public String list() {
         return "index";
     }
-
-    //	todo: delete
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
-
-    //	todo: delete
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
-    }
 }

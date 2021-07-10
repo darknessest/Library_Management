@@ -59,7 +59,7 @@ public class BookController {
 		return "list-book";
 	}
 
-	@GetMapping("/add")
+	@GetMapping("/admin/add")
 	public String showCreateForm(Book book, Model model) {
 		model.addAttribute("categories", categoryService.findAllCategories());
 		model.addAttribute("authors", authorService.findAllAuthors());
@@ -67,7 +67,7 @@ public class BookController {
 		return "add-book";
 	}
 
-	@RequestMapping("/add-book")
+	@RequestMapping("/admin/add-book")
 	public String createBook(Book book, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "add-book";
