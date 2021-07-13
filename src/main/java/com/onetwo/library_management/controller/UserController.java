@@ -1,8 +1,6 @@
 package com.onetwo.library_management.controller;
 
-import com.onetwo.library_management.entity.ConfirmationToken;
 import com.onetwo.library_management.entity.User;
-import com.onetwo.library_management.service.ConfirmationTokenService;
 import com.onetwo.library_management.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -25,6 +23,8 @@ public class UserController {
 
     @GetMapping("/register")
     String signUpPage(User user) {
+
+
         return "register";
     }
 

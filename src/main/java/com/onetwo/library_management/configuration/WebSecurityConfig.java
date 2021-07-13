@@ -1,8 +1,7 @@
 package com.onetwo.library_management.configuration;
 
 
-import com.onetwo.library_management.security.CustomAuthenticationFailureHandler;
-import com.onetwo.library_management.security.CustomLogoutSuccessHandler;
+import com.onetwo.library_management.security.*;
 
 import com.onetwo.library_management.service.UserService;
 import lombok.AllArgsConstructor;
@@ -19,7 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
@@ -47,55 +48,55 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/anonymous*").anonymous()
-                .antMatchers("/register*").permitAll()
-                .antMatchers("/login*").permitAll()
-                .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
+                    .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("/anonymous*").anonymous()
+                    .antMatchers("/register*").permitAll()
+                    .antMatchers("/login*").permitAll()
+                    .antMatchers("/").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .defaultSuccessUrl("/", true)
-                .failureHandler(authenticationFailureHandler())
+                    .formLogin()
+                    .loginPage("/login")
+                    .successHandler(authenticationSuccessHandler())
+                    .failureHandler(authenticationFailureHandler())
+                    .defaultSuccessUrl("/", true)
                 .and()
-                .logout().permitAll()
-                .deleteCookies("JSESSIONID")
-                .logoutSuccessHandler(logoutSuccessHandler());
+                    .exceptionHandling()
+                        .accessDeniedHandler(accessDeniedHandler())
+                        .authenticationEntryPoint(authenticationEntryPoint())
+                .and()
+                    .logout().permitAll()
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessHandler(logoutSuccessHandler());
         //.and()
         //.exceptionHandling().accessDeniedPage("/accessDenied");
         //.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
         // @formatter:on
     }
 
-//
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
 
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler() {
         return new CustomLogoutSuccessHandler();
     }
 
-//    @Bean
-//    public AccessDeniedHandler accessDeniedHandler() {
-//        return new CustomAccessDeniedHandler();
-//    }
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
 
     @Bean
     public AuthenticationFailureHandler authenticationFailureHandler() {
         return new CustomAuthenticationFailureHandler();
+    }
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public CustomAuthenticationEntryPoint authenticationEntryPoint() {
+        return new CustomAuthenticationEntryPoint();
     }
 
     @Autowired

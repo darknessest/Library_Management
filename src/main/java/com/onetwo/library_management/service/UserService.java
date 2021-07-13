@@ -1,6 +1,5 @@
 package com.onetwo.library_management.service;
 
-import com.onetwo.library_management.entity.ConfirmationToken;
 import com.onetwo.library_management.entity.User;
 import com.onetwo.library_management.repository.UserRepository;
 import com.onetwo.library_management.configuration.WebSecurityConfig;
@@ -23,7 +22,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
-    private final ConfirmationTokenService confirmationTokenService;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
@@ -39,22 +37,7 @@ public class UserService implements UserDetailsService {
 
         final String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
-        final User createdUser = userRepository.save(user);
-
-        final ConfirmationToken confirmationToken = new ConfirmationToken(user);
-        confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        final User confirmedUser = confirmationToken.getUser();
-        confirmedUser.setEnabled(true);
-        System.out.println(userRepository.save(confirmedUser));
-
-        System.out.println("trying to lookup just registered user: " + userRepository.findByUsername(confirmedUser.getUsername()));
-
-//        confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
-
-//        final ConfirmationToken confirmationToken = new ConfirmationToken(user);
-//        confirmationTokenService.saveConfirmationToken(confirmationToken);
-//        passwordEncoder(user.getEmail(), confirmationToken.getConfirmationToken());
+        userRepository.save(user);
 
     }
 
