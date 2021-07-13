@@ -38,14 +38,7 @@ public class UserController {
     @GetMapping("/user/edit")
     public String showUpdateForm(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-//        User user = userService.findUserById(id);
         User user = (User) auth.getPrincipal();
-        System.out.println("showUpdateForm");
-        System.out.println(user.getId());
-        System.out.println(user.getName());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
         model.addAttribute("user", user);
         return "edit-user-info";
     }
@@ -58,11 +51,6 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User auth_user = (User) auth.getPrincipal();
-        System.out.println("updateUser");
-        System.out.println(user.getId());
-        System.out.println(user.getEmail());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
 
         if (user.getEmail() != null)
             auth_user.setEmail(user.getEmail());
