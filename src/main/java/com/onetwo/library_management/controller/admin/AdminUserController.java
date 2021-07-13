@@ -25,7 +25,7 @@ public class AdminUserController {
         model.addAttribute("users", users);
         return "list-users";
     }
-    
+
     @GetMapping("/admin/addUser")
     public String showCreateForm(User user) {
         return "add-user";

@@ -35,7 +35,6 @@ public class UserService implements UserDetailsService {
         final Optional<User> optionalUser = userRepository.findByUsername(username);
 
         return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with username {0} cannot be found.", username)));
-
     }
 
     public void signUpUser(User user) {
@@ -50,11 +49,23 @@ public class UserService implements UserDetailsService {
     }
 
     public void updateUser(User user) {
-        if (user.getPassword() != "")
-            final String possiblyNewPassword = passwordEncoder.encode(user.getPassword());
-            if (possiblyNewPassword != user.getPassword())
-                user.setPassword(possiblyNewPassword);
+        User db_user = this.findUserById(user.getId());
+
+        final String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        if (user.getPassword() != "" && db_user.getPassword() != encryptedPassword) {
+            user.setPassword(encryptedPassword);
+        }
         userRepository.save(user);
+//        System.out.println("from updateUser " + user.getId());
+//        System.out.println("from updateUser " + user.getName());
+//        System.out.println("from updateUser " + user.getPassword());
+//        if (user.getPassword() != "") {
+//            user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        } else {
+//            System.out.println("3 " + this.findUserById(user.getId()).getPassword());
+//            user.setPassword(this.findUserById(user.getId()).getPassword());
+//        }
+//        userRepository.save(user);
     }
 
 
