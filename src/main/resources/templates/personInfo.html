@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Info</title>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <link rel="stylesheet" href="style_personInfo.css">
+    </head>
+
+    <body>
+        <div class="mypage">
+            <div class="header">
+                <a href="#" class="logo" id="logo">群书</a>
+                <ul id="header_list">
+                    <li><a href="#" class="home">主页</a></li>
+                    <li><a href="#">我的</a></li>
+                    <li><a href="#">语言</a></li>
+                    <li><a href="#">帮助</a></li>
+                </ul>
+            </div>
+    
+            <div class="middle">
+                <div class="leftBox">
+                    <ul id="info_list" style="list-style-type: none;">
+                        <li><label>基本信息</label></li>
+                        <!-- <li>账户信息</li>
+                        <li>书籍信息</li> -->
+                    </ul>
+                </div>
+        
+                <div class="content">
+                    <iframe src="C:\Users\Ramsac\Desktop\java实践\program\Library_Management\src\main\resources\templates - 副本\add-book.html" 
+                    seamless id="otherPage"></iframe>
+
+                    <div class="infoPage">
+                        <!-- FORM的修改在这里 -->
+                        <form>   
+                            <ul class="infoList">
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>Id</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//123456" readonly>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>账号</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//此处应该显示账户号">
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>昵称</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//此处应该显示昵称">
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>邮箱</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//此处应该显示邮箱">
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>电话</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//此处应该显示电话">
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <div class="labels">
+                                            <label>账户类型</label>
+                                        </div>
+                                        <input class="edit" type="text" placeholder="//此处应该显示账户类型">
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+
+                </div> 
+            </div>
+    
+            <div class="footer">
+                <div class="footbox">
+                    <label class="help_text">网站底部的帮助信息</label>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+
+    </script>
+</html>
