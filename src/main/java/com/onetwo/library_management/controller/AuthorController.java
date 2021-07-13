@@ -1,15 +1,13 @@
 package com.onetwo.library_management.controller;
 
-import java.util.List;
-
 import com.onetwo.library_management.entity.Author;
 import com.onetwo.library_management.service.AuthorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -34,7 +32,7 @@ public class AuthorController {
 		final Author author = authorService.findAuthorById(id);
 
 		model.addAttribute("author", author);
-		return "list-author";
+		return "list-authors";
 	}
 
 

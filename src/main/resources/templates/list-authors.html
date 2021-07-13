@@ -15,9 +15,9 @@
     <div class="card">
         <div class="card-body">
             <div th:switch="${authors}" class="container my-5">
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <div sec:authorize="hasAuthority('ADMIN')">
                     <p class="my-5">
-                        <a href="/addAuthor" class="btn btn-primary">
+                        <a href="/admin/addAuthor" class="btn btn-primary">
                             <i class="fas fa-user-plus ml-2"> Add Authors </i></a>
                     </p>
                 </div>
@@ -29,17 +29,18 @@
                             <tr>
                                 <th>Author Name</th>
                                 <th>Description</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+                                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="author : ${authors}">
                                 <td th:text="${author.name}"></td>
                                 <td th:text="${author.description}"></td>
-                                <td><a th:href="@{/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i
+
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/remove-author/{id}(id=${author.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/remove-author/{id}(id=${author.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

@@ -31,6 +31,9 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
+    private String phone;
+
     private String password;
 
     @Builder.Default
@@ -44,7 +47,6 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
         final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
         return Collections.singletonList(simpleGrantedAuthority);
     }

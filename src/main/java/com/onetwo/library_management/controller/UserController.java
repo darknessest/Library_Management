@@ -22,11 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    String signUpPage(User user) {
-
-
-        return "register";
-    }
+    String signUpPage(User user) { return "register"; }
 
     @PostMapping("/register")
     String signUp(User user) {

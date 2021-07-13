@@ -16,10 +16,10 @@
         <div class="card-body">
             <div th:switch="${books}" class="container my-5">
 
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <div sec:authorize="hasAuthority('ADMIN')">
 
                     <p class="my-5">
-                        <a href="/admin/add" class="btn btn-primary">
+                        <a href="/admin/addBook" class="btn btn-primary">
                             <i class="fas fa-user-plus ml-2"> Add Book </i></a>
 
                 </div>
@@ -36,8 +36,8 @@
                                 <th>Serial Name</th>
                                 <th>Description</th>
                                 <th>Detail</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+                                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,9 +48,9 @@
                                 <td th:text="${book.description}"></td>
                                 <td><a th:href="@{/book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-marker ml-2"></i></a></td>
-                                <td><a th:href="@{/update/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/update/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>
