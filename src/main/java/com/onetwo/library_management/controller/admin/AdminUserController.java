@@ -22,7 +22,6 @@ public class AdminUserController {
     @RequestMapping("/admin/users")
     public String findAllUsers(Model model) {
         final List<User> users = userService.findAllUsers();
-
         model.addAttribute("users", users);
         return "list-users";
     }
@@ -59,7 +58,7 @@ public class AdminUserController {
 
         userService.updateUser(user);
         model.addAttribute("user", userService.findAllUsers());
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/remove-user/{id}")

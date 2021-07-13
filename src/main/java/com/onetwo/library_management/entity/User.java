@@ -28,10 +28,8 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
 
-    @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
     private String phone;
 
     private String password;

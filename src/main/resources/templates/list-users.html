@@ -6,7 +6,8 @@
     <title>All Users</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
@@ -14,7 +15,7 @@
 <div class="container my-2">
     <div class="card">
         <div class="card-body">
-            <div th:switch="${user}" class="container my-5">
+            <div th:switch="${users}" class="container my-5">
                 <div sec:authorize="hasAuthority('ADMIN')">
                     <p class="my-5">
                         <a href="/admin/addUser" class="btn btn-primary">
@@ -36,14 +37,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="user : ${user}">
+                            <tr th:each="user : ${users}">
                                 <td th:text="${user.username}"></td>
                                 <td th:text="${user.name}"></td>
                                 <td th:text="${user.email}"></td>
                                 <td th:text="${user.phone}"></td>
-                                <td><a th:href="@{/updateUser/{id}(id=${user.id})}" class="btn btn-primary"><i
+                                <td><a th:href="@{/admin/updateUser/{id}(id=${user.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/remove-user/{id}(id=${user.id})}" class="btn btn-primary"><i
+                                <td><a th:href="@{/admin/remove-user/{id}(id=${user.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

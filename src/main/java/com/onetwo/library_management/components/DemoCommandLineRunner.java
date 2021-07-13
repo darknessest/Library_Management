@@ -22,6 +22,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         User user = new User();
         user.setUsername("admin");
+        user.setName("preregistered admin");
+        user.setPhone("123456789011");
+        user.setEmail("admin@mail.com");
         user.setPassword(passwordEncoder.encode("adminPass"));
         user.setUserRole(UserRole.ADMIN);
 
@@ -29,6 +32,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         user = new User();
         user.setUsername("user1");
+        user.setName("preregistered user");
+        user.setPhone("110987654321");
+        user.setEmail("user1@mail.com");
         user.setPassword(passwordEncoder.encode("user1Pass"));
         user.setUserRole(UserRole.USER);
 

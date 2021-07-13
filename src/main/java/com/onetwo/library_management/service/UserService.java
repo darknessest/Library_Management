@@ -32,7 +32,6 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("loading user: " + username);
         final Optional<User> optionalUser = userRepository.findByUsername(username);
 
         return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with username {0} cannot be found.", username)));
@@ -51,9 +50,10 @@ public class UserService implements UserDetailsService {
     }
 
     public void updateUser(User user) {
-        final String possiblyNewPassword = passwordEncoder.encode(user.getPassword());
-        if (possiblyNewPassword != user.getPassword())
-            user.setPassword(possiblyNewPassword);
+        if (user.getPassword() != "")
+            final String possiblyNewPassword = passwordEncoder.encode(user.getPassword());
+            if (possiblyNewPassword != user.getPassword())
+                user.setPassword(possiblyNewPassword);
         userRepository.save(user);
     }
 
