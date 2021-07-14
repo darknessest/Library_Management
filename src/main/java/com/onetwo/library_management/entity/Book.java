@@ -60,11 +60,12 @@ public class Book {
 			@JoinColumn(name = "publisher_id") })
 	private Set<Publisher> publishers = new HashSet<Publisher>();
 
-	public Book(String isbn, String name, String serialName, String description) {
+	public Book(String isbn, String name, String serialName, String description, Double price) {
 		this.isbn = isbn;
 		this.name = name;
 		this.serialName = serialName;
 		this.description = description;
+		this.price = price;
 	}
 
 	public void addAuthors(Author author) {
