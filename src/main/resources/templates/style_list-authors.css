@@ -1,13 +1,13 @@
 @font-face 
 {
-    font-family: 'ÃÀ×ÖÉçÑÕºÚÌå';
-    src: url(ÃÀ×ÖÉçÑÕºÚÌå¸öÈËÊÔÓÃ°æ.otf);
+    font-family: 'ç¾Žå­—ç¤¾é¢œé»‘ä½“';
+    src: url(ç¾Žå­—ç¤¾é¢œé»‘ä½“ä¸ªäººè¯•ç”¨ç‰ˆ.otf);
 }
 
 @font-face 
 {
-      font-family: 'ººÒÇÖÐÔ²¼ò';
-      src: url(ººÒÇÖÐÔ²¼ò.ttf);
+      font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
+      src: url(æ±‰ä»ªä¸­åœ†ç®€.ttf);
 }
 
 body
@@ -99,7 +99,7 @@ body
 
 
     text-decoration: none;
-    font-family: 'ººÒÇÖÐÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
     font-size: 20px;
     font-weight: 700;
 
@@ -141,7 +141,7 @@ body
     align-items: center;
 
     
-    font-family: 'ººÒÇÖÐÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
     font-size: 20px;
     font-weight: 700px;
 

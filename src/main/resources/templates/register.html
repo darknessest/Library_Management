@@ -12,27 +12,27 @@
             <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
                 
                 <div class="Account">
-                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="�������û���(Ψһ)" onchange="onChange('username')">
+                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷(唯一)" onchange="onChange('username')">
                     <label class = "warning" id="error_account">&nbsp</label>
                 </div>
 
                 <div class="Nick">
-                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="�������ǳ�" onchange="onChange('nickname')">
+                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="锟斤拷锟斤拷锟斤拷锟角筹拷" onchange="onChange('nickname')">
                     <label class = "warning" id="error_nickname">&nbsp</label>
                 </div>
             
                 <div class="Email">
-                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="�������������" onchange="onChange('email')">
+                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�" onchange="onChange('email')">
                     <label class = "warning" id="error_email">&nbsp</label>
                 </div>
     
                 <div class="Password">
-                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="����������" onchange="onChange('password')">
+                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷" onchange="onChange('password')">
                     <label class = "warning" id="error_pwd">&nbsp</label>
                 </div>
             
                 <div class="Btn">
-                    <input type="button" id="button" value="�ύ" onclick="onSubmit()" >
+                    <input type="button" id="button" value="锟结交" onclick="onSubmit()" >
                 </div>
             </form>
         </div>
@@ -44,28 +44,28 @@
             var a = $("#username").val();
             var tag = true;
 
-            //�ж��û����Ƿ�Ϸ�
+            //锟叫讹拷锟矫伙拷锟斤拷锟角凤拷戏锟�
             var pattern_username = new RegExp("[ ]{1,}");
             if(String(a).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_account").innerHTML = "���벻ӦΪ��";
+                document.getElementById("error_account").innerHTML = "锟斤拷锟诫不应为锟斤拷";
             }
             else if(String(a).length > 20)
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_account").innerHTML = ("�˻������ܳ���20���ַ�");
+                document.getElementById("error_account").innerHTML = ("锟剿伙拷锟斤拷锟斤拷锟杰筹拷锟斤拷20锟斤拷锟街凤拷");
             }
-            else if(pattern_username.test(String(a))) //�Ϸ��Լ��
+            else if(pattern_username.test(String(a))) //锟较凤拷锟皆硷拷锟�
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_account").innerHTML = ("�˻������ܰ����ո�");
+                document.getElementById("error_account").innerHTML = ("锟剿伙拷锟斤拷锟斤拷锟杰帮拷锟斤拷锟秸革拷");
             }
             else
             {
-                document.getElementById("error_account").innerHTML = "�˻���������ȷ";
+                document.getElementById("error_account").innerHTML = "锟剿伙拷锟斤拷锟斤拷锟斤拷锟斤拷确";
             }
             return tag;
         }
@@ -75,21 +75,21 @@
             var n = $("#nickname").val();
             var tag = 0;
 
-             //�ж��û��ǳ��Ƿ�Ϸ�
+             //锟叫讹拷锟矫伙拷锟角筹拷锟角凤拷戏锟�
              if(String(n).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_nickname").innerHTML = "���벻ӦΪ��";
+                document.getElementById("error_nickname").innerHTML = "锟斤拷锟诫不应为锟斤拷";
             }
             else if(String(n).length > 30)
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_nickname").innerHTML = ("�ǳƲ��ܳ���30���ַ�");
+                document.getElementById("error_nickname").innerHTML = ("锟角称诧拷锟杰筹拷锟斤拷30锟斤拷锟街凤拷");
             }
             else
             {
-                document.getElementById("error_nickname").innerHTML = "�ǳ�������ȷ";
+                document.getElementById("error_nickname").innerHTML = "锟角筹拷锟斤拷锟斤拷锟斤拷确";
             }
             return tag;
         }
@@ -99,22 +99,22 @@
             var p = $("#password").val();
             var tag = true;
 
-               //�ж������Ƿ�Ϸ�:����8λ,���20λ,������Ҫͬʱʹ������,��ĸ
+               //锟叫讹拷锟斤拷锟斤拷锟角凤拷戏锟�:锟斤拷锟斤拷8位,锟斤拷锟�20位,锟斤拷锟斤拷锟斤拷要同时使锟斤拷锟斤拷锟斤拷,锟斤拷母
                var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
             if(String(p).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_pwd").innerHTML = "���벻ӦΪ��";
+                document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫不应为锟斤拷";
             }
             else if(!patter_pwd.test(String(p)))
             {
                 tag = false;
                 $("#password").select();
-                document.getElementById("error_pwd").innerHTML = "���볤��Ϊ6~20λ;<br>��������ͬʱʹ�����ֺ���ĸ";
+                document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫长锟斤拷为6~20位;<br>锟斤拷锟斤拷锟斤拷锟斤拷同时使锟斤拷锟斤拷锟街猴拷锟斤拷母";
             }
             else
             {
-                document.getElementById("error_pwd").innerHTML = "�������";
+                document.getElementById("error_pwd").innerHTML = "锟斤拷锟斤拷锟斤拷锟�";
             }
 
             return tag;
@@ -128,22 +128,22 @@
             var tag = true;
 
             
-            //�ж������ʽ
+            //锟叫讹拷锟斤拷锟斤拷锟绞�
             var patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
             if(String(e).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_email").innerHTML = "���벻ӦΪ��";
+                document.getElementById("error_email").innerHTML = "锟斤拷锟诫不应为锟斤拷";
             }
             else if(!patter_email.test(String(e)))
             {
                 tag = false;
                 $("#email").select();
-                document.getElementById("error_email").innerHTML = "�����ʽ����";
+                document.getElementById("error_email").innerHTML = "锟斤拷锟斤拷锟绞斤拷锟斤拷锟�";
             }
             else
             {
-                document.getElementById("error_email").innerHTML = "�������";
+                document.getElementById("error_email").innerHTML = "锟斤拷锟斤拷锟斤拷锟�";
             }
             return tag;
         }

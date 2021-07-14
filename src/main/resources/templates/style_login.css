@@ -1,13 +1,13 @@
 @font-face 
 {
-    font-family: 'ÃÀ×ÖÉçÑÕºÚÌå';
-    src: url(ÃÀ×ÖÉçÑÕºÚÌå¸öÈËÊÔÓÃ°æ.otf);
+    font-family: 'ç¾å­—ç¤¾é¢œé»‘ä½“';
+    src: url(ç¾å­—ç¤¾é¢œé»‘ä½“ä¸ªäººè¯•ç”¨ç‰ˆ.otf);
   }
 
 @font-face 
 {
-      font-family: 'ººÒÇÖĞÔ²¼ò';
-      src: url(ººÒÇÖĞÔ²¼ò.ttf);
+      font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
+      src: url(æ±‰ä»ªä¸­åœ†ç®€.ttf);
   }
 
   body
@@ -62,7 +62,7 @@
 
 .loginBox form
 {
-    font-family: 'ººÒÇÖĞÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
 
     padding-top: 20px;
     display: flex;
@@ -81,7 +81,7 @@
     flex-direction: column;
 
     justify-content: center;
-    align-items:center;  /*´íÎóÌáÊ¾ÓëÊäÈë¿ò×ó¶ÔÆë*/
+    align-items:center;  /*é”™è¯¯æç¤ºä¸è¾“å…¥æ¡†å·¦å¯¹é½*/
 }
 
 .loginBox form div .warning
@@ -111,14 +111,14 @@
     box-shadow: -4px -3.5px 5px -4px rgba(4, 43, 70, .3) inset, 
                 2px 3px 5px -4px #fff inset;
 
-    font-family: 'ººÒÇÖĞÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
     font-size: 20px;
     color: rgb(12, 93, 99);
 }
 
 .loginBox form .Name input::placeholder, .PassWord input::placeholder
 {
-    font-family: 'ººÒÇÖĞÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
 
     font-size: 20px;
     font-weight: 10px;
@@ -139,7 +139,7 @@
     background: linear-gradient(135deg, #e2e5e7 0%, #f3f5f6 100%);
     box-shadow: 2px 5px 5px -4px rgba(4, 43, 70, .3), -3px -4px 5px -4px #fff;
 
-    font-family: 'ººÒÇÖĞÔ²¼ò';
+    font-family: 'æ±‰ä»ªä¸­åœ†ç®€';
     font-size: 20px;
     font-weight: 700px;
 
