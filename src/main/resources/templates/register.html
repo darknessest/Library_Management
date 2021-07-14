@@ -12,27 +12,27 @@
             <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
                 
                 <div class="Account">
-                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷(唯一)" onchange="onChange('username')">
+                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)" onchange="onChange('username')">
                     <label class = "warning" id="error_account">&nbsp</label>
                 </div>
 
                 <div class="Nick">
-                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="锟斤拷锟斤拷锟斤拷锟角筹拷" onchange="onChange('nickname')">
+                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称" onchange="onChange('nickname')">
                     <label class = "warning" id="error_nickname">&nbsp</label>
                 </div>
             
                 <div class="Email">
-                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�" onchange="onChange('email')">
+                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱" onchange="onChange('email')">
                     <label class = "warning" id="error_email">&nbsp</label>
                 </div>
     
                 <div class="Password">
-                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷" onchange="onChange('password')">
+                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码" onchange="onChange('password')">
                     <label class = "warning" id="error_pwd">&nbsp</label>
                 </div>
             
                 <div class="Btn">
-                    <input type="button" id="button" value="锟结交" onclick="onSubmit()" >
+                    <input type="button" id="button" value="提交" onclick="onSubmit()" >
                 </div>
             </form>
         </div>
@@ -44,28 +44,28 @@
             var a = $("#username").val();
             var tag = true;
 
-            //锟叫讹拷锟矫伙拷锟斤拷锟角凤拷戏锟�
+            //判断用户名是否合法
             var pattern_username = new RegExp("[ ]{1,}");
             if(String(a).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_account").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+                document.getElementById("error_account").innerHTML = "输入不应为空";
             }
             else if(String(a).length > 20)
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_account").innerHTML = ("锟剿伙拷锟斤拷锟斤拷锟杰筹拷锟斤拷20锟斤拷锟街凤拷");
+                document.getElementById("error_account").innerHTML = ("账户名不能超过20个字符");
             }
-            else if(pattern_username.test(String(a))) //锟较凤拷锟皆硷拷锟�
+            else if(pattern_username.test(String(a))) //合法性检测
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_account").innerHTML = ("锟剿伙拷锟斤拷锟斤拷锟杰帮拷锟斤拷锟秸革拷");
+                document.getElementById("error_account").innerHTML = ("账户名不能包含空格");
             }
             else
             {
-                document.getElementById("error_account").innerHTML = "锟剿伙拷锟斤拷锟斤拷锟斤拷锟斤拷确";
+                document.getElementById("error_account").innerHTML = "账户名输入正确";
             }
             return tag;
         }
@@ -75,21 +75,21 @@
             var n = $("#nickname").val();
             var tag = 0;
 
-             //锟叫讹拷锟矫伙拷锟角筹拷锟角凤拷戏锟�
+             //判断用户昵称是否合法
              if(String(n).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_nickname").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+                document.getElementById("error_nickname").innerHTML = "输入不应为空";
             }
             else if(String(n).length > 30)
             {
                 tag = false;
                 $("#username").select();
-                document.getElementById("error_nickname").innerHTML = ("锟角称诧拷锟杰筹拷锟斤拷30锟斤拷锟街凤拷");
+                document.getElementById("error_nickname").innerHTML = ("昵称不能超过30个字符");
             }
             else
             {
-                document.getElementById("error_nickname").innerHTML = "锟角筹拷锟斤拷锟斤拷锟斤拷确";
+                document.getElementById("error_nickname").innerHTML = "昵称输入正确";
             }
             return tag;
         }
@@ -99,22 +99,22 @@
             var p = $("#password").val();
             var tag = true;
 
-               //锟叫讹拷锟斤拷锟斤拷锟角凤拷戏锟�:锟斤拷锟斤拷8位,锟斤拷锟�20位,锟斤拷锟斤拷锟斤拷要同时使锟斤拷锟斤拷锟斤拷,锟斤拷母
+               //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
                var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
             if(String(p).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+                document.getElementById("error_pwd").innerHTML = "输入不应为空";
             }
             else if(!patter_pwd.test(String(p)))
             {
                 tag = false;
                 $("#password").select();
-                document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫长锟斤拷为6~20位;<br>锟斤拷锟斤拷锟斤拷锟斤拷同时使锟斤拷锟斤拷锟街猴拷锟斤拷母";
+                document.getElementById("error_pwd").innerHTML = "密码长度为6~20位;<br>且至少需同时使用数字和字母";
             }
             else
             {
-                document.getElementById("error_pwd").innerHTML = "锟斤拷锟斤拷锟斤拷锟�";
+                document.getElementById("error_pwd").innerHTML = "密码可用";
             }
 
             return tag;
@@ -128,22 +128,22 @@
             var tag = true;
 
             
-            //锟叫讹拷锟斤拷锟斤拷锟绞�
+            //判断邮箱格式
             var patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
             if(String(e).trim()=="")
             {
                 tag = false;
-                document.getElementById("error_email").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+                document.getElementById("error_email").innerHTML = "输入不应为空";
             }
             else if(!patter_email.test(String(e)))
             {
                 tag = false;
                 $("#email").select();
-                document.getElementById("error_email").innerHTML = "锟斤拷锟斤拷锟绞斤拷锟斤拷锟�";
+                document.getElementById("error_email").innerHTML = "邮箱格式错误";
             }
             else
             {
-                document.getElementById("error_email").innerHTML = "锟斤拷锟斤拷锟斤拷锟�";
+                document.getElementById("error_email").innerHTML = "邮箱可用";
             }
             return tag;
         }

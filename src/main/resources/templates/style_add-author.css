@@ -125,7 +125,6 @@ body
     font-family: '汉仪中圆简';
 
     font-size: 20px;
-    font-weight: 10px;
 
     color: rgba(21, 87, 134, 0.3);
 }
@@ -145,7 +144,7 @@ body
 
     font-family: '汉仪中圆简';
     font-size: 20px;
-    font-weight: 700px;
+    font-weight: 700;
 
     letter-spacing: 5px;
     padding-left: 30px;  /*20px + 10px*/

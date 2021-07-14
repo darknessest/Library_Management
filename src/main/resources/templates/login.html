@@ -11,22 +11,22 @@
     <div class="loginBox">
         <form id="login" role="form" th:action="@{/login}" th:method="post">
             <div class="Name">
-                <input type="text" id="username" name="username" placeholder="锟斤拷锟斤拷锟斤拷锟剿伙拷" onclick="onSetSelect('username')">
+                <input type="text" id="username" name="username" placeholder="请输入账户" onclick="onSetSelect('username')">
                 <label class = "warning" id="error_name">&nbsp</label>
             </div>
         
             <div class="PassWord">
-                <input type="password" id="password" name="password" placeholder="锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷" onclick="onSetSelect('password')">
+                <input type="password" id="password" name="password" placeholder="请输入密码" onclick="onSetSelect('password')">
                 <label class="warning" id="error_pwd">&nbsp</label>
             </div>
 
             <div class="PassWord">
-                <input type="password" id="retry_password" name="password" placeholder="锟斤拷锟劫达拷锟斤拷锟斤拷锟斤拷锟斤拷" onclick="onSetSelect('retry_password')">
+                <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onclick="onSetSelect('retry_password')">
                 <label class="warning" id="error_retry_pwd">&nbsp</label>
             </div>
         
             <div class="Btn">
-                <input id="button" type="button" onclick="onSubmit()" value="注锟斤拷">
+                <input id="button" type="button" onclick="onSubmit()" value="注册">
             </div>
         </form>
     </div>
@@ -45,59 +45,59 @@
 
         // console.log(String(u)+"\n");
         // console.log(String(u).length);
-        //锟叫讹拷锟矫伙拷锟斤拷锟角凤拷戏锟�
+        //判断用户名是否合法
         var pattern_username = new RegExp("[ ]{1,}");
         if(String(u).trim()=="")
         {
             tag = false;
-            document.getElementById("error_name").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+            document.getElementById("error_name").innerHTML = "输入不应为空";
         }
         else if(String(u).length > 20)
         {
             tag = false;
             $("#username").select();
-            document.getElementById("error_name").innerHTML = ("锟斤拷锟饺诧拷锟杰筹拷锟斤拷20锟斤拷锟街凤拷");
+            document.getElementById("error_name").innerHTML = ("长度不能超过20个字符");
         }
-        else if(pattern_username.test(String(u))) //锟较凤拷锟皆硷拷锟�
+        else if(pattern_username.test(String(u))) //合法性检测
         {
             tag = false;
             $("#username").select();
-            document.getElementById("error_name").innerHTML = ("锟矫伙拷锟斤拷锟斤拷锟杰帮拷锟斤拷锟秸革拷");
+            document.getElementById("error_name").innerHTML = ("用户名不能包含空格");
         }
         else
         {
             document.getElementById("error_name").innerHTML = " ";
         }
 
-        //锟叫讹拷锟斤拷锟斤拷锟角凤拷戏锟�:锟斤拷锟斤拷8位,锟斤拷锟�20位,锟斤拷锟斤拷锟斤拷要同时使锟斤拷锟斤拷锟斤拷,锟斤拷母
+        //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
         var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
         if(String(p1).trim()=="")
         {
             tag = false;
-            document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+            document.getElementById("error_pwd").innerHTML = "输入不应为空";
         }
         else if(!patter_pwd.test(String(p1)))
         {
             tag = false;
             $("#password").select();
-            document.getElementById("error_pwd").innerHTML = "锟斤拷锟诫长锟斤拷为6~20位;<br>锟斤拷锟斤拷锟斤拷锟斤拷同时使锟斤拷锟斤拷锟街猴拷锟斤拷母";
+            document.getElementById("error_pwd").innerHTML = "密码长度为6~20位;<br>且至少需同时使用数字和字母";
         }
         else
         {
             document.getElementById("error_pwd").innerHTML = " ";
         }
 
-        //锟截革拷锟斤拷锟斤拷锟斤拷锟斤拷
+        //重复输入密码
         if(String(p2).trim()=="")
         {
             tag = false;
-            document.getElementById("error_retry_pwd").innerHTML = "锟斤拷锟诫不应为锟斤拷";
+            document.getElementById("error_retry_pwd").innerHTML = "输入不应为空";
         }
         else if(p1 != p2)
         {
             tag = false;
             $("#retry_password").select();
-            document.getElementById("error_retry_pwd").innerHTML = "锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟诫不一锟斤拷";
+            document.getElementById("error_retry_pwd").innerHTML = "两次输入密码不一致";
         }
         else
         {
