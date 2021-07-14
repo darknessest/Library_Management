@@ -25,6 +25,7 @@
                                 <th>Author Name</th>
                                 <th>Publisher Name</th>
                                 <th>Serial Name</th>
+                                <th>Price</th>
                                 <th>Description</th>
                             </tr>
                             </thead>
@@ -36,6 +37,7 @@
                                 <td th:text="${book.authors[0].name}"></td>
                                 <td th:text="${book.publishers[0].name}"></td>
                                 <td th:text="${book.serialName}"></td>
+                                <td th:text="${book.price}"></td>
                                 <td th:text="${book.description}"></td>
                             </tr>
                             </tbody>
