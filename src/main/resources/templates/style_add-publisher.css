@@ -1,0 +1,191 @@
+@font-face 
+{
+    font-family: '√¿◊÷…Á—’∫⁄ÃÂ';
+    src: url(√¿◊÷…Á—’∫⁄ÃÂ∏ˆ»À ‘”√∞Ê.otf);
+}
+
+@font-face 
+{
+      font-family: '∫∫“«÷–‘≤ºÚ';
+      src: url(∫∫“«÷–‘≤ºÚ.ttf);
+}
+
+body
+{
+  margin:0;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  background-repeat: no-repeat;
+  background-image: linear-gradient(60deg, #e0edf6, #eef3f4, #ddf3eb, #e5efde, #eeebe1) ;
+  background-size: 1000%;
+  background-attachment: fixed;
+  
+  /* object-fit:contain; */
+  overflow:hidden;
+
+  animation: background_animation 10s infinite;
+}
+
+@keyframes background_animation{
+  0%{
+      background-position: 0%, 50%;
+  }
+
+  50%
+  {
+      background-position: 100% 50%;
+  }
+
+  100%
+  {
+      background-position: 0% 50%;
+  }
+}
+
+.card-body
+{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50px;
+
+    background-image: linear-gradient(120deg, #e5e7e9 0%, #e2efef 100%);
+    box-shadow: -4px -6px 7px -8px #fff, 
+                5px 8px 7px -7px rgba(7,46,86,0.3);
+}
+
+#mycard .row
+{
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 20px;
+    margin-right: 20px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#mycard .row div
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#mycard .row .inputs
+{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#mytitle
+{   
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-weight: 600;
+    font-size: 35px;
+
+    color:rebeccapurple
+}
+
+#mycard .inputs label
+{
+    font-size: 20px;
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-weight: 500;
+    color: rgb(20, 132, 139);
+
+}
+
+#mycard .inputs input
+{
+    padding: 15px 12px;
+    
+    margin-left: 15px;
+    /* margin-right: 15px;  */
+
+    outline: none;
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #e2e5e7 0%, #f3f5f6 100%);
+    box-shadow: -4px -3.5px 5px -4px #fff, 
+                2px 3px 5px -4px rgba(4, 43, 70, .3);
+
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-size: 20px;
+    color: rgb(12, 93, 99);
+}
+
+#mycard .inputs input::placeholder
+{
+    font-family: '∫∫“«÷–‘≤ºÚ';
+
+    font-size: 20px;
+    font-weight: 10px;
+
+    color: rgba(21, 87, 134, 0.3);
+}
+
+#button
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding:10px 10px;    
+
+    outline: none;
+    border: none;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #e2e5e7 0%, #f3f5f6 100%);
+    box-shadow: 2px 5px 5px -4px rgba(4, 43, 70, .3), -3px -4px 5px -4px #fff;
+
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-size: 20px;
+    font-weight: 700px;
+
+    letter-spacing: 5px;
+    padding-left: 30px;  /*20px + 10px*/
+    padding-right: 30px;
+
+    color: rgb(20, 132, 139);
+}
+
+#button:hover
+{
+    background: wheat;
+    color: #2b1055;
+}
+
+#button:active
+{
+    background-color: #f8f1e3;
+    box-shadow: -2px -5px 5px -4px rgba(255, 255, 255, 1) inset, 
+                2px 5px 5px -5px rgba(0, 0, 0, .3) inset;
+    color: rgb(131, 163, 165);
+}
+
+
+#mycards .area1 .labels
+{
+    margin-top: -20px;
+    
+}
+
+

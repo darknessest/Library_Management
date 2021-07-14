@@ -15,9 +15,9 @@
         <div class="card-body">
 
             <div th:switch="${categories}" class="container my-5">
-                <div sec:authorize="hasAuthority('ADMIN')">
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <p class="my-5">
-                        <a href="/admin/addCategory" class="btn btn-primary">
+                        <a href="/addCategory" class="btn btn-primary">
                             <i class="fas fa-user-plus ml-2"> Add Category </i></a>
                     </p>
                 </div>
@@ -29,16 +29,16 @@
                             <thead>
                             <tr>
                                 <th>Category Name</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="category : ${categories}">
                                 <td th:text="${category.name}"></td>
-                                <td ><a th:href="@{/admin/updateCategory/{id}(id=${category.id})}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-primary"><i
+                                <td><a th:href="@{/updateCategory/{id}(id=${category.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/admin/remove-category/{id}(id=${category.id})}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-primary"><i
+                                <td><a th:href="@{/remove-category/{id}(id=${category.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

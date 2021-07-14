@@ -1,0 +1,149 @@
+@font-face 
+{
+    font-family: '√¿◊÷…Á—’∫⁄ÃÂ';
+    src: url(√¿◊÷…Á—’∫⁄ÃÂ∏ˆ»À ‘”√∞Ê.otf);
+}
+
+@font-face 
+{
+      font-family: '∫∫“«÷–‘≤ºÚ';
+      src: url(∫∫“«÷–‘≤ºÚ.ttf);
+}
+
+body
+{
+  margin:0;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  background-repeat: no-repeat;
+  background-image: linear-gradient(60deg, #e0edf6, #eef3f4, #ddf3eb, #e5efde, #eeebe1) ;
+  background-size: 1000%;
+  background-attachment: fixed;
+  
+  /* object-fit:contain; */
+  overflow:hidden;
+
+  animation: background_animation 10s infinite;
+}
+
+@keyframes background_animation{
+  0%{
+      background-position: 0%, 50%;
+  }
+
+  50%
+  {
+      background-position: 100% 50%;
+  }
+
+  100%
+  {
+      background-position: 0% 50%;
+  }
+}
+
+.container
+{
+    width: 100%;
+    height: 100vh;
+    background-color: red;
+}
+
+.first
+{
+    width: 100%;
+    height: 100px;
+}
+
+.second
+{
+    width: 100%;
+    flex-grow: 1;
+}
+
+#mycard
+{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50px;
+
+    background-image: linear-gradient(120deg, #e5e7e9 0%, #e2efef 100%);
+    box-shadow: -4px -6px 7px -8px #fff, 
+                5px 8px 7px -7px rgba(7,46,86,0.3);
+}
+
+#button
+{
+    padding: 5px 20px;
+
+    margin-bottom: 30px;
+
+    outline: none;
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #e2e5e7 0%, #f3f5f6 100%);
+    box-shadow: 2px 5px 5px -4px rgba(4, 43, 70, .3), -3px -4px 5px -4px #fff;
+
+
+    text-decoration: none;
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-size: 20px;
+    font-weight: 700;
+
+    color: rebeccapurple;
+}
+
+#button:hover
+{
+    background: wheat;
+    color: #2b1055;
+}
+
+#button:active
+{
+    background-color: #f8f1e3;
+    box-shadow: -2px -5px 5px -4px rgba(255, 255, 255, 1) inset, 
+                2px 5px 5px -5px rgba(0, 0, 0, .3) inset;
+    color: rgb(131, 163, 165);
+}
+
+
+#book_contents
+{
+    display: flex;
+
+    align-items: flex-start;
+}
+
+#details
+{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    
+    font-family: '∫∫“«÷–‘≤ºÚ';
+    font-size: 20px;
+    font-weight: 700px;
+
+    color:rgb(20, 132, 139);
+}

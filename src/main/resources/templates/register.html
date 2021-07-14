@@ -1,27 +1,171 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <title>Spring Boot User Authentication</title>
-</head>
-<body>
-<form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
+    <head>
+        <title>Spring Boot User Authentication</title>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <link rel="stylesheet" href="style_register.css">
+    </head>
+    <body>
+        <div class="registerBox">
+            <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
+                
+                <div class="Account">
+                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="�������û���(Ψһ)" onchange="onChange('username')">
+                    <label class = "warning" id="error_account">&nbsp</label>
+                </div>
 
-    <lable>Username</lable>
-    <input type="text" id="username" name="username" th:field="*{username}">
+                <div class="Nick">
+                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="�������ǳ�" onchange="onChange('nickname')">
+                    <label class = "warning" id="error_nickname">&nbsp</label>
+                </div>
+            
+                <div class="Email">
+                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="�������������" onchange="onChange('email')">
+                    <label class = "warning" id="error_email">&nbsp</label>
+                </div>
+    
+                <div class="Password">
+                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="����������" onchange="onChange('password')">
+                    <label class = "warning" id="error_pwd">&nbsp</label>
+                </div>
+            
+                <div class="Btn">
+                    <input type="button" id="button" value="�ύ" onclick="onSubmit()" >
+                </div>
+            </form>
+        </div>
+    </body>
 
-    <lable>Name</lable>
-    <input type="text" id="name" name="name" th:field="*{name}">
+    <script>
+        function isAccountTrue()
+        {
+            var a = $("#username").val();
+            var tag = true;
 
-    <lable>Email</lable>
-    <input type="text" id="email" name="email" th:field="*{email}">
+            //�ж��û����Ƿ�Ϸ�
+            var pattern_username = new RegExp("[ ]{1,}");
+            if(String(a).trim()=="")
+            {
+                tag = false;
+                document.getElementById("error_account").innerHTML = "���벻ӦΪ��";
+            }
+            else if(String(a).length > 20)
+            {
+                tag = false;
+                $("#username").select();
+                document.getElementById("error_account").innerHTML = ("�˻������ܳ���20���ַ�");
+            }
+            else if(pattern_username.test(String(a))) //�Ϸ��Լ��
+            {
+                tag = false;
+                $("#username").select();
+                document.getElementById("error_account").innerHTML = ("�˻������ܰ����ո�");
+            }
+            else
+            {
+                document.getElementById("error_account").innerHTML = "�˻���������ȷ";
+            }
+            return tag;
+        }
 
-    <lable>Phone</lable>
-    <input type="text" id="phone" name="phone" th:field="*{phone}">
+        function isNicknameTrue()
+        {
+            var n = $("#nickname").val();
+            var tag = 0;
 
-    <lable>Password</lable>
-    <input type="password" id="password" name="password" th:field="*{password}">
+             //�ж��û��ǳ��Ƿ�Ϸ�
+             if(String(n).trim()=="")
+            {
+                tag = false;
+                document.getElementById("error_nickname").innerHTML = "���벻ӦΪ��";
+            }
+            else if(String(n).length > 30)
+            {
+                tag = false;
+                $("#username").select();
+                document.getElementById("error_nickname").innerHTML = ("�ǳƲ��ܳ���30���ַ�");
+            }
+            else
+            {
+                document.getElementById("error_nickname").innerHTML = "�ǳ�������ȷ";
+            }
+            return tag;
+        }
 
-    <input type="submit">
-</form>
-</body>
+        function isPasswordTrue()
+        {
+            var p = $("#password").val();
+            var tag = true;
+
+               //�ж������Ƿ�Ϸ�:����8λ,���20λ,������Ҫͬʱʹ������,��ĸ
+               var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
+            if(String(p).trim()=="")
+            {
+                tag = false;
+                document.getElementById("error_pwd").innerHTML = "���벻ӦΪ��";
+            }
+            else if(!patter_pwd.test(String(p)))
+            {
+                tag = false;
+                $("#password").select();
+                document.getElementById("error_pwd").innerHTML = "���볤��Ϊ6~20λ;<br>��������ͬʱʹ�����ֺ���ĸ";
+            }
+            else
+            {
+                document.getElementById("error_pwd").innerHTML = "�������";
+            }
+
+            return tag;
+
+        }
+
+        function isEmailTrue()
+        {
+            var e = $("#email").val();
+
+            var tag = true;
+
+            
+            //�ж������ʽ
+            var patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
+            if(String(e).trim()=="")
+            {
+                tag = false;
+                document.getElementById("error_email").innerHTML = "���벻ӦΪ��";
+            }
+            else if(!patter_email.test(String(e)))
+            {
+                tag = false;
+                $("#email").select();
+                document.getElementById("error_email").innerHTML = "�����ʽ����";
+            }
+            else
+            {
+                document.getElementById("error_email").innerHTML = "�������";
+            }
+            return tag;
+        }
+
+        function onSubmit()
+        {
+            var form = document.forms[0];
+
+            var tag = isAccountTrue() && isEmailTrue() && isPasswordTrue() &&isNicknameTrue();
+            
+        }
+    
+        function onChange(myid, value)
+        {
+            switch(myid)
+            {
+                case "password": isPasswordTrue(); break;
+                case "nickname":isNicknameTrue(); break;
+                case "username":isAccountTrue(); break;
+                case "email":isEmailTrue();break;
+                default:break;
+            }
+        }
+    </script>
 </html>

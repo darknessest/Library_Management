@@ -16,10 +16,10 @@
         <div class="card-body">
             <div th:switch="${books}" class="container my-5">
 
-                <div sec:authorize="hasAuthority('ADMIN')">
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
 
                     <p class="my-5">
-                        <a href="/admin/addBook" class="btn btn-primary">
+                        <a href="/admin/add" class="btn btn-primary">
                             <i class="fas fa-user-plus ml-2"> Add Book </i></a>
 
                 </div>
@@ -34,11 +34,10 @@
                                 <th>ISBN</th>
                                 <th>Book Name</th>
                                 <th>Serial Name</th>
-                                <th>Price</th>
                                 <th>Description</th>
                                 <th>Detail</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,13 +45,12 @@
                                 <td th:text="${book.isbn}"></td>
                                 <td th:text="${book.name}"></td>
                                 <td th:text="${book.serialName}"></td>
-                                <td th:text="${book.price}"></td>
                                 <td th:text="${book.description}"></td>
                                 <td><a th:href="@{/book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-marker ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/update/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                <td><a th:href="@{/update/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                <td><a th:href="@{/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

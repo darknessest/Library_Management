@@ -2,18 +2,121 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Spring Boot User Authentication</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style_login.css">
 </head>
 <body>
-<form role="form" th:action="@{/login}" th:method="post">
+    <div class="loginBox">
+        <form id="login" role="form" th:action="@{/login}" th:method="post">
+            <div class="Name">
+                <input type="text" id="username" name="username" placeholder="�������˻�" onclick="onSetSelect('username')">
+                <label class = "warning" id="error_name">&nbsp</label>
+            </div>
+        
+            <div class="PassWord">
+                <input type="password" id="password" name="password" placeholder="����������" onclick="onSetSelect('password')">
+                <label class="warning" id="error_pwd">&nbsp</label>
+            </div>
 
-    <lable>Username</lable>
-    <input type="text" id="username" name="username">
-
-    <lable>Password</lable>
-    <input type="password" id="password" name="password">
-
-    <input type="submit">
-
-</form>
+            <div class="PassWord">
+                <input type="password" id="retry_password" name="password" placeholder="���ٴ���������" onclick="onSetSelect('retry_password')">
+                <label class="warning" id="error_retry_pwd">&nbsp</label>
+            </div>
+        
+            <div class="Btn">
+                <input id="button" type="button" onclick="onSubmit()" value="ע��">
+            </div>
+        </form>
+    </div>
 </body>
+
+<script>
+    function onSubmit()
+    {
+        var form = document.forms[0];
+
+        var u = $("#username").val();
+        var p1 = $("#password").val();
+        var p2 = $("#retry_password").val();
+
+        var tag = true;
+
+        // console.log(String(u)+"\n");
+        // console.log(String(u).length);
+        //�ж��û����Ƿ�Ϸ�
+        var pattern_username = new RegExp("[ ]{1,}");
+        if(String(u).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_name").innerHTML = "���벻ӦΪ��";
+        }
+        else if(String(u).length > 20)
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_name").innerHTML = ("���Ȳ��ܳ���20���ַ�");
+        }
+        else if(pattern_username.test(String(u))) //�Ϸ��Լ��
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_name").innerHTML = ("�û������ܰ����ո�");
+        }
+        else
+        {
+            document.getElementById("error_name").innerHTML = " ";
+        }
+
+        //�ж������Ƿ�Ϸ�:����8λ,���20λ,������Ҫͬʱʹ������,��ĸ
+        var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
+        if(String(p1).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_pwd").innerHTML = "���벻ӦΪ��";
+        }
+        else if(!patter_pwd.test(String(p1)))
+        {
+            tag = false;
+            $("#password").select();
+            document.getElementById("error_pwd").innerHTML = "���볤��Ϊ6~20λ;<br>��������ͬʱʹ�����ֺ���ĸ";
+        }
+        else
+        {
+            document.getElementById("error_pwd").innerHTML = " ";
+        }
+
+        //�ظ���������
+        if(String(p2).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_retry_pwd").innerHTML = "���벻ӦΪ��";
+        }
+        else if(p1 != p2)
+        {
+            tag = false;
+            $("#retry_password").select();
+            document.getElementById("error_retry_pwd").innerHTML = "�����������벻һ��";
+        }
+        else
+        {
+            tag = false;
+            document.getElementById("error_retry_pwd").innerHTML = " ";
+        }
+        
+        // if(!tag)
+        //     form.submit();
+        // else
+        //     return;
+        
+        
+    }
+
+    function onSetSelect(myid)
+    {
+        $("#"+myid).select();
+    }
+</script>
+
 </html>

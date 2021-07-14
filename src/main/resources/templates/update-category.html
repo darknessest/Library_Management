@@ -7,25 +7,30 @@
     <title>Update Category</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style_update-category.css">
+
 </head>
  
 <body>
 	<div th:insert="fragments/header :: header"></div>
     <div class="container my-5">
-        <h3>Update Category</h3>
         <div class="card">
             <div class="card-body">
+                <label id="mytitle">Update Category</label>
                 <div class="col-md-10">
-                    <form action="#" th:action="@{/admin/update-category/{id}(id=${category.id})}" th:object="${category}" method="post">
+                    <form action="#" th:action="@{/update-category/{id}(id=${category.id})}" th:object="${category}" method="post" id="mycard">
                         <div class="row">
-                            
-                            <div class="form-group col-md-8">
+                            <div class="inputs">
                                 <label for="name" class="col-form-label">Category Name</label> 
                                 <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Category Name" />
                             </div>
  
-                            <div class="col-md-6">
-                                <input type="submit" class="btn btn-primary" value=" Submit ">
+                            <div class="buttons">
+                                <input type="submit" class="btn btn-primary" value=" Submit " id="button">
                             </div>
      
                         </div>
