@@ -14,7 +14,7 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 <div class="container my-5">
-    <h3 th:text="${borrowed_book.book.name}">Borrow Book</h3>
+    <h3><a>Borrow </a> <a th:text="${borrowed_book.book.name}"></a></h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">

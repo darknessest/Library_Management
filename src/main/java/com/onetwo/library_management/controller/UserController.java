@@ -28,11 +28,6 @@ public class UserController {
         return "login";
     }
 
-//    @GetMapping("/user/edit")
-//    String editPersonalInfo(User user) {
-//        return "edit-user-info";
-//    }
-
     @GetMapping("/user/edit")
     public String showUpdateForm(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

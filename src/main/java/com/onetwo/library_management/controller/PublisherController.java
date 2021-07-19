@@ -28,13 +28,13 @@ public class PublisherController {
 		return "list-publishers";
 	}
 
-	@RequestMapping("/publisher/{id}")
-	public String findPublisherById(@PathVariable("id") Long id, Model model) {
-		final Publisher publisher = publisherService.findPublisherById(id);
-
-		model.addAttribute("publisher", publisher);
-		return "list-publisher";
-	}
+//	@RequestMapping("/publisher/{id}")
+//	public String findPublisherById(@PathVariable("id") Long id, Model model) {
+//		final Publisher publisher = publisherService.findPublisherById(id);
+//
+//		model.addAttribute("publisher", publisher);
+//		return "list-publisher";
+//	}
 
 	@GetMapping("/addPublisher")
 	public String showCreateForm(Publisher publisher) {
@@ -64,7 +64,7 @@ public class PublisherController {
 	public String updatePublisher(@PathVariable("id") Long id, Publisher publisher, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			publisher.setId(id);
-			return "update-publishers";
+			return "update-publisher";
 		}
 
 		publisherService.updatePublisher(publisher);

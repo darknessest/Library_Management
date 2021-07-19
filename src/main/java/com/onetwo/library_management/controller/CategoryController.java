@@ -30,13 +30,13 @@ public class CategoryController {
 		return "list-categories";
 	}
 
-	@RequestMapping("/category/{id}")
-	public String findCategoryById(@PathVariable("id") Long id, Model model) {
-		final Category category = categoryService.findCategoryById(id);
-
-		model.addAttribute("category", category);
-		return "list-category";
-	}
+//	@RequestMapping("/category/{id}")
+//	public String findCategoryById(@PathVariable("id") Long id, Model model) {
+//		final Category category = categoryService.findCategoryById(id);
+//
+//		model.addAttribute("category", category);
+//		return "list-category";
+//	}
 
 	@GetMapping("/addCategory")
 	public String showCreateForm(Category category) {

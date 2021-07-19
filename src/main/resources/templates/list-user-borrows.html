@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,28 +15,31 @@
 <div class="container my-2">
     <div class="card">
         <div class="card-body">
-            <div class="container my-5">
+            <div th:switch="${borrowed_books}" class="container my-5">
                 <div class="col-md-12">
-                    <div>
+
+                    <div th:case="null">You didn't borrow any books</div>
+                    <div th:case="*">
                         <table class="table table-striped table-responsive-md">
                             <thead>
                             <tr>
-                                <th>User Name</th>
-                                <th>Book Name</th>
                                 <th>Status</th>
+                                <th>Book Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
-                                <th>Finish Return</th>
+                                <th>Postpone Return</th>
+                                <th>Return</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="borrow : ${borrowed_books}">
-                                <td th:text="${borrow.user.name}"></td>
-                                <td th:text="${borrow.book.name}"></td>
                                 <td th:text="${borrow.status}"></td>
+                                <td th:text="${borrow.book.name}"></td>
                                 <td th:text="${borrow.startDate}"></td>
                                 <td th:text="${borrow.endDate}"></td>
-                                <td><a th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}" class="btn btn-primary"><i
+                                        class="fas fa-user-times ml-2"></i></a></td>
+                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrow/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

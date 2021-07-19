@@ -1,7 +1,5 @@
 package com.onetwo.library_management.service.impl;
 
-import com.onetwo.library_management.entity.Book;
-import com.onetwo.library_management.entity.User;
 import com.onetwo.library_management.entity.BorrowedBook;
 import com.onetwo.library_management.exception.NotFoundException;
 import com.onetwo.library_management.repository.BorrowedBookRepository;
@@ -10,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -34,8 +31,9 @@ public class BorrowedBooksServiceImpl implements BorrowedBooksService {
     }
 
     @Override
-    public Optional<BorrowedBook> findBorrowedBookById(Long id) {
-        return borrowedBookRepository.findById(id);
+    public BorrowedBook findBorrowedBookById(Long id) {
+        return borrowedBookRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Book not found borrow with ID %d", id)));
     }
 
     @Override
@@ -45,6 +43,11 @@ public class BorrowedBooksServiceImpl implements BorrowedBooksService {
 
     @Override
     public void updateBorrowedBook(BorrowedBook borrowedBook) {
+        borrowedBookRepository.save(borrowedBook);
+    }
+
+    @Override
+    public void saveBorrowedBook(BorrowedBook borrowedBook) {
         borrowedBookRepository.save(borrowedBook);
     }
 
