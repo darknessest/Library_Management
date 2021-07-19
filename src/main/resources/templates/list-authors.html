@@ -40,9 +40,9 @@
                                 <td th:text="${author.name}"></td>
                                 <td th:text="${author.description}"></td>
 
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/updateAuthor/{id}(id=${author.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/remove-author/{id}(id=${author.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/remove-author/{id}(id=${author.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>

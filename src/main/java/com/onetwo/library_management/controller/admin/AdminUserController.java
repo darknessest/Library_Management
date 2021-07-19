@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -51,7 +52,7 @@ public class AdminUserController {
     }
 
     @RequestMapping("/admin/update-user/{id}")
-    public String updateUser(@PathVariable("id") Long id, User user, BindingResult result, Model model) {
+    public String updateUser(@PathVariable("id") Long id, @Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "update-user";
         }

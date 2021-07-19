@@ -23,8 +23,6 @@ public class UserController {
 
     private final UserService userService;
 
-//    private final ConfirmationTokenService confirmationTokenService;
-
     @GetMapping("/login")
     String login() {
         return "login";

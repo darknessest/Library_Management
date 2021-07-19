@@ -30,7 +30,7 @@ public class AdminCategoryController {
 
         categoryService.createCategory(category);
         model.addAttribute("category", categoryService.findAllCategories());
-        return "redirect:/categorys";
+        return "redirect:/categories";
     }
 
     @GetMapping("/admin/updateCategory/{id}")
@@ -50,7 +50,7 @@ public class AdminCategoryController {
 
         categoryService.updateCategory(category);
         model.addAttribute("category", categoryService.findAllCategories());
-        return "redirect:/categorys";
+        return "redirect:/categories";
     }
 
     @RequestMapping("/admin/remove-category/{id}")
@@ -58,7 +58,7 @@ public class AdminCategoryController {
         categoryService.deleteCategory(id);
 
         model.addAttribute("category", categoryService.findAllCategories());
-        return "redirect:/categorys";
+        return "redirect:/categories";
     }
 
 }

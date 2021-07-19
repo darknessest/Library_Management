@@ -39,6 +39,7 @@
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Detail</th>
+                                <th sec:authorize="hasAuthority('USER')">Borrow</th>
                                 <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
                                 <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
                             </tr>
@@ -52,7 +53,9 @@
                                 <td th:text="${book.description}"></td>
                                 <td><a th:href="@{/book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-marker ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/update/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrowBook/{id}(id=${book.id})}" class="btn btn-primary"><i
+                                        class="fas fa-user-edit ml-2"></i></a></td>
+                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/updateBook/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
                                 <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -19,33 +22,36 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="color: black">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                <a style="color: black" class="nav-link" href="/">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active" style="color: black">
+                <a style="color: black" class="nav-link" href="/categories">Categories </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/categories">Categories </a>
+                <a style="color: black" class="nav-link" href="/books">Books </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/books">Books </a>
+                <a style="color: black" class="nav-link" href="/publishers">Publishers </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/publishers">Publishers </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/authors">Authors </a>
+                <a style="color: black" class="nav-link" href="/authors">Authors </a>
             </li>
             <li class="nav-item active" sec:authorize="hasAuthority('USER')">
-                <a class="nav-link" href="/user/edit">Personal Info</a>
+                <a style="color: black" class="nav-link" href="/user/edit">Personal Info</a>
             </li>
             <li class="nav-item active" sec:authorize="hasAuthority('ADMIN')">
-                <a class="nav-link" href="/admin/users">Users</a>
+                <a style="color: black" class="nav-link" href="/admin/users">Users</a>
+            </li>
+            <li class="nav-item active" sec:authorize="hasAuthority('ADMIN')">
+                <a style="color: black" class="nav-link" href="/admin/all_borrows">All Borrows</a>
             </li>
             <li class="nav-item active" sec:authorize="!isAuthenticated()">
-                <a class="nav-link" href="/login">login</a>
+                <a style="color: black" class="nav-link" href="/login">login</a>
             </li>
             <li class="nav-item active" sec:authorize="isAuthenticated()">
-                <a class="nav-link" href="/logout">logout</a>
+                <a style="color: black" class="nav-link" href="/logout">logout</a>
             </li>
         </ul>
 

@@ -16,12 +16,12 @@ import java.util.List;
 
 
 @Controller
+
 public class BookController {
 	private final BookService bookService;
 
 	@Autowired
-	public BookController(BookService bookService, AuthorService authorService, CategoryService categoryService,
-			PublisherService publisherService) {
+	public BookController(BookService bookService) {
 		this.bookService = bookService;
 	}
 
