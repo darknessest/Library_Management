@@ -84,7 +84,7 @@ public class BorrowedBookController {
             // todo: add check if it's the same user
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) auth.getPrincipal();
-            borrowedBook.setStatus(BorrowStatus.PROCESSED);
+            borrowedBook.setStatus(BorrowStatus.POSTPONED);
             Calendar endCalendar = Calendar.getInstance();
             endCalendar.setTime(borrowedBook.getEndDate());
 

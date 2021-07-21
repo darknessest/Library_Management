@@ -37,10 +37,20 @@
                                 <td th:text="${borrow.book.name}"></td>
                                 <td th:text="${borrow.startDate}"></td>
                                 <td th:text="${borrow.endDate}"></td>
-                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}" class="btn btn-primary"><i
-                                        class="fas fa-user-times ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrow/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i
-                                        class="fas fa-user-times ml-2"></i></a></td>
+                                <td sec:authorize="hasAuthority('USER')">
+                                    <a th:if="${borrow.status.name() == 'TAKEN'}"
+                                       th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}"
+                                       class="btn btn-primary">
+                                        <i class="fas fa-user-times ml-2"></i>
+                                    </a>
+                                </td>
+                                <td sec:authorize="hasAuthority('USER')">
+                                    <a th:if="${borrow.status.name() != 'RETURNED' and borrow.status.name() != 'PROCESSED'}"
+                                       th:href="@{/book/borrow/return/{id}(id=${borrow.id})}"
+                                       class="btn btn-primary">
+                                        <i class="fas fa-user-times ml-2"></i>
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
