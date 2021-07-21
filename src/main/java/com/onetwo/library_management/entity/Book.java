@@ -45,6 +45,9 @@ public class Book {
 	@Column(name = "price")
 	private Double price;
 
+	@Column(name = "leftInStock")
+	private Integer leftInStock;
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	@JoinTable(name = "books_authors", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "author_id") })
@@ -60,12 +63,13 @@ public class Book {
 			@JoinColumn(name = "publisher_id") })
 	private Set<Publisher> publishers = new HashSet<Publisher>();
 
-	public Book(String isbn, String name, String serialName, String description, Double price) {
+	public Book(String isbn, String name, String serialName, String description, Double price, Integer leftInStock) {
 		this.isbn = isbn;
 		this.name = name;
 		this.serialName = serialName;
 		this.description = description;
 		this.price = price;
+		this.leftInStock = leftInStock;
 	}
 
 	public void addAuthors(Author author) {
