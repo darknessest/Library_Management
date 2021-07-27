@@ -14,26 +14,26 @@
 <div class="add_card_body">
     <label id="add_label">添加</label>
     <div class="add_content">
-        <form class="add_user_info" >
+        <form class="add_user_info" th:action="@{/admin/add-user}" th:object="${new_user}" method="post">
             <div class="items_add_user-info" id="add_username">
-                <label class="label_add_user-info">用户号</label>
-                <input type="text" class="input_add_user-info">
+                <label for="input_add_username" class="label_add_user-info">用户号</label>
+                <input id="input_add_username" type="text" th:field="*{username}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_nickname">
-                <label class="label_add_user-info">昵称</label>
-                <input type="text" class="input_add_user-info">
+                <label for="input_add_name" class="label_add_user-info">昵称</label>
+                <input id="input_add_name" type="text" th:field="*{name}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_email">
-                <label class="label_add_user-info">邮箱</label>
-                <input type="email" class="input_add_user-info">
+                <label for="input_add_email" class="label_add_user-info">邮箱</label>
+                <input id="input_add_email" type="email" th:field="*{email}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_phone">
-                <label class="label_add_user-info">手机号</label>
-                <input type="text" class="input_add_user-info">
+                <label for="input_add_phone" class="label_add_user-info">手机号</label>
+                <input id="input_add_phone" type="text" th:field="*{phone}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_password">
-                <label class="label_add_user-info">密码</label>
-                <input type="password" class="input_add_user-info">
+                <label for="input_add_password" class="label_add_user-info">密码</label>
+                <input id="input_add_password" type="password" th:field="*{password}" class="input_add_user-info">
             </div>
 
             <div class="add_buttonBox" id="add_buttonBox">
@@ -46,42 +46,42 @@
 <div class="container_card">
 
 
-    <!-- <div class="card_body">
-        <div class="imageBox">
-            <img src="/C:\Users\Ramsac\Desktop\temp\花\flower2.jpg" id="myimage">
-        </div>
+<!--    <div class="card_body">-->
+<!--        <div class="imageBox">-->
+<!--            <img src="/C:\Users\Ramsac\Desktop\temp\花\flower2.jpg" id="myimage">-->
+<!--        </div>-->
 
-        <div class="content">
-            <form class="user_info">
-                <div class="items_user-info" id="username">
-                    <label class="label_user-info">用户号</label>
-                    <input type="text" class="input_usere-info" readonly placeholder="ar">
-                </div>
-                <div class="items_user-info" id="nickname">
-                    <label class="label_user-info">昵称</label>
-                    <input type="text" class="input_usere-info" placeholder="gaga">
-                </div>
-                <div class="items_user-info" id="email">
-                    <label class="label_user-info">邮箱</label>
-                    <input type="text" class="input_usere-info" placeholder="nmsl@bit.com">
-                </div>
-                <div class="items_user-info" id="phone">
-                    <label class="label_user-info">手机号</label>
-                    <input type="text" class="input_usere-info" placeholder="130130">
-                </div>
-                <div class="items_user-info" id="password">
-                    <label class="label_user-info">密码</label>
-                    <input type="text" class="input_usere-info" >
-                </div>
+<!--        <div class="content">-->
+<!--            <form class="user_info">-->
+<!--                <div class="items_user-info" id="username">-->
+<!--                    <label class="label_user-info">用户号</label>-->
+<!--                    <input type="text" class="input_usere-info" readonly placeholder="ar">-->
+<!--                </div>-->
+<!--                <div class="items_user-info" id="nickname">-->
+<!--                    <label class="label_user-info">昵称</label>-->
+<!--                    <input type="text" class="input_usere-info" placeholder="gaga">-->
+<!--                </div>-->
+<!--                <div class="items_user-info" id="email">-->
+<!--                    <label class="label_user-info">邮箱</label>-->
+<!--                    <input type="text" class="input_usere-info" placeholder="nmsl@bit.com">-->
+<!--                </div>-->
+<!--                <div class="items_user-info" id="phone">-->
+<!--                    <label class="label_user-info">手机号</label>-->
+<!--                    <input type="text" class="input_usere-info" placeholder="130130">-->
+<!--                </div>-->
+<!--                <div class="items_user-info" id="password">-->
+<!--                    <label class="label_user-info">密码</label>-->
+<!--                    <input type="text" class="input_usere-info" >-->
+<!--                </div>-->
 
-                <div class="buttonBox" id="buttonBox">
-                    <input class="button" id="btn_submit" type="submit">
-                    <button class="button" id="btn_delete">删除</button>
-                </div>
+<!--                <div class="buttonBox" id="buttonBox">-->
+<!--                    <input class="button" id="btn_submit" type="submit">-->
+<!--                    <button class="button" id="btn_delete">删除</button>-->
+<!--                </div>-->
 
-            </form>
-        </div>
-    </div> -->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
 
 <!--    <div th:switch="${users}" class="container my-5">-->
 <!--        <div sec:authorize="hasAuthority('ADMIN')">-->
