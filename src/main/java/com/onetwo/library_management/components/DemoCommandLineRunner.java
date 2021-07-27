@@ -52,7 +52,7 @@ class DemoCommandLineRunner implements CommandLineRunner {
         userRepository.save(user);
 
         // create books
-        Book book = new Book("Test isbn", "Test name", "Test serial name", "Test description", 12.5);
+        Book book = new Book("Test isbn", "Test name", "Test serial name", "Test description", 12.5, 8);
         Author author = new Author("Test author name", "Test description");
         Category category = new Category("Test category name");
         Publisher publisher = new Publisher("Test publisher name");
@@ -63,7 +63,7 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         bookRepository.save(book);
 
-        Book book1 = new Book("Test isbn1", "Test name1", "Test serial name1", "Test description1", 22.0);
+        Book book1 = new Book("Test isbn1", "Test name1", "Test serial name1", "Test description1", 22.0, 7);
         Author author1 = new Author("Test author name1", "Test description1");
         Category category1 = new Category("Test category name1");
         Publisher publisher1 = new Publisher("Test publisher name1");
@@ -74,7 +74,7 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         bookRepository.save(book1);
 
-        Book book2 = new Book("Test isbn2", "Test name2", "Test serial name2", "Test description2", 27.3);
+        Book book2 = new Book("Test isbn2", "Test name2", "Test serial name2", "Test description2", 27.3, 10);
         Author author2 = new Author("Test author name2", "Test description2");
         Category category2 = new Category("Test category name2");
         Publisher publisher2 = new Publisher("Test publisher name2");

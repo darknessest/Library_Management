@@ -47,21 +47,28 @@ public class BorrowedBookController {
     }
 
     @RequestMapping("/book/borrow/{id}")
-    public String borrowBook(@PathVariable("id") Long bookId, BorrowedBook borrowedBook, BindingResult result, Model model) {
+    public String borrowBook(@PathVariable("id") Long bookId, BorrowedBook borrowedBook, BindingResult result) {
         if (result.hasErrors()) {
             return "borrow-book";
         }
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         Book book = booksService.findBookById(bookId);
-        borrowedBook.setBook(book);
-//        borrowedBook.setStatus();
 
-        // get logged in user
-        User user = (User) auth.getPrincipal();
-        borrowedBook.setUser(user);
+        if (book.getLeftInStock() > 0) {
+            // update left in stock value
+            book.setLeftInStock(book.getLeftInStock() - 1);
+            booksService.updateBook(book);
 
-        borrowedBooksService.createBorrowedBook(borrowedBook);
+            borrowedBook.setBook(book);
+
+            // get logged in user
+            User user = (User) auth.getPrincipal();
+            borrowedBook.setUser(user);
+
+
+            borrowedBooksService.createBorrowedBook(borrowedBook);
+        }
         return "redirect:/books";
     }
 
@@ -84,7 +91,7 @@ public class BorrowedBookController {
             // todo: add check if it's the same user
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) auth.getPrincipal();
-            borrowedBook.setStatus(BorrowStatus.PROCESSED);
+            borrowedBook.setStatus(BorrowStatus.POSTPONED);
             Calendar endCalendar = Calendar.getInstance();
             endCalendar.setTime(borrowedBook.getEndDate());
 
