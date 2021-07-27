@@ -6,68 +6,304 @@
     <title>All Books</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
+    <link rel="stylesheet" th:href = "@{/css/style_list-books.css}">
 </head>
 <body>
-<div th:insert="fragments/header :: header"></div>
-<div class="container my-2">
-    <div class="card">
-        <div class="card-body">
-            <div th:switch="${books}" class="container my-5">
+<!--<div th:insert="fragments/header :: header"></div>-->
+<div class="container">
+    <!-- <div class="container_img">
+        <img id="bk" src="C:\Users\Ramsac\Desktop\final\暂存\templates\resource\bk5_2.png">
+        <img id="realimg" src="C:\Users\Ramsac\Desktop\final\暂存\templates\resource\bk5_1.png">
 
-                <div sec:authorize="hasAuthority('ADMIN')">
+    </div> -->
+    <div class="header" id="header">
+        <form th:action="@{/searchBook}" class="search">
+            <input class="input_search" name="keyword" id="keyword" type="text"
+                   placeholder="输入查询条件"
+                   aria-label="Search" th:value="${keyword}">
+            <input class="button_submit" type="submit" value="搜索"/>
+        </form>
+    </div>
 
-                    <p class="my-5">
-                        <a href="/admin/addBook" class="btn btn-primary">
-                            <i class="fas fa-user-plus ml-2"> Add Book </i></a>
+    <div class="lefter" id="lefter">
+        <div class="container_add-book">
+            <button class="btn_add-book" onclick="open_add()">
+                <label class="btn_label">添加</label>
+            </button>
 
-                </div>
-
-                </p>
-                <div class="col-md-12">
-                    <h2 th:case="null">No record found !!</h2>
-                    <div th:case="*">
-                        <table class="table table-striped table-responsive-md">
-                            <thead>
-                            <tr>
-                                <th>ISBN</th>
-                                <th>Book Name</th>
-                                <th>Serial Name</th>
-                                <th>Price</th>
-                                <th>Description</th>
-                                <th>Detail</th>
-                                <th sec:authorize="hasAuthority('USER')">Borrow</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
-                                <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="book : ${books}">
-                                <td th:text="${book.isbn}"></td>
-                                <td th:text="${book.name}"></td>
-                                <td th:text="${book.serialName}"></td>
-                                <td th:text="${book.price}"></td>
-                                <td th:text="${book.description}"></td>
-                                <td><a th:href="@{/book/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                        class="fas fa-marker ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('USER')"><a th:href="@{/book/borrowBook/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                        class="fas fa-user-edit ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/updateBook/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                        class="fas fa-user-edit ml-2"></i></a></td>
-                                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/remove-book/{id}(id=${book.id})}" class="btn btn-primary"><i
-                                        class="fas fa-user-times ml-2"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
+    <!-- <div th:switch="${books}" class="container"> -->
+    <div class="container_card" id="container_card">
+
+        <!-- <div sec:authorize="hasAuthority('ADMIN')">
+
+            <p class="my-5">
+                <a href="/admin/addBook" class="btn btn-primary">
+                    <i class="fas fa-user-plus ml-2"> Add Book </i></a>
+
+        </div> -->
+
+        </p>
+
+        <div class="card" th:each = "book: ${books}">
+            <div class="card_body">
+                <div class="imageBox" >
+                    <img src="/img/cover1.jpg">
+                </div>
+                <div class="content">
+                    <label class="item" id="serialName" th:text = "${book.serialName}"></label>
+                    <label class="item" id="price" th:text = "${book.price}"></label>
+                    <label class="item" id="isbn" th:text = "${book.isbn}"></label>
+
+                </div>
+                <div class="buttonBox">
+                    <!-- <a th:href="/" class="btn">详情</a> -->
+                    <button class="btn" style="border: 0; outline: none;" th:text = "${book.name}"
+                        onclick="open_details()"></button>
+                </div>
+            </div>
+            <div class="buttonBox2">
+                <button class="btn2">借<br>书</button>
+                <button class="btn3">还<br>书</button>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+
+<div class="container_details" id="details_card">
+    <div class="details">
+        <form class="details_card">
+            <div class="items_details" id="details_book_name">
+                <div class="main_info">
+                    <label class="mylabel" >书名</label>
+                    <!-- <label class="info">《小王子》</label> -->
+                    <input type = "text" class="info" id="info_bookname" disabled = "disabled">
+                </div>
+                <div class="more_info" >
+
+                </div>
+            </div>
+
+            <div class="items_details" id="details_categories">
+                <div class="main_info">
+                    <label class="mylabel">分类</label>
+                    <!-- <label class="items2">童话</label> -->
+                    <input type = "text" class="info" id="info_categories" disabled = "disabled">
+                </div>
+                <div class="more_info" id="moreinfo_categories_div">
+                    <label class="info" id="moreinfo_categories"></label>
+                </div>
+            </div>
+
+            <div class="items_details" id="details_serialname">
+                <div class="main_info">
+                    <label class="mylabel">系列名称</label>
+                    <!-- <label class="items2">XX</label> -->
+                    <input type = "text" class="info" id="info_serialName" disabled = "disabled">
+                </div>
+                <div class="more_info">
+
+                </div>
+            </div>
+
+            <div class="items_details" id="details_author" >
+                <div class="main_info">
+                    <label class="mylabel">作者:</label>
+                    <!-- <button class="more_info">外国作者</button> -->
+                    <input type = "text" class="info" id="info_author" disabled = "disabled">
+                    <!-- <label class="info">lkfbcevjofbuoebfoefb</label> -->
+                </div>
+                <div class="more_info" id="moreinfo_author_div">
+                    <label class="info" id="moreinfo_author"></label>
+                </div>
+            </div>
+
+
+            <div class="items_details" id="details_publisher">
+                <div class="main_info">
+                    <label class="mylabel">出版商</label>
+                    <!-- <button class="more_info">$ 130.9</button> -->
+                    <input type = "text" class="info" id="info_publisher" disabled = "disabled">
+                </div>
+                <div class="more_info" id="moreinfo_publisher_div">
+                </div>
+            </div>
+
+            <div class="items_details" id="details_price">
+                <div class="main_info">
+                    <label class="mylabel">价格</label>
+                    <!-- <button class="more_info">$ 130.9</button> -->
+                    <input type = "text" class="info" id="info_price" disabled = "disabled">
+                </div>
+                <div class="more_info">
+
+                </div>
+            </div>
+
+            <div class="items_details" id="details_isbn">
+                <div class="main_info">
+                    <label class="mylabel">ISBN</label>
+                    <!-- <button class="more_info">$ 130.9</button> -->
+                    <input type = "text" class="info" id="info_ibsn" disabled = "disabled">
+                </div>
+                <div class="more_info">
+
+                </div>
+            </div>
+
+            <div class="items_details" id="details_description">
+                <div class="main_info">
+                    <label class="mylabel">简介</label><br>
+                    <input type="text" style="visibility: hidden;">
+                </div>
+                <div class="more_info2" id="info_description_div">
+                    <label class="info2" id="info_description">
+                    </label>
+                </div>
+            </div>
+
+            <input type="submit" value="提交" class="button" onclick="close_details()">
+        </form>
+    </div>
+</div>
+
+<!--<div class="container_add" id="add_card">-->
+<!--    <form class="add_card" action="#" th:action="@{/admin/add-book}" th:object="${books}"-->
+<!--          method="post">-->
+<!--        <div class="items_add">-->
+<!--            <label for="isbn" class="mylabel_add">ISBN</label>-->
+<!--            <input type="text" th:field="*{isbn}" class="info_add" id="add_isbn" placeholder="ISBN"/>-->
+<!--            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="name" class="mylabel_add">Book Name</label>-->
+<!--            <input type="text" th:field="*{name}" class="info_add" id="add_name"-->
+<!--                   placeholder="Book Name"/>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="serialName" class="mylabel_add">SerialName </label>-->
+<!--            <input type="text" th:field="*{serialName}" class="info_add" id="add_serialName"-->
+<!--                   placeholder="Serial Name"/>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="price" class="mylabel_add">Price </label>-->
+<!--            <input type="number" th:field="*{price}" class="info_add" id="add_price"-->
+<!--                   placeholder="Price"/>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="description" class="mylabel_add">Description</label>-->
+<!--            <input type="text" th:field="*{description}" class="info_add" id="add_description"-->
+<!--                   placeholder="Description"/>-->
+<!--        </div>-->
+
+
+<!--        <div class="items_add">-->
+<!--            <label for="category" class="mylabel_add">Category</label>-->
+<!--            <select th:field="*{categories}" class="info_add" id="add_category">-->
+<!--                <option th:each="category: ${categories}" th:value="${category.id}"-->
+<!--                        th:text="${category.name}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="author" class="mylabel_add">Author</label>-->
+<!--            <select th:field="*{authors}" class="info_add" id="add_author">-->
+<!--                <option th:each="author: ${authors}" th:value="${author.id}"-->
+<!--                        th:text="${author.name}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+<!--        <div class="items_add">-->
+<!--            <label for="publisher" class="mylabel_add">Publisher</label>-->
+<!--            <select th:field="*{publishers}" class="info_add" id="publisher">-->
+<!--                <option th:each="publisher: ${publishers}" th:value="${publisher.id}"-->
+<!--                        th:text="${publisher.name}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+
+<!--        <input type="submit" class="btn_add_" value=" Submit " onclick="close_add()">-->
+<!--    </form>-->
+<!--</div>-->
 </body>
+
+<script>
+    function open_details()
+    {
+        let card_details = document.getElementById("details_card");
+        card_details.style.display = "block";
+        card_details.style.opacity = 1;
+
+        let card1 = document.getElementById("header");
+        let card2 = document.getElementById("lefter");
+        let card3= document.getElementById("container_card");
+
+        card1.style.opacity = 0.3;
+        card2.style.opacity = 0.3;
+        card3.style.opacity = 0.3;
+    }
+
+    function close_details()
+    {
+        let card_details = document.getElementById("details_card");
+        card_details.style.display = "none";
+        card_details.style.opacity = 0;
+
+        let card1 = document.getElementById("header");
+        let card2 = document.getElementById("lefter");
+        let card3= document.getElementById("container_card");
+
+        card1.style.opacity = 1;
+        card2.style.opacity = 1;
+        card3.style.opacity = 1;
+    }
+
+    function open_add()
+    {
+        let card_add = document.getElementById("add_card");
+        card_add.style.display = "block";
+        card_add.style.opacity = 1;
+
+        let card1 = document.getElementById("header");
+        let card2 = document.getElementById("lefter");
+        let card3= document.getElementById("container_card");
+
+        card1.style.opacity = 0.3;
+        card2.style.opacity = 0.3;
+        card3.style.opacity = 0.3;
+    }
+
+    function close_add()
+    {
+        let card_add = document.getElementById("add_card");
+        card_add.style.display = "none";
+        card_add.style.opacity = 0;
+
+        let card1 = document.getElementById("header");
+        let card2 = document.getElementById("lefter");
+        let card3= document.getElementById("container_card");
+
+        card1.style.opacity = 1;
+        card2.style.opacity = 1;
+        card3.style.opacity = 1;
+    }
+
+
+</script>
+
 
 </html>

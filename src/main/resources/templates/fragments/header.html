@@ -6,67 +6,66 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link rel="stylesheet" th:href="@{/css/test.css}">-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
+    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
 </head>
+
 
 <body>
 
 <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand">Library Management System</a>
+    <!-- <a class="navbar-brand">Library Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav mr-auto" style="color: black">
-            <li class="nav-item active">
+            <li class="items">
                 <a style="color: black" class="nav-link" href="/">Home <span class="sr-only"></span></a>
             </li>
-            <li class="nav-item active" style="color: black">
+            <!-- <li class="items" style="color: black">
                 <a style="color: black" class="nav-link" href="/categories">Categories </a>
-            </li>
-            <li class="nav-item active">
+            </li> -->
+            <li class="items">
                 <a style="color: black" class="nav-link" href="/books">Books </a>
             </li>
-            <li class="nav-item active">
+            <!-- <li class="items">
                 <a style="color: black" class="nav-link" href="/publishers">Publishers </a>
             </li>
-            <li class="nav-item active">
+            <li class="items">
                 <a style="color: black" class="nav-link" href="/authors">Authors </a>
-            </li>
-            <li class="nav-item active" sec:authorize="hasAuthority('USER')">
-                <a style="color: black" class="nav-link" href="/user/borrows">My Borrowed Books</a>
-            </li>
-            <li class="nav-item active" sec:authorize="hasAuthority('USER')">
+            </li> -->
+            <li class="items" sec:authorize="isAuthenticated()">
                 <a style="color: black" class="nav-link" href="/user/edit">Personal Info</a>
             </li>
-            <li class="nav-item active" sec:authorize="hasAuthority('ADMIN')">
+            <li class="items" sec:authorize="hasAuthority('ADMIN')">
                 <a style="color: black" class="nav-link" href="/admin/users">Users</a>
             </li>
-            <li class="nav-item active" sec:authorize="hasAuthority('ADMIN')">
+            <!-- <li class="items" sec:authorize="hasAuthority('ADMIN')">
                 <a style="color: black" class="nav-link" href="/admin/all_borrows">All Borrows</a>
-            </li>
-            <li class="nav-item active" sec:authorize="!isAuthenticated()">
+            </li> -->
+            <li class="items" sec:authorize="!isAuthenticated()">
                 <a style="color: black" class="nav-link" href="/login">login</a>
             </li>
-            <li class="nav-item active" sec:authorize="isAuthenticated()">
+            <li class="items" sec:authorize="isAuthenticated()">
                 <a style="color: black" class="nav-link" href="/logout">logout</a>
             </li>
         </ul>
 
-        <form th:action="@{/searchBook}" class="form-inline my-2 my-lg-0">
+        <!-- <form th:action="@{/searchBook}" class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" name="keyword" id="keyword" type="text" placeholder="Search"
                    aria-label="Search" th:value="${keyword}">
             <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search"/>
-        </form>
+        </form> -->
 
     </div>
 </nav>
 
 </body>
+
+
 </html>

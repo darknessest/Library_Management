@@ -2,45 +2,98 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="GBK">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Update User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" th:href = "@{/css/style_edit-user-info.css}">
 </head>
 
 <body>
-<div th:insert="fragments/header :: header"></div>
+<!--<div th:insert="fragments/header :: header"></div>-->
 <div class="container my-5">
-    <h3>Update User</h3>
-    <div class="card">
-        <div class="card-body">
-            <div class="col-md-10">
-                <form action="#" th:action="@{/user/update}" th:object="${user}" method="post">
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="name" class="col-form-label">Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
-                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+    <h3 class="header_text">Update User</h3>
+    <div class="cards">
+        <div class="card-body" style="overflow: hidden;">
+            <form action="#" th:action="@{/user/update}" th:object="${user}" method="post" id="informationBox">
+                <div class="inputs">
+                    <div class="icons">
+                        <div class = "img_icon">
+                            <img src="./resource/name.png" >
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="email" class="col-form-label">Email</label>
-                            <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
-                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-                        </div>
+                        <label for="name" class="col-form-label">昵称</label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mt-5">
-                            <input type="submit" class="btn btn-primary" value="Update User">
+                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                </div>
+
+                <div class="inputs">
+                    <div class="icons">
+                        <div class = "img_icon">
+                            <img src="./resource/email.png" >
                         </div>
+                        <label for="email" class="col-form-label">邮箱</label>
                     </div>
-                </form>
+                    <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                </div>
+
+                <div class="inputs">
+                    <div class="icons">
+                        <div class = "img_icon">
+                            <img src="./resource/phone.png" >
+                        </div>
+                        <label for="phone" class="col-form-label">手机号</label>
+                    </div>
+                    <input type="text" th:field="*{phone}" class="form-control" id="phone" placeholder="phone">
+                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>
+                </div>
+
+                <div class="inputs">
+                    <div class="icons">
+                        <div class = "img_icon">
+                            <img src="./resource/password.png" >
+                        </div>
+                        <label for="password" class="col-form-label">密码</label>
+                    </div>
+                    <input type="text"  class="form-control" id="password" placeholder="Password">
+                </div>
+
+                <div class="btn">
+                    <input type="submit" class="btn btn-primary" value="UPDATE" id="button">
+                </div>
+            </form>
+
+            <div class="imageBox">
+                <div class="rec_1" id="rec1">
+                    <label for=""></label>
+                </div>
+                <div class="rec_2" id="rec2">
+                    <label for=""></label>
+                </div>
+                <div class="rec_1" id="rec3">
+                    <label for=""></label>
+                </div>
+                <div class="rec_2" id="rec4">
+                    <label for=""></label>
+                </div>
+                <div class="rec_1" id="rec5">
+                    <label for=""></label>
+                </div>
+                <div class="rec_2" id="rec6">
+                    <label for=""></label>
+                </div>
             </div>
         </div>
+
+
     </div>
 </div>
 </body>
+
+
+
 
 </html>

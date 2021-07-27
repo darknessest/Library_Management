@@ -1,0 +1,473 @@
+body
+{
+    background-color: rgb(244, 244, 244);
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.container_card
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container_card .card_body
+{
+    position: relative;
+
+    margin-top: 110px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    width: 260px;
+    height: 235px;
+
+
+
+
+    background-image: linear-gradient(135deg, rgb(243, 243, 243) 10%, rgb(237, 237, 237) 100%);
+    box-shadow: -8px -9px 6px -4px rgba(255, 255, 255, 0.7),
+    6px 6px 8px -6px rgba(97, 98, 102, 0.3);
+
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: 0.3s ease-in-out;
+}
+
+.container_card .card_body:hover
+{
+    height: auto;
+
+}
+
+
+.container_card .card_body .imageBox
+{
+    position: absolute;
+    top: -75px;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background-color: #f4f4f4;
+    box-shadow: -2px -2px 5px -3px rgba(255, 255, 255, 0.7),
+    2px 2px 8px -4px rgba(97, 98, 102, 0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 11;
+}
+
+
+.container_card .card_body .imageBox img
+{
+    width: 85%;
+    height: 85%;
+
+    border-radius: 50%;
+}
+
+
+
+.container_card .card_body .content
+{
+
+    position: relative;
+
+    /* margin-top: 45px;    */
+    margin-top: 0px;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s ease-in-out;
+
+    z-index: 10;
+}
+
+.container_card .card_body .content .user_info
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.container_card .card_body .content .user_info .items_user-info
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 20px;
+
+    transition: 0.3s ease-in-out;
+
+}
+
+.container_card .card_body .content .user_info .items_user-info label
+{
+    color: #fd6868;
+}
+
+.container_card .card_body .content .user_info .items_user-info input
+{
+    width: 180px;
+
+    margin-top: 6px;
+
+    outline: none;
+    border: none;
+    border-radius: 8px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
+    font-size: 15px;
+
+    color: #727272;
+}
+
+.container_card .card_body .content .user_info .items_user-info input::placeholder
+{
+    color: rgba(122, 122, 122, 0.4);
+}
+
+
+.container_card .card_body .content .user_info .buttonBox
+{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: -200px;
+    margin-bottom: 33px;
+
+    transition: 0.25s ease-in-out;
+}
+
+
+.container_card .card_body .content .user_info .buttonBox .button
+{
+    outline: none;
+    border: none;
+    border-radius: 20px;
+
+    color: #2b1055;
+    text-decoration: none;
+
+    background-color: rgb(244, 244, 244);
+    box-shadow: -2px -2px 12px -7px rgba(255, 255, 255, 0.7),
+    2px 2px 12px -7px rgba(97, 98, 102, 0.3);
+    /* background-color: rgb(178, 224, 209); */
+
+    padding: 10px 20px;
+    margin-left: 23px;
+    margin-right: 23px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#btn_submit:hover
+{
+    background-color: #94cdff;
+}
+
+#btn_submit:active
+{
+    background-color: #90bde4;
+}
+
+#btn_delete:hover
+{
+    background-color: #fd6565;
+    color: rgb(85, 85, 85);
+}
+
+#btn_delete:active
+{
+    background-color: #ee9191;
+    color: rgb(39, 39, 39);
+}
+
+
+#username, #email, #phone, #password
+{
+    opacity: 0;
+    visibility: 1;
+}
+
+.container_card .card_body:hover #username,
+.container_card .card_body:hover #email,
+.container_card .card_body:hover #phone,
+.container_card .card_body:hover #password
+{
+
+    opacity: 1;
+    visibility: visible;
+
+    transition-delay: 0.1s;
+}
+
+.container_card .card_body:hover .content
+{
+    margin-top: 45px;
+
+    transition-delay: 0.3s;
+}
+
+.container_card .card_body:hover .content .buttonBox
+{
+    /* visibility: visible;
+    opacity: 1; */
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    transition-delay: 0.1s;
+}
+
+#btn_submit
+{
+    display: none;
+}
+
+.container_card .card_body:hover .content .buttonBox #btn_submit
+{
+    display: inline
+}
+
+.container_card
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add_card_body
+{
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    margin-top: 110px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    width: 90px;
+    height: 90px;
+
+    background-image: linear-gradient(135deg, rgb(243, 243, 243) 10%, rgb(237, 237, 237) 100%);
+    box-shadow: -8px -9px 6px -4px rgba(255, 255, 255, 0.7),
+    6px 6px 8px -6px rgba(97, 98, 102, 0.3);
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: 0.3s ease-in-out;
+
+    z-index: 11;
+}
+
+.add_card_body:active, .add_card_body:hover
+{
+    /* height: auto; */
+
+    margin-top: 110px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    width: 360px;
+    height: auto;
+
+
+
+    border-radius: 50px;
+
+}
+
+#add_label
+{
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 20px;
+
+    pointer-events:none;
+}
+
+.add_card_body:hover #add_label
+{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+.add_card_body .add_content
+{
+
+    position: relative;
+
+    /* margin-top: 45px;    */
+    margin-top: 40px;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.2s ease-in-out;
+
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.add_card_body .add_content .add_user_info
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.add_card_body .add_content .add_user_info .items_add_user-info
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 20px;
+
+    transition: 0.3s ease-in-out;
+
+}
+
+.add_card_body .add_content .add_user_info .items_add_user-info label
+{
+    color: #fd6868;
+}
+
+.add_card_body .add_content .add_user_info .items_add_user-info input
+{
+    width: 260px;
+
+    margin-top: 6px;
+
+    outline: none;
+    border: none;
+    border-radius: 8px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
+    font-size: 15px;
+
+    color: #727272;
+}
+
+.add_card_body .add_content .add_user_info .items_add_user-info input::placeholder
+{
+    color: rgba(122, 122, 122, 0.4);
+}
+
+
+.add_card_body .add_content .add_user_info .add_buttonBox
+{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 40px;
+    margin-bottom: 33px;
+
+    transition: 0.25s ease-in-out;
+}
+
+
+.add_card_body .add_content .add_user_info .add_buttonBox .button
+{
+    outline: none;
+    border: none;
+    border-radius: 20px;
+
+    background-color: rgb(244, 244, 244);
+    box-shadow: -2px -2px 12px -7px rgba(255, 255, 255, 0.7),
+    2px 2px 12px -7px rgba(97, 98, 102, 0.3);
+    /* background-color: rgb(178, 224, 209); */
+
+    padding: 10px 20px;
+    margin-left: 23px;
+    margin-right: 23px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#add_btn_submit:hover
+{
+    background-color: #94cdff;
+}
+
+#add_btn_submit:active
+{
+    background-color: #90bde4;
+}
+
+#add_btn_delete:hover
+{
+    background-color: #fd6565;
+    color: rgb(85, 85, 85);
+}
+
+#add_btn_delete:active
+{
+    background-color: #ee9191;
+    color: rgb(39, 39, 39);
+}
+
+.add_card_body:hover .add_content
+{
+    opacity: 1;
+    visibility: visible;
+}
+

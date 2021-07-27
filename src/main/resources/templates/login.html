@@ -2,21 +2,130 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Spring Boot User Authentication</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" th:href = "@{/css/style_login.css}">
 </head>
 <body>
-<form role="form" th:action="@{/login}" th:method="post">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="secondBox">
+        <div class="loginBox">
+            <form id="login" role="form" th:action="@{/login}" th:method="post">
+                <div class="input_div">
+                    <input type="text" id="username" name="username" placeholder="请输入账户" onclick="onSetSelect('username')">
+                    <label class = "warning" id="error_name">&nbsp</label>
+                </div>
 
-    <lable>Username</lable>
-    <input type="text" id="username" name="username">
+                <div class="input_div">
+                    <input type="password" id="password" name="password" placeholder="请输入密码" onclick="onSetSelect('password')">
+                    <label class="warning" id="error_pwd">&nbsp</label>
+                </div>
 
-    <lable>Password</lable>
-    <input type="password" id="password" name="password">
+                <!--            <div class="input_div">-->
+                <!--                <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onclick="onSetSelect('retry_password')">-->
+                <!--                <label class="warning" id="error_retry_pwd">&nbsp</label>-->
+                <!--            </div>-->
 
-    <input type="submit">
+                <div class="Btn">
+                    <input type="submit" value="登录">
+                    <!--                <input id="button" type="button" onclick="onSubmit()" value="登录">-->
+                </div>
 
-</form>
+                <div class="link">
+                    <a style="color: rgb(12, 93, 99);" class="nav-link" href="/register" id="link_register">还没账号?点击注册</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
+<script>
+    function onSubmit()
+    {
+        var form = document.forms[0];
+
+        var u = $("#username").val();
+        var p1 = $("#password").val();
+        var p2 = $("#retry_password").val();
+
+        var tag = true;
+
+         console.log(String(u)+"\n");
+        // console.log(String(u).length);
+        //判断用户名是否合法
+        var pattern_username = new RegExp("[ ]{1,}");
+        if(String(u).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_name").innerHTML = "输入不应为空";
+        }
+        else if(String(u).length > 20)
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_name").innerHTML = ("长度不能超过20个字符");
+        }
+        else if(pattern_username.test(String(u))) //合法性检测
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_name").innerHTML = ("用户名不能包含空格");
+        }
+        else
+        {
+            document.getElementById("error_name").innerHTML = " ";
+        }
+
+        //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
+        var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
+        if(String(p1).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_pwd").innerHTML = "输入不应为空";
+        }
+        else if(!patter_pwd.test(String(p1)))
+        {
+            tag = false;
+            $("#password").select();
+            document.getElementById("error_pwd").innerHTML = "密码长度为6~20位;<br>且至少需同时使用数字和字母";
+        }
+        else
+        {
+            document.getElementById("error_pwd").innerHTML = " ";
+        }
+
+        //重复输入密码
+        // if(String(p2).trim()=="")
+        // {
+        //     tag = false;
+        //     document.getElementById("error_retry_pwd").innerHTML = "输入不应为空";
+        // }
+        // else if(p1 != p2)
+        // {
+        //     tag = false;
+        //     $("#retry_password").select();
+        //     document.getElementById("error_retry_pwd").innerHTML = "两次输入密码不一致";
+        // }
+        // else
+        // {
+        //     tag = false;
+        //     document.getElementById("error_retry_pwd").innerHTML = " ";
+        // }
+        
+        // if(!tag)
+        //     form.submit();
+        // else
+        //     return;
+        
+        
+    }
+
+    function onSetSelect(myid)
+    {
+        $("#"+myid).select();
+    }
+</script>
+
+
 </html>

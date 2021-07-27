@@ -2,29 +2,255 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Spring Boot User Authentication</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" th:href = "@{/css/style_register.css}">
 </head>
 <body>
-<form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
+<!--    <div th:insert="fragments/header :: header"></div>-->
+    <div class="registerBox">
+        <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
+            
+            <div class="inputs">
+                <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)" onchange="onChange('username')">
+                <label class = "warning" id="error_account">&nbsp</label>
+            </div>
 
-    <lable>Username</lable>
-    <input type="text" id="username" name="username" th:field="*{username}">
+            <div class="inputs">
+                <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称" onchange="onChange('nickname')">
+                <label class = "warning" id="error_nickname">&nbsp</label>
+            </div>
+        
+            <div class="inputs">
+                <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱" onchange="onChange('email')">
+                <label class = "warning" id="error_email">&nbsp</label>
+            </div>
 
-    <lable>Name</lable>
-    <input type="text" id="name" name="name" th:field="*{name}">
+                    
+            <div class="inputs">
+                <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="请输入电话号码" onchange="onChange('email')">
+                <label class = "warning" id="error_phone">&nbsp</label>
+            </div>
+        
+            <div class="inputs">
+                <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码" onchange="onChange('password')">
+                <label class = "warning" id="error_pwd">&nbsp</label>
+            </div>
 
-    <lable>Email</lable>
-    <input type="text" id="email" name="email" th:field="*{email}">
+            <div class="inputs">
+                <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onchange="onChange('retry_password')">
+                <label class="warning" id="error_retry_pwd">&nbsp</label>
+            </div>
+        
+            <div class="Btn">
+                <input type="button" id="button" value="提交" onclick="onSubmit()" >
+            </div>
 
-    <lable>Phone</lable>
-    <input type="text" id="phone" name="phone" th:field="*{phone}">
-
-    <lable>Password</lable>
-    <input type="password" id="password" name="password" th:field="*{password}">
-
-    <input type="submit">
-</form>
+            <div class="link">
+                <a style="color: rgb(12, 93, 99);" class="nav-link" href="/login" id="link_register">已有账号?点击登录</a>
+            </div>
+        </form>
+    </div>
 </body>
+
+<script>
+    function isAccountTrue()
+    {
+        var a = $("#username").val();
+        var tag = true;
+
+        //判断用户名是否合法
+        var pattern_username = new RegExp("[ ]{1,}");
+        if(String(a).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_account").innerHTML = "输入不应为空";
+        }
+        else if(String(a).length > 20)
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_account").innerHTML = ("账户名不能超过20个字符");
+        }
+        else if(pattern_username.test(String(a))) //合法性检测
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_account").innerHTML = ("账户名不能包含空格");
+        }
+        else
+        {
+            document.getElementById("error_account").innerHTML = "账户名输入正确";
+        }
+        return tag;
+    }
+
+    function isNicknameTrue()
+    {
+        var n = $("#nickname").val();
+        var tag = 0;
+
+         //判断用户昵称是否合法
+         if(String(n).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_nickname").innerHTML = "输入不应为空";
+        }
+        else if(String(n).length > 30)
+        {
+            tag = false;
+            $("#username").select();
+            document.getElementById("error_nickname").innerHTML = ("昵称不能超过30个字符");
+        }
+        else
+        {
+            document.getElementById("error_nickname").innerHTML = "昵称输入正确";
+        }
+        return tag;
+    }
+
+    function isPasswordTrue()
+    {
+        var p = $("#password").val();
+        var tag = true;
+
+           //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
+           var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
+        if(String(p).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_pwd").innerHTML = "输入不应为空";
+        }
+        else if(!patter_pwd.test(String(p)))
+        {
+            tag = false;
+            $("#password").select();
+            document.getElementById("error_pwd").innerHTML = "密码长度为6~20位;<br>且至少需同时使用数字和字母";
+        }
+        else
+        {
+            document.getElementById("error_pwd").innerHTML = "密码可用";
+        }
+
+        return tag;
+
+    }
+
+    function isRePasswordTrue()
+    {
+        var p1 = $("#password").val();
+        var p2 = $("#retry_password").val();
+
+        var tag = true;
+        if(String(p2).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_retry_pwd").innerHTML = "输入不应为空";
+        }
+        else if(p1 != p2)
+        {
+            tag = false;
+            $("#retry_password").select();
+            document.getElementById("error_retry_pwd").innerHTML = "两次输入密码不一致";
+        }
+        else
+        {
+            tag = false;
+            document.getElementById("error_retry_pwd").innerHTML = " ";
+        }
+        return tag;
+    }
+
+    function isEmailTrue()
+    {
+        var e = $("#email").val();
+
+        var tag = true;
+
+        
+        //判断邮箱格式
+        var patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
+        if(String(e).trim()=="")
+        {
+            tag = false;
+            document.getElementById("error_email").innerHTML = "输入不应为空";
+        }
+        else if(!patter_email.test(String(e)))
+        {
+            tag = false;
+            $("#email").select();
+            document.getElementById("error_email").innerHTML = "邮箱格式错误";
+        }
+        else
+        {
+            document.getElementById("error_email").innerHTML = "邮箱可用";
+        }
+        return tag;
+    }
+
+    function isPhonetrue()
+    {
+        var p = $("#phone").val();
+
+        var tag = true;
+
+        //判断电话号码格式
+        
+        var pattern_phone = new RegExp("[0-9]{11}");
+        if(String(p).trim() == "")
+        {
+            tag = false;
+            document.getElementById("error_phone").innerHTML = "输入不应为空";
+        }
+        else if(!pattern_phone.test(String(e)))
+        {
+            tag = false;
+            $("#phone").select();
+            document.getElementById("error_phone").innerHTML = "号码需为11位纯数字";
+        }
+        else
+        {
+            document.getElementById("error_phone").innerHTML = "号码可用";
+        }
+        return tag;
+
+    }
+
+    function onSubmit()
+    {
+        var form = document.forms[0];
+
+        let t1 = isAccountTrue();
+        let t2 = isEmailTrue();
+        let t3 = isPasswordTrue();
+        let t4 = isRePasswordTrue();
+        let t5 = isNicknameTrue();
+        let t6 = isPhonetrue();
+
+
+        var tag = t1 && t2 && t3 && t4 && t5 && t6;
+
+        console.log(String(tag));
+
+        if(tag == true)
+            form.submit();
+        
+    }
+
+    function onChange(myid, value)
+    {
+        switch(myid)
+        {
+            case "password": isPasswordTrue(); break;
+            case "nickname":isNicknameTrue(); break;
+            case "username":isAccountTrue(); break;
+            case "email":isEmailTrue();break;
+            case "phone":isPhonetrue();break;
+            case "retry_password":isRePasswordTrue();break;
+            default:break;
+        }
+    }
+</script>
+
+
 </html>
