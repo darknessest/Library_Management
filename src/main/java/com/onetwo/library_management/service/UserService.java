@@ -52,13 +52,13 @@ public class UserService implements UserDetailsService {
         User db_user = this.findUserById(user.getId());
 
         final String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        if (user.getPassword() != "" && db_user.getPassword() != encryptedPassword) {
+        if (!user.getPassword().equals("") && !db_user.getPassword().equals(encryptedPassword)) {
             user.setPassword(encryptedPassword);
         }
         userRepository.save(user);
-//        System.out.println("from updateUser " + user.getId());
-//        System.out.println("from updateUser " + user.getName());
-//        System.out.println("from updateUser " + user.getPassword());
+        System.out.println("from updateUser " + user.getId());
+        System.out.println("from updateUser " + user.getName());
+        System.out.println("from updateUser " + user.getPassword());
 //        if (user.getPassword() != "") {
 //            user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        } else {

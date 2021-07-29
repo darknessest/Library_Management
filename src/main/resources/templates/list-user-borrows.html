@@ -10,8 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
-    <link rel="stylesheet" th:href= "@{/css/style_list-borrows.css}">
-    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href="@{/css/style_list-borrows.css}">
+    <link rel="stylesheet" th:href="@{/css/style_header.css}">
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
@@ -44,20 +44,18 @@
                     <td th:text="${borrow.endDate}" class="last_td"></td>
                     <td sec:authorize="hasAuthority('USER')">
                         <a class="button_list-borrow" id="delay_btn" th:if="${borrow.status.name() == 'TAKEN'}"
-                           th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}"
-                           >
+                           th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}">
                             延期
                         </a>
                     </td>
                     <td sec:authorize="hasAuthority('USER')">
-                        <a class="button_list-borrow" id="return_btn" th:if="${borrow.status.name() != 'RETURNED' and borrow.status.name() != 'PROCESSED'}"
-                           th:href="@{/book/borrow/return/{id}(id=${borrow.id})}"
-                           >
+                        <a class="button_list-borrow" id="return_btn"
+                           th:if="${borrow.status.name() != 'RETURNED' and borrow.status.name() != 'PROCESSED'}"
+                           th:href="@{/book/borrow/return/{id}(id=${borrow.id})}">
                             还书
                         </a>
                     </td>
                 </tr>
-
 
 
                 </tbody>

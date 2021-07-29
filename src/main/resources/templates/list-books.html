@@ -64,6 +64,7 @@
                         '${book.authors[0].name}',
                         '${book.publishers[0].name}',
                         '${book.price}',
+                        '${book.leftInStock}',
                         '${book.isbn}',
                         '${book.description}')|"></button>
                 </div>
@@ -117,7 +118,6 @@
                 <div class="main_info">
                     <label class="mylabel">作者:</label>
                     <input type="text" class="info" id="info_author">
-                    <!-- <label class="info">lkfbcevjofbuoebfoefb</label> -->
                 </div>
                 <div class="more_info" id="moreinfo_author_div">
                     <label class="info" id="moreinfo_author"></label>
@@ -139,9 +139,15 @@
                     <label class="mylabel">价格</label>
                     <input type="text" class="info" id="info_price">
                 </div>
-                <div class="more_info">
+                <div class="more_info"></div>
+            </div>
 
+            <div class="items_details" id="details_leftInStock">
+                <div class="main_info">
+                    <label class="mylabel">库存书</label>
+                    <input type="text" class="info" id="info_leftInStock">
                 </div>
+                <div class="more_info"></div>
             </div>
 
             <div class="items_details" id="details_isbn">
@@ -189,6 +195,12 @@
             <label for="add_serialName" class="mylabel_add">SerialName </label>
             <input type="text" th:field="*{serialName}" class="info_add" id="add_serialName"
                    placeholder="Serial Name"/>
+        </div>
+
+        <div class="items_add">
+            <label for="add_leftInStock" class="mylabel_add">Left in Stock</label>
+            <input type="number" th:field="*{leftInStock}" class="info_add" id="add_leftInStock"
+                   placeholder="Left in Stock"/>
         </div>
 
         <div class="items_add">

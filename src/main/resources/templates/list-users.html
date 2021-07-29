@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
-    <link rel="stylesheet" th:href = "@{/css/style_list-users.css}">
-    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href="@{/css/style_list-users.css}">
+    <link rel="stylesheet" th:href="@{/css/style_header.css}">
 </head>
 <body>
 
@@ -40,69 +40,24 @@
             </div>
 
             <div class="add_buttonBox" id="add_buttonBox">
-                <input class="button" id="add_btn_submit" type="submit" value="添加" onclick="func1()">
+                <input class="button" id="add_btn_submit" type="submit" value="添加">
             </div>
 
         </form>
     </div>
 </div>
-<script>
-    function func1()
-    {
-        let pwd = $("#mypwd").val();
-        console.log(String(pwd))
-    }
-</script>
 
 <div class="container_card">
-
-
-    <!-- <div class="card_body">
-        <div class="imageBox">
-            <img src="/C:\Users\Ramsac\Desktop\temp\花\flower2.jpg" id="myimage">
-        </div>
-
-        <div class="content">
-            <form class="user_info">
-                <div class="items_user-info" id="username">
-                    <label class="label_user-info">用户号</label>
-                    <input type="text" class="input_usere-info" readonly placeholder="ar">
-                </div>
-                <div class="items_user-info" id="nickname">
-                    <label class="label_user-info">昵称</label>
-                    <input type="text" class="input_usere-info" placeholder="gaga">
-                </div>
-                <div class="items_user-info" id="email">
-                    <label class="label_user-info">邮箱</label>
-                    <input type="text" class="input_usere-info" placeholder="nmsl@bit.com">
-                </div>
-                <div class="items_user-info" id="phone">
-                    <label class="label_user-info">手机号</label>
-                    <input type="text" class="input_usere-info" placeholder="130130">
-                </div>
-                <div class="items_user-info" id="password">
-                    <label class="label_user-info">密码</label>
-                    <input type="text" class="input_usere-info" >
-                </div>
-
-                <div class="buttonBox" id="buttonBox">
-                    <input class="button" id="btn_submit" type="submit">
-                    <button class="button" id="btn_delete">删除</button>
-                </div>
-
-            </form>
-        </div>
-    </div> -->
-
 
     <div class="card_body" th:each="user : ${users}">
         <div class="imageBox">
             <!--    todo: relative path   ↓    -->
-            <img src="/C:\Users\Ramsac\Desktop\temp\花\flower2.jpg" id="myimage">
+            <img th:src="@{/img/h1.jpg}" id="myimage">
         </div>
 
         <div class="content">
-            <form class="user_info" action="#" th:action="@{/admin/update-user/{id}(id=${user.id})}" th:object="${user}" method="post">
+            <form class="user_info" action="#" th:action="@{/admin/update-user/{id}(id=${user.id})}" th:object="${user}"
+                  method="post">
                 <div class="items_user-info" id="username">
                     <label class="label_user-info">用户号</label>
                     <input type="text" class="input_usere-info" th:placeholder="${user.username}">
@@ -121,19 +76,18 @@
                 </div>
                 <div class="items_user-info" id="password">
                     <label class="label_user-info">密码</label>
-                    <input type="text" class="input_usere-info" >
+                    <input type="text" class="input_usere-info">
                 </div>
 
                 <div class="buttonBox" id="buttonBox">
                     <input class="button" id="btn_submit" type="submit">
-<!--                    <button class="button" id="btn_delete">删除</button>-->
+                    <!--                    <button class="button" id="btn_delete">删除</button>-->
                     <a th:href="@{/admin/remove-user/{id}(id=${user.id})}" class="button" id="btn_delete">删除</a>
                 </div>
 
             </form>
         </div>
     </div>
-
 
 
 </div>

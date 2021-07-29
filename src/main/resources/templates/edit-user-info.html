@@ -9,8 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
-    <link rel="stylesheet" th:href = "@{/css/style_edit-user-info.css}">
-    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href="@{/css/style_edit-user-info.css}">
+    <link rel="stylesheet" th:href="@{/css/style_header.css}">
 </head>
 
 <body>
@@ -22,8 +22,8 @@
             <form action="#" th:action="@{/user/update}" th:object="${user}" method="post" id="informationBox">
                 <div class="inputs">
                     <div class="icons">
-                        <div class = "img_icon">
-                            <img src="/img/name.png" >
+                        <div class="img_icon">
+                            <img src="/img/name.png">
                         </div>
                         <label for="name">昵称</label>
                     </div>
@@ -33,8 +33,8 @@
 
                 <div class="inputs">
                     <div class="icons">
-                        <div class = "img_icon">
-                            <img src="/img/email.png" >
+                        <div class="img_icon">
+                            <img src="/img/email.png">
                         </div>
                         <label for="email">邮箱</label>
                     </div>
@@ -44,8 +44,8 @@
 
                 <div class="inputs">
                     <div class="icons">
-                        <div class = "img_icon">
-                            <img src="/img/phone.png" >
+                        <div class="img_icon">
+                            <img src="/img/phone.png">
                         </div>
                         <label for="phone">手机号</label>
                     </div>
@@ -55,16 +55,16 @@
 
                 <div class="inputs">
                     <div class="icons">
-                        <div class = "img_icon">
-                            <img src="/img/password.png" >
+                        <div class="img_icon">
+                            <img src="/img/password.png">
                         </div>
                         <label for="password">密码</label>
                     </div>
-                    <input type="text"  id="password" placeholder="Password">
+                    <input type="text" id="password" placeholder="密码">
                 </div>
 
                 <div class="btn">
-                    <input type="submit"  value="更新" id="button">
+                    <input type="submit" value="更新" id="button">
                 </div>
             </form>
 
@@ -94,8 +94,6 @@
     </div>
 </div>
 </body>
-
-
 
 
 </html>

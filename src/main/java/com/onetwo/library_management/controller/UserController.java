@@ -63,7 +63,7 @@ public class UserController {
             auth_user.setEnabled(user.getEnabled());
 
         userService.updateUser(auth_user);
-        return "redirect:/";
+        return "redirect:/user/update";
     }
 
     @GetMapping("/register")
@@ -73,6 +73,8 @@ public class UserController {
 
     @PostMapping("/register")
     String signUp(User user) {
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
         userService.signUpUser(user);
         return "redirect:/login";
     }

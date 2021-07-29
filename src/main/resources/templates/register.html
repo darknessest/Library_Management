@@ -4,139 +4,126 @@
     <title>Spring Boot User Authentication</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
-    <link rel="stylesheet" th:href = "@{/css/style_register.css}">
-    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href="@{/css/style_register.css}">
+    <link rel="stylesheet" th:href="@{/css/style_header.css}">
 </head>
 <body>
-    <div th:insert="fragments/header :: header"></div>
-    <div class="secondBox">
-        <div class="registerBox">
-            <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
+<div th:insert="fragments/header :: header"></div>
+<div class="secondBox">
+    <div class="registerBox">
+        <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
 
-                <div class="inputs">
-                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)" onchange="onChange('username')">
-                    <label class = "warning" id="error_account">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)"
+                       onchange="onChange('username')">
+                <label class="warning" id="error_account">&nbsp</label>
+            </div>
 
-                <div class="inputs">
-                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称" onchange="onChange('nickname')">
-                    <label class = "warning" id="error_nickname">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称"
+                       onchange="onChange('nickname')">
+                <label class="warning" id="error_nickname">&nbsp</label>
+            </div>
 
-                <div class="inputs">
-                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱" onchange="onChange('email')">
-                    <label class = "warning" id="error_email">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱"
+                       onchange="onChange('email')">
+                <label class="warning" id="error_email">&nbsp</label>
+            </div>
 
 
-                <div class="inputs">
-                    <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="请输入电话号码" onchange="onChange('email')">
-                    <label class = "warning" id="error_phone">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="请输入电话号码"
+                       onchange="onChange('phone')">
+                <label class="warning" id="error_phone">&nbsp</label>
+            </div>
 
-                <div class="inputs">
-                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码" onchange="onChange('password')">
-                    <label class = "warning" id="error_pwd">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码"
+                       onchange="onChange('password')">
+                <label class="warning" id="error_pwd">&nbsp</label>
+            </div>
 
-                <div class="inputs">
-                    <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onchange="onChange('retry_password')">
-                    <label class="warning" id="error_retry_pwd">&nbsp</label>
-                </div>
+            <div class="inputs">
+                <input type="password" id="retry_password" name="password" placeholder="请再次输入密码"
+                       onchange="onChange('retry_password')">
+                <label class="warning" id="error_retry_pwd">&nbsp</label>
+            </div>
 
-                <div class="Btn">
-                    <input type="button" id="button" value="提交" onclick="onSubmit()" >
-                </div>
+            <div class="Btn">
+                <input type="button" id="button" value="提交" onclick="onSubmit()">
+            </div>
 
-                <div class="link">
-                    <a style="color: rgb(12, 93, 99);" class="nav-link" href="/login" id="link_register">已有账号?点击登录</a>
-                </div>
-            </form>
-        </div>
+            <div class="link">
+                <a style="color: rgb(12, 93, 99);" class="nav-link" href="/login" id="link_register">已有账号?点击登录</a>
+            </div>
+        </form>
     </div>
+</div>
 
-    <img id="mon" src="/img/mon.png">
-    <img id="sun" src="/img/sun.png">
-    <img id="cloud1" src="/img/cloud.png">
-    <img id="cloud2" src="/img/cloud.png">
+<img id="mon" src="/img/mon.png">
+<img id="sun" src="/img/sun.png">
+<img id="cloud1" src="/img/cloud.png">
+<img id="cloud2" src="/img/cloud.png">
 </body>
 
 <script>
-    function isAccountTrue()
-    {
-        var a = $("#username").val();
-        var tag = true;
+    function isAccountTrue() {
+        let a = $("#username").val();
+        let tag = true;
 
         //判断用户名是否合法
-        var pattern_username = new RegExp("[ ]{1,}");
-        if(String(a).trim()=="")
-        {
+        let pattern_username = new RegExp("[ ]{1,}");
+        if (String(a).trim() == "") {
             tag = false;
             document.getElementById("error_account").innerHTML = "输入不应为空";
-        }
-        else if(String(a).length > 20)
-        {
+        } else if (String(a).length > 20) {
             tag = false;
             $("#username").select();
             document.getElementById("error_account").innerHTML = ("账户名不能超过20个字符");
-        }
-        else if(pattern_username.test(String(a))) //合法性检测
+        } else if (pattern_username.test(String(a))) //合法性检测
         {
             tag = false;
             $("#username").select();
             document.getElementById("error_account").innerHTML = ("账户名不能包含空格");
-        }
-        else
-        {
+        } else {
             document.getElementById("error_account").innerHTML = "账户名输入正确";
         }
         return tag;
     }
 
-    function isNicknameTrue()
-    {
-        var n = $("#nickname").val();
-        var tag = 0;
+    function isNicknameTrue() {
+        let n = $("#nickname").val();
+        let tag = true;
 
-         //判断用户昵称是否合法
-         if(String(n).trim()=="")
-        {
+        //判断用户昵称是否合法
+        if (String(n).trim() == "") {
             tag = false;
             document.getElementById("error_nickname").innerHTML = "输入不应为空";
-        }
-        else if(String(n).length > 30)
-        {
+        } else if (String(n).length > 30) {
             tag = false;
             $("#username").select();
             document.getElementById("error_nickname").innerHTML = ("昵称不能超过30个字符");
-        }
-        else
-        {
+        } else {
             document.getElementById("error_nickname").innerHTML = "昵称输入正确";
         }
         return tag;
     }
 
-    function isPasswordTrue()
-    {
-        var p = $("#password").val();
-        var tag = true;
+    function isPasswordTrue() {
+        let p = $("#password").val();
+        let tag = true;
 
-           //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
-           var patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
-        if(String(p).trim()=="")
-        {
+        //判断密码是否合法:至少8位,最大20位,至少需要同时使用数字,字母
+        let patter_pwd = new RegExp("(?=.*[0-9].*)(?=.*[a-z].*).{6,20}");
+        if (String(p).trim() == "") {
             tag = false;
             document.getElementById("error_pwd").innerHTML = "输入不应为空";
-        }
-        else if(!patter_pwd.test(String(p)))
-        {
+        } else if (!patter_pwd.test(String(p))) {
             tag = false;
             $("#password").select();
             document.getElementById("error_pwd").innerHTML = "密码长度为6~20位;<br>且至少需同时使用数字和字母";
-        }
-        else
-        {
+        } else {
             document.getElementById("error_pwd").innerHTML = "密码可用";
         }
 
@@ -144,89 +131,70 @@
 
     }
 
-    function isRePasswordTrue()
-    {
-        var p1 = $("#password").val();
-        var p2 = $("#retry_password").val();
+    function isRePasswordTrue() {
+        let p1 = $("#password").val();
+        let p2 = $("#retry_password").val();
+        let tag = true;
 
-        var tag = true;
-        if(String(p2).trim()=="")
-        {
+        if (String(p2).trim() === "") {
             tag = false;
             document.getElementById("error_retry_pwd").innerHTML = "输入不应为空";
-        }
-        else if(p1 != p2)
-        {
+        } else if (p1 !== p2) {
             tag = false;
             $("#retry_password").select();
             document.getElementById("error_retry_pwd").innerHTML = "两次输入密码不一致";
-        }
-        else
-        {
-            tag = false;
+        } else {
+            // tag = false;
             document.getElementById("error_retry_pwd").innerHTML = " ";
         }
         return tag;
     }
 
-    function isEmailTrue()
-    {
-        var e = $("#email").val();
+    function isEmailTrue() {
+        let e = $("#email").val();
 
-        var tag = true;
+        let tag = true;
 
-        
+
         //判断邮箱格式
-        var patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
-        if(String(e).trim()=="")
-        {
+        let patter_email = new RegExp("[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-zA-Z]{1,}(.[a-zA-Z]+)");
+        if (String(e).trim() == "") {
             tag = false;
             document.getElementById("error_email").innerHTML = "输入不应为空";
-        }
-        else if(!patter_email.test(String(e)))
-        {
+        } else if (!patter_email.test(String(e))) {
             tag = false;
             $("#email").select();
             document.getElementById("error_email").innerHTML = "邮箱格式错误";
-        }
-        else
-        {
+        } else {
             document.getElementById("error_email").innerHTML = "邮箱可用";
         }
         return tag;
     }
 
-    function isPhonetrue()
-    {
-        var p = $("#phone").val();
+    function isPhonetrue() {
+        let p = $("#phone").val();
 
-        var tag = true;
+        let tag = true;
 
         //判断电话号码格式
-        
-        var pattern_phone = new RegExp("[0-9]{11}");
-        if(String(p).trim() == "")
-        {
+
+        let pattern_phone = new RegExp("[0-9]{11}");
+        if (String(p).trim() === "") {
             tag = false;
             document.getElementById("error_phone").innerHTML = "输入不应为空";
-        }
-        else if(!pattern_phone.test(String(e)))
-        {
+        } else if (!pattern_phone.test(String(p))) {
             tag = false;
             $("#phone").select();
             document.getElementById("error_phone").innerHTML = "号码需为11位纯数字";
-        }
-        else
-        {
+        } else {
             document.getElementById("error_phone").innerHTML = "号码可用";
         }
         return tag;
 
     }
 
-    function onSubmit()
-    {
-        var form = document.forms[0];
+    function onSubmit() {
+        let form = document.forms[0];
 
         let t1 = isAccountTrue();
         let t2 = isEmailTrue();
@@ -236,26 +204,35 @@
         let t6 = isPhonetrue();
 
 
-        var tag = t1 && t2 && t3 && t4 && t5 && t6;
+        let tag = t1 && t2 && t3 && t4 && t5 && t6;
 
-        console.log(String(tag));
-
-        if(tag == true)
+        if (tag === true)
             form.submit();
-        
+
     }
 
-    function onChange(myid, value)
-    {
-        switch(myid)
-        {
-            case "password": isPasswordTrue(); break;
-            case "nickname":isNicknameTrue(); break;
-            case "username":isAccountTrue(); break;
-            case "email":isEmailTrue();break;
-            case "phone":isPhonetrue();break;
-            case "retry_password":isRePasswordTrue();break;
-            default:break;
+    function onChange(myid, value) {
+        switch (myid) {
+            case "password":
+                isPasswordTrue();
+                break;
+            case "nickname":
+                isNicknameTrue();
+                break;
+            case "username":
+                isAccountTrue();
+                break;
+            case "email":
+                isEmailTrue();
+                break;
+            case "phone":
+                isPhonetrue();
+                break;
+            case "retry_password":
+                isRePasswordTrue();
+                break;
+            default:
+                break;
         }
     }
 </script>

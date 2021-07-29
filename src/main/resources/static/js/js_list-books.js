@@ -3,6 +3,7 @@ let cur_id;
 function open_details(
     name, type, serialName,
     author, publisher, price,
+    leftInStock,
     isbn, description
 ) {
     let card_details = document.getElementById("details_card");
@@ -19,6 +20,7 @@ function open_details(
     $("#info_author").attr("value", author);
     $("#info_publisher").attr("value", publisher);
     $("#info_price").attr("value", price);
+    $("#info_leftInStock").attr("value", leftInStock);
     $("#info_ibsn").attr("value", isbn);
     $("#info_description").attr("value", description);
 
