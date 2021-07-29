@@ -217,7 +217,7 @@ body
 #username, #email, #phone, #password
 {
     opacity: 0;
-    visibility: 1;
+    visibility: visible;
 }
 
 .container_card .card_body:hover #username,
@@ -470,4 +470,3 @@ body
     opacity: 1;
     visibility: visible;
 }
-

@@ -7,6 +7,8 @@
     <title>Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
     <link rel="stylesheet" th:href = "@{/css/style_header.css}">
 </head>
@@ -15,54 +17,40 @@
 <body>
 
 <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
-    <!-- <a class="navbar-brand">Library Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
+    <div class="top_area">
+        <div class="container_menu">
+            <img src="/img/menu.png" >
+            <ul class="menu">
+                <li class="items_header">
+                    <a href="/">主页</a>
+                </li>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <li class="items_header" sec:authorize="isAuthenticated()">
+                    <a href="/books">图书管理</a>
+                </li>
 
-        <ul class="navbar-nav mr-auto" style="color: black">
-            <li class="items">
-                <a style="color: black" class="nav-link" href="/">Home <span class="sr-only"></span></a>
-            </li>
-            <!-- <li class="items" style="color: black">
-                <a style="color: black" class="nav-link" href="/categories">Categories </a>
-            </li> -->
-            <li class="items">
-                <a style="color: black" class="nav-link" href="/books">Books </a>
-            </li>
-            <!-- <li class="items">
-                <a style="color: black" class="nav-link" href="/publishers">Publishers </a>
-            </li>
-            <li class="items">
-                <a style="color: black" class="nav-link" href="/authors">Authors </a>
-            </li> -->
-            <li class="items" sec:authorize="isAuthenticated()">
-                <a style="color: black" class="nav-link" href="/user/edit">Personal Info</a>
-            </li>
-            <li class="items" sec:authorize="hasAuthority('ADMIN')">
-                <a style="color: black" class="nav-link" href="/admin/users">Users</a>
-            </li>
-            <!-- <li class="items" sec:authorize="hasAuthority('ADMIN')">
-                <a style="color: black" class="nav-link" href="/admin/all_borrows">All Borrows</a>
-            </li> -->
-            <li class="items" sec:authorize="!isAuthenticated()">
-                <a style="color: black" class="nav-link" href="/login">login</a>
-            </li>
-            <li class="items" sec:authorize="isAuthenticated()">
-                <a style="color: black" class="nav-link" href="/logout">logout</a>
-            </li>
-        </ul>
 
-        <!-- <form th:action="@{/searchBook}" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" name="keyword" id="keyword" type="text" placeholder="Search"
-                   aria-label="Search" th:value="${keyword}">
-            <input class="btn btn-outline-success active my-2 my-sm-0" type="submit" value="Search"/>
-        </form> -->
+                <li class="items_header" sec:authorize="isAuthenticated()">
+                    <a href="/user/edit" id="Personal_info">我的</a>
+                </li>
 
+                <li class="items_header" sec:authorize="hasAuthority('ADMIN')">
+                    <a href="/admin/users">用户管理</a>
+                </li>
+
+
+                <li class="items_header" sec:authorize="!isAuthenticated()">
+                    <a href="/login">登录</a>
+                </li>
+
+
+                <li class="items_header" sec:authorize="isAuthenticated()">
+                    <a href="/logout">登出</a>
+                </li>
+            </ul>
+        </div>
     </div>
+
 </nav>
 
 </body>

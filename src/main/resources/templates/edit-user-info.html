@@ -2,67 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="GBK">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Update User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+
     <link rel="stylesheet" th:href = "@{/css/style_edit-user-info.css}">
+    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
 </head>
 
 <body>
-<!--<div th:insert="fragments/header :: header"></div>-->
-<div class="container my-5">
-    <h3 class="header_text">Update User</h3>
+<div th:insert="fragments/header :: header"></div>
+<div>
+    <h3 class="header_text">个人资料卡</h3>
     <div class="cards">
         <div class="card-body" style="overflow: hidden;">
             <form action="#" th:action="@{/user/update}" th:object="${user}" method="post" id="informationBox">
                 <div class="inputs">
                     <div class="icons">
                         <div class = "img_icon">
-                            <img src="./resource/name.png" >
+                            <img src="/img/name.png" >
                         </div>
-                        <label for="name" class="col-form-label">昵称</label>
+                        <label for="name">昵称</label>
                     </div>
-                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+                    <input type="text" th:field="*{name}" id="name" placeholder="Name">
                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                 </div>
 
                 <div class="inputs">
                     <div class="icons">
                         <div class = "img_icon">
-                            <img src="./resource/email.png" >
+                            <img src="/img/email.png" >
                         </div>
-                        <label for="email" class="col-form-label">邮箱</label>
+                        <label for="email">邮箱</label>
                     </div>
-                    <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+                    <input type="text" th:field="*{email}" id="email" placeholder="Email">
                     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                 </div>
 
                 <div class="inputs">
                     <div class="icons">
                         <div class = "img_icon">
-                            <img src="./resource/phone.png" >
+                            <img src="/img/phone.png" >
                         </div>
-                        <label for="phone" class="col-form-label">手机号</label>
+                        <label for="phone">手机号</label>
                     </div>
-                    <input type="text" th:field="*{phone}" class="form-control" id="phone" placeholder="phone">
+                    <input type="text" th:field="*{phone}" id="phone" placeholder="phone">
                     <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>
                 </div>
 
                 <div class="inputs">
                     <div class="icons">
                         <div class = "img_icon">
-                            <img src="./resource/password.png" >
+                            <img src="/img/password.png" >
                         </div>
-                        <label for="password" class="col-form-label">密码</label>
+                        <label for="password">密码</label>
                     </div>
-                    <input type="text"  class="form-control" id="password" placeholder="Password">
+                    <input type="text"  id="password" placeholder="Password">
                 </div>
 
                 <div class="btn">
-                    <input type="submit" class="btn btn-primary" value="UPDATE" id="button">
+                    <input type="submit"  value="更新" id="button">
                 </div>
             </form>
 

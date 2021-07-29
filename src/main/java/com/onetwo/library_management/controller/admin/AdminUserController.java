@@ -31,7 +31,7 @@ public class AdminUserController {
 //        new_user.setPhone("");
 
         model.addAttribute("users", users);
-        model.addAttribute("new_user", new_user);
+//        model.addAttribute("new_user", new_user);
 
         return "list-users";
     }
@@ -42,12 +42,12 @@ public class AdminUserController {
     }
 
     @RequestMapping("/admin/add-user")
-    public String createUser(User user, BindingResult result, Model model) {
+    public String createUser(User new_user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-user";
         }
 
-        userService.signUpUser(user);
+        userService.signUpUser(new_user);
         model.addAttribute("user", userService.findAllUsers());
         return "redirect:/admin/users";
     }

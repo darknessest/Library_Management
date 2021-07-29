@@ -9,40 +9,51 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
     <link rel="stylesheet" th:href = "@{/css/style_list-users.css}">
+    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
 </head>
 <body>
+
+<div th:insert="fragments/header :: header"></div>
 <div class="add_card_body">
     <label id="add_label">添加</label>
     <div class="add_content">
-        <form class="add_user_info" >
+        <form class="add_user_info" action="#" th:action="@{/admin/add-user}" th:object="${new_user}" method="post">
             <div class="items_add_user-info" id="add_username">
                 <label class="label_add_user-info">用户号</label>
-                <input type="text" class="input_add_user-info">
+                <input type="text" th:field="*{username}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_nickname">
                 <label class="label_add_user-info">昵称</label>
-                <input type="text" class="input_add_user-info">
+                <input type="text" th:field="*{name}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_email">
                 <label class="label_add_user-info">邮箱</label>
-                <input type="email" class="input_add_user-info">
+                <input type="email" th:field="*{email}" class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_phone">
                 <label class="label_add_user-info">手机号</label>
-                <input type="text" class="input_add_user-info">
+                <input type="text" th:field="*{phone}"  class="input_add_user-info">
             </div>
             <div class="items_add_user-info" id="add_password">
                 <label class="label_add_user-info">密码</label>
-                <input type="password" class="input_add_user-info">
+                <input type="text" th:field="*{password}" class="input_add_user-info" id="mypwd">
             </div>
 
             <div class="add_buttonBox" id="add_buttonBox">
-                <input class="button" id="add_btn_submit" type="submit" value="添加">
+                <input class="button" id="add_btn_submit" type="submit" value="添加" onclick="func1()">
             </div>
 
         </form>
     </div>
 </div>
+<script>
+    function func1()
+    {
+        let pwd = $("#mypwd").val();
+        console.log(String(pwd))
+    }
+</script>
+
 <div class="container_card">
 
 
@@ -83,15 +94,6 @@
         </div>
     </div> -->
 
-<!--    <div th:switch="${users}" class="container my-5">-->
-<!--        <div sec:authorize="hasAuthority('ADMIN')">-->
-<!--            <p class="my-5">-->
-<!--                <a href="/admin/addUser" class="btn btn-primary">-->
-<!--                    <i class="fas fa-user-plus ml-2"> Add Users </i></a>-->
-<!--            </p>-->
-<!--        </div>-->
-
-<!--    </div>-->
 
     <div class="card_body" th:each="user : ${users}">
         <div class="imageBox">
