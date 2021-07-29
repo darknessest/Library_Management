@@ -1,10 +1,9 @@
 package com.onetwo.library_management.controller;
 
 import com.onetwo.library_management.entity.Book;
-import com.onetwo.library_management.service.AuthorService;
-import com.onetwo.library_management.service.BookService;
-import com.onetwo.library_management.service.CategoryService;
-import com.onetwo.library_management.service.PublisherService;
+import com.onetwo.library_management.entity.BorrowedBook;
+import com.onetwo.library_management.service.*;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -16,20 +15,30 @@ import java.util.List;
 
 
 @Controller
-
+@AllArgsConstructor
 public class BookController {
 	private final BookService bookService;
-
-	@Autowired
-	public BookController(BookService bookService) {
-		this.bookService = bookService;
-	}
+	private final CategoryService categoryService;
+	private final AuthorService authorService;
+	private final PublisherService publisherService;
+//	private final BorrowedBooksService borrowedBooksService;
 
 	@RequestMapping("/books")
 	public String findAllBooks(Model model) {
 		final List<Book> books = bookService.findAllBooks();
+		Book new_book = new Book();
+		BorrowedBook new_borrow = new BorrowedBook();
+//		final List<BorrowedBook> borrowedBooks = borrowedBooksService.findAllBorrowedBooks();
 
+//		model.addAttribute("borrowed_books", borrowedBooks);
 		model.addAttribute("books", books);
+
+		model.addAttribute("categories", categoryService.findAllCategories());
+		model.addAttribute("authors", authorService.findAllAuthors());
+		model.addAttribute("publishers", publisherService.findAllPublishers());
+
+		model.addAttribute("new_book", new_book);
+		model.addAttribute("new_borrow", new_borrow);
 		return "list-books";
 	}
 

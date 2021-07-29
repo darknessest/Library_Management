@@ -26,79 +26,79 @@ import lombok.Setter;
 @Table(name = "books")
 public class Book {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name = "isbn", length = 50, nullable = false, unique = true)
-	private String isbn;
+    @Column(name = "isbn", length = 50, nullable = false, unique = true)
+    private String isbn;
 
-	@Column(name = "name", length = 100, nullable = false)
-	private String name;
+    @Column(name = "name", length = 100, nullable = false)
+    private String name;
 
-	@Column(name = "serialName", length = 50, nullable = false)
-	private String serialName;
+    @Column(name = "serialName", length = 50, nullable = false)
+    private String serialName;
 
-	@Column(name = "description", length = 250, nullable = false)
-	private String description;
+    @Column(name = "description", length = 2000, nullable = false)
+    private String description;
 
-	@Column(name = "price")
-	private Double price;
+    @Column(name = "price")
+    private Double price;
 
-	@Column(name = "leftInStock")
-	private Integer leftInStock;
+    @Column(name = "leftInStock")
+    private Integer leftInStock;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	@JoinTable(name = "books_authors", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "author_id") })
-	private Set<Author> authors = new HashSet<Author>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinTable(name = "books_authors", joinColumns = {@JoinColumn(name = "book_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "author_id")})
+    private Set<Author> authors = new HashSet<Author>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "books_categories", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "category_id") })
-	private Set<Category> categories = new HashSet<Category>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "books_categories", joinColumns = {@JoinColumn(name = "book_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "category_id")})
+    private Set<Category> categories = new HashSet<Category>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "books_publishers", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "publisher_id") })
-	private Set<Publisher> publishers = new HashSet<Publisher>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "books_publishers", joinColumns = {@JoinColumn(name = "book_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "publisher_id")})
+    private Set<Publisher> publishers = new HashSet<Publisher>();
 
-	public Book(String isbn, String name, String serialName, String description, Double price, Integer leftInStock) {
-		this.isbn = isbn;
-		this.name = name;
-		this.serialName = serialName;
-		this.description = description;
-		this.price = price;
-		this.leftInStock = leftInStock;
-	}
+    public Book(String isbn, String name, String serialName, Integer leftInStock, Double price, String description) {
+        this.isbn = isbn;
+        this.name = name;
+        this.serialName = serialName;
+        this.description = description;
+        this.price = price;
+        this.leftInStock = leftInStock;
+    }
 
-	public void addAuthors(Author author) {
-		this.authors.add(author);
-		author.getBooks().add(this);
-	}
+    public void addAuthors(Author author) {
+        this.authors.add(author);
+        author.getBooks().add(this);
+    }
 
-	public void removeAuthors(Author author) {
-		this.authors.remove(author);
-		author.getBooks().remove(this);
-	}
+    public void removeAuthors(Author author) {
+        this.authors.remove(author);
+        author.getBooks().remove(this);
+    }
 
-	public void addCategories(Category category) {
-		this.categories.add(category);
-		category.getBooks().add(this);
-	}
+    public void addCategories(Category category) {
+        this.categories.add(category);
+        category.getBooks().add(this);
+    }
 
-	public void removeCategories(Category category) {
-		this.categories.remove(category);
-		category.getBooks().remove(this);
-	}
+    public void removeCategories(Category category) {
+        this.categories.remove(category);
+        category.getBooks().remove(this);
+    }
 
-	public void addPublishers(Publisher publisher) {
-		this.publishers.add(publisher);
-		publisher.getBooks().add(this);
-	}
+    public void addPublishers(Publisher publisher) {
+        this.publishers.add(publisher);
+        publisher.getBooks().add(this);
+    }
 
-	public void removePublishers(Publisher publisher) {
-		this.publishers.remove(publisher);
-		publisher.getBooks().remove(this);
-	}
+    public void removePublishers(Publisher publisher) {
+        this.publishers.remove(publisher);
+        publisher.getBooks().remove(this);
+    }
 }

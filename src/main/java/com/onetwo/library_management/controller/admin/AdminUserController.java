@@ -25,11 +25,6 @@ public class AdminUserController {
         final List<User> users = userService.findAllUsers();
         User new_user = new User();
 
-//        new_user.setEmail("");
-//        new_user.setPassword("");
-//        new_user.setUsername("");
-//        new_user.setPhone("");
-
         model.addAttribute("users", users);
         model.addAttribute("new_user", new_user);
 
