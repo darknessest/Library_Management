@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -11,8 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
-    <link rel="stylesheet" th:href= "@{/css/style_list-borrows.css}">
-    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href="@{/css/style_list-borrows.css}">
+    <link rel="stylesheet" th:href="@{/css/style_header.css}">
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
@@ -26,12 +25,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Book Name</th>
-                    <th>User Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-
-                <tr>
                     <th>用户名</th>
                     <th>书名</th>
                     <th>借阅状态</th>
@@ -39,10 +32,8 @@
                     <th>应还日期</th>
                     <th>回收</th>
                 </tr>
-                </tr>
                 </thead>
                 <tbody>
-                <tr th:each="borrow : ${borrowed_books}">
 
                 <tr th:each="borrow : ${borrowed_books}">
                     <td th:text="${borrow.user.name}" class="first_td"></td>
@@ -50,11 +41,11 @@
                     <td th:text="${borrow.status}"></td>
                     <td th:text="${borrow.startDate}"></td>
                     <td th:text="${borrow.endDate}" class="last_td"></td>
-                    <td><a th:if="${borrow.status.name() != 'RETURNED'}" th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i
-                            class="fas fa-user-times ml-2"></i></a></td>
+                    <td><a th:if="${borrow.status.name() != 'RETURNED'}"
+                           th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}">
+                        <i class="button_list-borrow"></i>
+                    </a></td>
                 </tr>
-
-
 
                 </tbody>
 
@@ -70,41 +61,6 @@
         </div>
     </div>
 </div>
-<!--<div class="container my-2">-->
-<!--    <div class="card">-->
-<!--        <div class="card-body">-->
-<!--            <div class="container my-5">-->
-<!--                <div class="col-md-12">-->
-<!--                    <div>-->
-<!--                        <table class="table table-striped table-responsive-md">-->
-<!--                            <thead>-->
-<!--                            <tr>-->
-<!--                                <th>User Name</th>-->
-<!--                                <th>Book Name</th>-->
-<!--                                <th>Status</th>-->
-<!--                                <th>Start Date</th>-->
-<!--                                <th>End Date</th>-->
-<!--                                <th>Finish Return</th>-->
-<!--                            </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody>-->
-<!--                            <tr th:each="borrow : ${borrowed_books}">-->
-<!--                                <td th:text="${borrow.user.name}"></td>-->
-<!--                                <td th:text="${borrow.book.name}"></td>-->
-<!--                                <td th:text="${borrow.status}"></td>-->
-<!--                                <td th:text="${borrow.startDate}"></td>-->
-<!--                                <td th:text="${borrow.endDate}"></td>-->
-<!--                                <td><a th:if="${borrow.status.name() != 'RETURNED'}" th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i-->
-<!--                                        class="fas fa-user-times ml-2"></i></a></td>-->
-<!--                            </tr>-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 </body>
 
 </html>

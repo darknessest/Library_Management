@@ -264,3 +264,26 @@ body
     background-color: #ebecf0;
 }
 
+.button_list-borrow
+{
+    border-radius: 7px;
+    padding: 5px 7px;
+
+    text-decoration: none;
+    background-color: #fe715f;
+    color: white;
+}
+
+.button_list-borrow:hover
+{
+    background-color: #ffc2ba;
+}
+
+.button_list-borrow#delay_btn
+{
+    background-color: #4fd4ec;
+}
+.button_list-borrow#delay_btn:hover
+{
+    background-color: #bbf5ff;
+}

@@ -11,11 +11,53 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 
     <link rel="stylesheet" th:href = "@{/css/style_header.css}">
+    <link rel="stylesheet" th:href = "@{/css/style_index.css}">
 
 </head>
 
 <body>
-<div th:insert="fragments/header :: header"></div>
+<div class="header">
+    <div th:insert="fragments/header :: header"></div>
 
+
+    <div class="inner-header">
+        <a class="button" href="/login" sec:authorize="!isAuthenticated()">书海遨游</a>
+        <a class="button" href="/books" sec:authorize="isAuthenticated()">书海遨游</a>
+    </div>
+
+    <div>
+        <svg class="waves" viewBox = "0 24 150 28"
+             preserveAspectRatio = "none" shap-rendering = "auto">
+            <!-- 定义波浪的形状 -->
+            <defs>
+                <path id="gentle-wave"
+                      d = "M-160 44c30 0 58-18 88-18s 58 18 88 18
+                            58-18 88-18 58 18 88 18 v44h-352z"/>
+            </defs>
+
+            <g class="parallax">
+                <!--波浪2-->
+                <use xlink:href = "#gentle-wave" x = "48" y ="0"
+                     fill="rgba(255, 255, 255, 0.7"/>
+
+                <!--波浪3-->
+                <use xlink:href = "#gentle-wave" x = "48" y ="3"
+                     fill="rgba(255, 255, 255, 0.5"/>
+
+                <!--波浪4-->
+                <use xlink:href = "#gentle-wave" x = "48" y ="5"
+                     fill="rgba(255, 255, 255, 0.3"/>
+
+                <!--最前端波浪-->
+                <use xlink:href = "#gentle-wave" x = "48" y ="7"
+                     fill="#fff"/>
+            </g>
+        </svg>
+    </div>
+
+</div>
 </body>
+
+
+
 </html>
