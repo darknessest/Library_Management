@@ -50,8 +50,10 @@
                     <td th:text="${borrow.status}"></td>
                     <td th:text="${borrow.startDate}"></td>
                     <td th:text="${borrow.endDate}" class="last_td"></td>
-                    <td><a th:if="${borrow.status.name() != 'RETURNED'}" th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}" class="btn btn-primary"><i
-                            class="fas fa-user-times ml-2"></i></a></td>
+                    <td><a th:if="${borrow.status.name() != 'RETURNED'}" th:href="@{/admin/borrows/return/{id}(id=${borrow.id})}">
+                        <i
+                            class="button_list-borrow"
+                            ></i></a></td>
                 </tr>
 
 
