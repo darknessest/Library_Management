@@ -9,49 +9,56 @@
 </head>
 <body>
     <div th:insert="fragments/header :: header"></div>
-    <div class="registerBox">
-        <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
-            
-            <div class="inputs">
-                <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)" onchange="onChange('username')">
-                <label class = "warning" id="error_account">&nbsp</label>
-            </div>
+    <div class="secondBox">
+        <div class="registerBox">
+            <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
 
-            <div class="inputs">
-                <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称" onchange="onChange('nickname')">
-                <label class = "warning" id="error_nickname">&nbsp</label>
-            </div>
-        
-            <div class="inputs">
-                <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱" onchange="onChange('email')">
-                <label class = "warning" id="error_email">&nbsp</label>
-            </div>
+                <div class="inputs">
+                    <input type="text" id="username" name="username" th:field="*{username}" placeholder="请输入用户号(唯一)" onchange="onChange('username')">
+                    <label class = "warning" id="error_account">&nbsp</label>
+                </div>
 
-                    
-            <div class="inputs">
-                <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="请输入电话号码" onchange="onChange('email')">
-                <label class = "warning" id="error_phone">&nbsp</label>
-            </div>
-        
-            <div class="inputs">
-                <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码" onchange="onChange('password')">
-                <label class = "warning" id="error_pwd">&nbsp</label>
-            </div>
+                <div class="inputs">
+                    <input type="text" id="nickname" name="nickname" th:field="*{name}" placeholder="请输入昵称" onchange="onChange('nickname')">
+                    <label class = "warning" id="error_nickname">&nbsp</label>
+                </div>
 
-            <div class="inputs">
-                <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onchange="onChange('retry_password')">
-                <label class="warning" id="error_retry_pwd">&nbsp</label>
-            </div>
-        
-            <div class="Btn">
-                <input type="button" id="button" value="提交" onclick="onSubmit()" >
-            </div>
+                <div class="inputs">
+                    <input type="text" id="email" name="email" th:field="*{email}" placeholder="请输入电子邮箱" onchange="onChange('email')">
+                    <label class = "warning" id="error_email">&nbsp</label>
+                </div>
 
-            <div class="link">
-                <a style="color: rgb(12, 93, 99);" class="nav-link" href="/login" id="link_register">已有账号?点击登录</a>
-            </div>
-        </form>
+
+                <div class="inputs">
+                    <input type="text" id="phone" name="phone" th:field="*{phone}" placeholder="请输入电话号码" onchange="onChange('email')">
+                    <label class = "warning" id="error_phone">&nbsp</label>
+                </div>
+
+                <div class="inputs">
+                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="请输入密码" onchange="onChange('password')">
+                    <label class = "warning" id="error_pwd">&nbsp</label>
+                </div>
+
+                <div class="inputs">
+                    <input type="password" id="retry_password" name="password" placeholder="请再次输入密码" onchange="onChange('retry_password')">
+                    <label class="warning" id="error_retry_pwd">&nbsp</label>
+                </div>
+
+                <div class="Btn">
+                    <input type="button" id="button" value="提交" onclick="onSubmit()" >
+                </div>
+
+                <div class="link">
+                    <a style="color: rgb(12, 93, 99);" class="nav-link" href="/login" id="link_register">已有账号?点击登录</a>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <img id="mon" src="/img/mon.png">
+    <img id="sun" src="/img/sun.png">
+    <img id="cloud1" src="/img/cloud.png">
+    <img id="cloud2" src="/img/cloud.png">
 </body>
 
 <script>

@@ -1,3 +1,61 @@
+.leaves
+{
+    position: absolute;
+    pointer-events: none;
+
+}
+
+#l1{top:  -10px;left:  0px; width: 180px; transform-origin: left top;overflow: hidden;}
+#l1{
+    animation: shake1 3s infinite;
+    animation-direction: alternate;
+}
+#l2{top: -5px;right: -30px; width: 200px; transform-origin: right top; overflow: hidden;}
+#l2
+{
+    animation: shake2 4s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes shake1{
+    0%{
+        transform: rotate(0deg);
+    }
+
+
+    20%
+    {
+        transform: rotate(-5deg);
+    }
+
+
+
+    100%
+    {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes shake2{
+    0%{
+        transform: rotate(0deg);
+    }
+
+
+    20%
+    {
+        transform: rotate(5deg);
+    }
+
+
+
+    100%
+    {
+        transform: rotate(-3deg);
+    }
+}
+
+
 
 body
 {
@@ -18,7 +76,7 @@ body
 
     /* object-fit:contain; */
 
-
+    overflow-x: hidden;
     animation: background_animation 10s infinite;
 }
 
