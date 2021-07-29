@@ -30,13 +30,25 @@
                 </li>
 
 
-                <li class="items_header" sec:authorize="isAuthenticated()">
+                <li class="items_header" sec:authorize="hasAuthority('USER')">
                     <a href="/user/edit" id="Personal_info">我的</a>
                 </li>
+
+                <li class="items_header" sec:authorize="hasAuthority('USER')">
+                    <a href="/user/borrows">我的书</a>
+                </li>
+
+
 
                 <li class="items_header" sec:authorize="hasAuthority('ADMIN')">
                     <a href="/admin/users">用户管理</a>
                 </li>
+
+                <li class="items_header"  sec:authorize="hasAuthority('ADMIN')">
+                    <a href="/admin/all_borrows">借书管理</a>
+                </li>
+
+
 
 
                 <li class="items_header" sec:authorize="!isAuthenticated()">

@@ -1,5 +1,11 @@
 
-    function open_details()
+let cur_id;
+
+    function open_details(
+        name, type, serialName,
+        author, publisher,price,
+        isbn, description
+    )
     {
         let card_details = document.getElementById("details_card");
         card_details.style.display = "block";
@@ -7,9 +13,18 @@
 
         let card= document.getElementById("container");
 
-        card.style.opacity = 0.3;
+        // card.style.opacity = 0.3;
 
-        console.log("nmsl");
+        $("#info_bookname").attr("value",name);
+        $("#info_categories").attr("value",type);
+        $("#info_serialName").attr("value",serialName);
+        $("#info_author").attr("value",author);
+        $("#info_publisher").attr("value",publisher);
+        $("#info_price").attr("value",price);
+        $("#info_ibsn").attr("value",isbn);
+        $("#info_description").attr("value",description);
+
+        $("#info_description_label").attr("value", description);
     }
 
     function close_details()
@@ -42,7 +57,7 @@
 
     }
 
-    function open_borrow()
+    function open_borrow(id)
     {
         let card = document.getElementById("borrow_card");
         card.style.display = "block";
@@ -52,7 +67,45 @@
 
         let card2= document.getElementById("container");
 
+        cur_id = id;
+
         card2.style.opacity = 0.3;
+    }
+
+    function request_borrow()
+    {
+        $.ajax({url:"/book/borrow/"+cur_id, type:"POST", data:{},
+            success: function (result)
+            {
+                new_page = result;
+                // window.location.href = "http://localhost:8081/";
+                close_borrow();
+
+                console.log(result);
+            },
+            error:function ()
+            {
+                //显示错误
+                console.log("DATA ERROR");
+            }})
+    }
+
+    function  request_return()
+    {
+        $.ajax({url:"/book/return/"+cur_id, type:"POST", data:{},
+            success: function (result)
+            {
+                new_page = result;
+                // window.location.href = "http://localhost:8081/";
+                close_borrow();
+
+                console.log(result);
+            },
+            error:function ()
+            {
+                //显示错误
+                console.log("DATA ERROR");
+            }})
     }
 
     function close_borrow()

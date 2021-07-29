@@ -453,6 +453,11 @@ body
 
 }
 
+#info_description
+{
+
+}
+
 .details_card .items_details .main_info
 {
     display: flex;
@@ -491,15 +496,15 @@ body
 }
 
 
-.details_card .items_details:hover #moreinfo_author_div,
-.details_card .items_details:hover #moreinfo_publisher_div,
-.details_card .items_details:hover #moreinfo_categories_div
-{
-    display: inline;
+/*.details_card .items_details:hover #moreinfo_author_div,*/
+/*.details_card .items_details:hover #moreinfo_publisher_div,*/
+/*.details_card .items_details:hover #moreinfo_categories_div*/
+/*{*/
+/*    display: inline;*/
 
 
-    transition-delay: 0.3s;
-}
+/*    transition-delay: 0.3s;*/
+/*}*/
 
 .details_card .items_details .more_info2
 {
@@ -813,6 +818,8 @@ body
 
     top: 50%;
     left: 50%;
+
+    transform: translate(-50%, -50%);
 }
 
 .card_borrow

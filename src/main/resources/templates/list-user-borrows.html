@@ -45,15 +45,15 @@
                     <td sec:authorize="hasAuthority('USER')">
                         <a th:if="${borrow.status.name() == 'TAKEN'}"
                            th:href="@{/book/borrow/postpone/{id}(id=${borrow.id})}"
-                           class="btn btn-primary">
-                            <i class="fas fa-user-times ml-2"></i>
+                           >
+                            A
                         </a>
                     </td>
                     <td sec:authorize="hasAuthority('USER')">
                         <a th:if="${borrow.status.name() != 'RETURNED' and borrow.status.name() != 'PROCESSED'}"
                            th:href="@{/book/borrow/return/{id}(id=${borrow.id})}"
-                           class="btn btn-primary">
-                            <i class="fas fa-user-times ml-2"></i>
+                           >
+                            B
                         </a>
                     </td>
                 </tr>

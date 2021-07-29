@@ -45,7 +45,7 @@
                     <img src="/img/cover1.jpg">
                 </div>
                 <div class="content">
-                    <label class="item" id="serialName" th:text = "${book.serialName}"></label>
+                    <label class="item" id="author" th:text = "${book.authors[0].name}"></label>
                     <label class="item" id="price" th:text = "${book.price}"></label>
                     <label class="item" id="isbn" th:text = "${book.isbn}"></label>
 
@@ -53,11 +53,19 @@
                 <div class="buttonBox">
                     <!-- <a th:href="/" class="btn">详情</a> -->
                     <button class="btn"  th:text = "${book.name}"
-                        onclick="open_details()"></button>
+                        th:attr="onclick=|open_details(
+                        '${book.name}',
+                        '${book.categories[0].name}',
+                        '${book.serialName}',
+                        '${book.authors[0].name}',
+                        '${book.publishers[0].name}',
+                        '${book.price}',
+                        '${book.isbn}',
+                        '${book.description}')|"></button>
                 </div>
             </div>
             <div class="buttonBox2">
-                <button class="btn2" onclick="open_borrow()">借<br>书</button>
+                <button class="btn2" th:attr = "onclick=|open_borrow('${book.id}')|">借<br>书</button>
                 <button class="btn3">还<br>书</button>
             </div>
 
@@ -74,7 +82,7 @@
             <div class="items_details" id="details_book_name">
                 <div class="main_info">
                     <label class="mylabel" >书名</label>
-                    <input type = "text" class="info" id="info_bookname" disabled = "disabled">
+                    <input type = "text" class="info" id="info_bookname" >
                 </div>
                 <div class="more_info">
 
@@ -84,7 +92,7 @@
             <div class="items_details" id="details_categories">
                 <div class="main_info">
                     <label class="mylabel">分类</label>
-                    <input type="text" class="info" id="info_categories" disabled = "disabled">
+                    <input type="text" class="info" id="info_categories" >
                 </div>
                 <div class="more_info" id="moreinfo_categories_div">
                     <label class="info" id="moreinfo_categories"></label>
@@ -94,7 +102,7 @@
             <div class="items_details" id="details_serialname">
                 <div class="main_info">
                     <label class="mylabel">系列名称</label>
-                    <input type="text" class="info" id="info_serialName" disabled = "disabled">
+                    <input type="text" class="info" id="info_serialName" >
                 </div>
                 <div class="more_info">
 
@@ -104,7 +112,7 @@
             <div class="items_details" id="details_author">
                 <div class="main_info">
                     <label class="mylabel">作者:</label>
-                    <input type = "text" class="info" id="info_author" disabled = "disabled">
+                    <input type = "text" class="info" id="info_author" >
                     <!-- <label class="info">lkfbcevjofbuoebfoefb</label> -->
                 </div>
                 <div class="more_info" id="moreinfo_author_div">
@@ -116,7 +124,7 @@
             <div class="items_details" id="details_publisher">
                 <div class="main_info">
                     <label class="mylabel">出版商</label>
-                    <input type = "text" class="info" id="info_publisher" disabled = "disabled">
+                    <input type = "text" class="info" id="info_publisher" >
                 </div>
                 <div class="more_info" id="moreinfo_publisher_div">
                 </div>
@@ -125,7 +133,7 @@
             <div class="items_details" id="details_price">
                 <div class="main_info">
                     <label class="mylabel">价格</label>
-                    <input type="text" class="info" id="info_price" disabled="disabled">
+                    <input type="text" class="info" id="info_price" >
                 </div>
                 <div class="more_info">
 
@@ -135,7 +143,7 @@
             <div class="items_details" id="details_isbn">
                 <div class="main_info">
                     <label class="mylabel">ISBN</label>
-                    <input type="text" class="info" id="info_ibsn" disabled="disabled">
+                    <input type="text" class="info" id="info_ibsn" >
                 </div>
                 <div class="more_info">
 
@@ -145,10 +153,10 @@
             <div class="items_details" id="details_description">
                 <div class="main_info">
                     <label class="mylabel">简介</label><br>
-                    <input type="text">
+                    <input type="text" class="info" id="info_description" readonly>
                 </div>
-                <div class="more_info2" id="info_description_div">
-                    <label class="info2" id="info_description">
+                <div class="more_info2" id="info_description_div" style="display: inline">
+                    <label class="info2" id="info_description_label">
                     </label>
                 </div>
             </div>
@@ -158,120 +166,61 @@
     </div>
 </div>
 
-<!--<div class="container_add" id="add_card">-->
-<!--    <form class="add_card" action="#" th:action="@{/admin/add-book}" th:object="${books}"-->
-<!--          method="post">-->
-<!--        <div class="items_add">-->
-<!--            <label for="add_isbn" class="mylabel_add">ISBN</label>-->
-<!--            <input type="text" th:field="*{isbn}" class="info_add" id="add_isbn" placeholder="ISBN"/>-->
-<!--            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_name" class="mylabel_add">Book Name</label>-->
-<!--            <input type="text" th:field="*{name}" class="info_add" id="add_name"-->
-<!--                   placeholder="Book Name"/>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_serialName" class="mylabel_add">SerialName </label>-->
-<!--            <input type="text" th:field="*{serialName}" class="info_add" id="add_serialName"-->
-<!--                   placeholder="Serial Name"/>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_price" class="mylabel_add">Price </label>-->
-<!--            <input type="number" th:field="*{price}" class="info_add" id="add_price"-->
-<!--                   placeholder="Price"/>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_description" class="mylabel_add">Description</label>-->
-<!--            <input type="text" th:field="*{description}" class="info_add" id="add_description"-->
-<!--                   placeholder="Description"/>-->
-<!--        </div>-->
-
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_category" class="mylabel_add">Category</label>-->
-<!--            <select th:field="*{categories}" class="info_add" id="add_category">-->
-<!--                <option th:each="category: ${categories}" th:value="${category.id}"-->
-<!--                        th:text="${category.name}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_author" class="mylabel_add">Author</label>-->
-<!--            <select th:field="*{authors}" class="info_add" id="add_author">-->
-<!--                <option th:each="author: ${authors}" th:value="${author.id}"-->
-<!--                        th:text="${author.name}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-<!--        <div class="items_add">-->
-<!--            <label for="add_publisher" class="mylabel_add">Publisher</label>-->
-<!--            <select th:field="*{publishers}" class="info_add" id="add_publisher">-->
-<!--                <option th:each="publisher: ${publishers}" th:value="${publisher.id}"-->
-<!--                        th:text="${publisher.name}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-
-<!--        <input type="submit" class="btn_add_" value=" Submit " onclick="close_add()">-->
-<!--    </form>-->
-<!--</div>-->
-
-<div class="container_add" id="add_card">
-    <form class="add_card" action="#" th:action="@{/admin/add-book}" th:object="${books}"
+<div class="container_add" id="add_card" sec:authorize="hasAuthority('ADMIN')">
+    <form class="add_card" action="#" th:action="@{/admin/add-book}" th:object="${new_book}"
           method="post">
         <div class="items_add">
             <label for="add_isbn" class="mylabel_add">ISBN</label>
-            <input type="text" class="info_add" id="add_isbn" placeholder="ISBN"/>
+            <input type="text" th:field="*{isbn}" class="info_add" id="add_isbn" placeholder="ISBN"/>
+            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
         </div>
 
         <div class="items_add">
             <label for="add_name" class="mylabel_add">Book Name</label>
-            <input type="text" class="info_add" id="add_name"
+            <input type="text" th:field="*{name}" class="info_add" id="add_name"
                    placeholder="Book Name"/>
         </div>
 
         <div class="items_add">
             <label for="add_serialName" class="mylabel_add">SerialName </label>
-            <input type="text"  class="info_add" id="add_serialName"
+            <input type="text" th:field="*{serialName}" class="info_add" id="add_serialName"
                    placeholder="Serial Name"/>
         </div>
 
         <div class="items_add">
             <label for="add_price" class="mylabel_add">Price </label>
-            <input type="number"  class="info_add" id="add_price"
+            <input type="number" th:field="*{price}" class="info_add" id="add_price"
                    placeholder="Price"/>
         </div>
 
         <div class="items_add">
             <label for="add_description" class="mylabel_add">Description</label>
-            <input type="text" class="info_add" id="add_description"
+            <input type="text" th:field="*{description}" class="info_add" id="add_description"
                    placeholder="Description"/>
         </div>
 
 
         <div class="items_add">
             <label for="add_category" class="mylabel_add">Category</label>
-            <select  class="info_add" id="add_category">
-                <option ></option>
+            <select th:field="*{categories}" class="info_add" id="add_category">
+                <option th:each="category: ${categories}" th:value="${category.id}"
+                        th:text="${category.name}"></option>
             </select>
         </div>
 
         <div class="items_add">
             <label for="add_author" class="mylabel_add">Author</label>
-            <select  class="info_add" id="add_author">
-                <option ></option>
+            <select th:field="*{authors}" class="info_add" id="add_author">
+                <option th:each="author: ${authors}" th:value="${author.id}"
+                        th:text="${author.name}"></option>
             </select>
         </div>
 
         <div class="items_add">
             <label for="add_publisher" class="mylabel_add">Publisher</label>
-            <select class="info_add" id="add_publisher">
-                <option ></option>
+            <select th:field="*{publishers}" class="info_add" id="add_publisher">
+                <option th:each="publisher: ${publishers}" th:value="${publisher.id}"
+                        th:text="${publisher.name}"></option>
             </select>
         </div>
 
@@ -280,28 +229,6 @@
     </form>
 </div>
 
-
-<!--<div class="container_borrow" id="borrow_card" >-->
-<!--    <div class="card_borrow">-->
-<!--        <form class="borrow_form" action="#" th:action="@{/book/borrow/{id}(id=${borrowed_book.book.id})}"-->
-<!--              th:object="${borrowed_book}" method="post">-->
-<!--            <div class="items_borrow">-->
-<!--                <label for="start_date" class="label_borrow">借书日期</label>-->
-<!--                <input th:field="*{startDate}" class="input_borrow" type="date" id="start_date" readonly>-->
-<!--            </div>-->
-
-<!--            <div class="items_borrow">-->
-<!--                <label for="end_date" class="label_borrow">还书日期</label>-->
-<!--                <input th:field="*{endDate}" class="input_borrow" id="end_date" type="date" onchange="isDateIllegal">-->
-<!--            </div>-->
-
-<!--            <div class="buttonBox_borrow">-->
-<!--                <input  type="button" value="借阅" id="btn_borrow">-->
-<!--                <button id="btn_borrow_cancel" onclick="close_borrow()">取消</button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="container_borrow" id="borrow_card" >
     <div class="card_borrow">
@@ -317,7 +244,7 @@
             </div>
 
             <div class="buttonBox_borrow">
-                <input  type="button" value="借阅" id="btn_borrow">
+                <input  type="button" value="借阅" id="btn_borrow" onclick="request_borrow()">
                 <button id="btn_borrow_cancel" onclick="close_borrow()">取消</button>
             </div>
         </form>
@@ -327,6 +254,8 @@
 
 </body>
 
+<script>
 
+</script>
 
 </html>
