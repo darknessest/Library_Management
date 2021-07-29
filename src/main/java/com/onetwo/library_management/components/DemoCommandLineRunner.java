@@ -84,13 +84,13 @@ class DemoCommandLineRunner implements CommandLineRunner {
 //        book2.addPublishers(publisher2);
 //        bookRepository.save(book2);
         
-        Book book = new Book("9787020002207", "红楼梦", "曹雪芹/高鹗", 50, 59.70, "《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经 典。");
+        Book book = new Book("9787020002207", "红楼梦", "", 50, 59.70, "《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经 典。");
         Author author = new Author("曹雪芹/高鹗", "");
-        Category category = new Category("文学小说");
-        Publisher publisher = new Publisher("人民文学出版社");
+        Category category1 = new Category("文学小说");
+        Publisher publisher1 = new Publisher("人民文学出版社");
         book.addAuthors(author);
-        book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addCategories(category1);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -100,11 +100,11 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787101003048", "史记", "", 20, 125.00, "史记是我国第一部通史。在史记之前，有以年代为次的“编年史”如春秋，有以地域为限的“国别史”如国语、战国策，有以文告档卷形式保存下来的“政治史”如尚书，可是没有上下几千年，包罗各方面，而又融会贯通，脉络分明，像史记那样的通史。");
         author = new Author("司马迁/张守节", "");
-        category = new Category("历史著作");
-        publisher = new Publisher("中华书局");
+        Category category2 = new Category("历史著作");
+        Publisher publisher2 = new Publisher("中华书局");
         book.addAuthors(author);
-        book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addCategories(category2);
+        book.addPublishers(publisher2);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -114,10 +114,10 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787547011607", "1984", "", 30, 25.00, "1984是一部杰出的政治寓言小说，也是一部幻想小说。作品刻画了人类在极权主义社会的生存状态，仿佛一个永不退色的警世标签，警醒世人提防这种预想中的黑暗成为现实。历经几十年，其生命力日益强大，被誉为20世纪影响最为深远的文学经典之一。");
         author = new Author("乔治▪奥威尔", "");
-        category = new Category("科幻小说");
-        publisher = new Publisher("万卷出版公司");
+        Category category3 = new Category("科幻小说");
+        Publisher publisher = new Publisher("万卷出版公司");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -128,10 +128,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787536674257", "冰与火之歌（卷二）", "", 50, 65.00, "继《权力的游戏》之后，乔治·马丁推出了另一部恢宏之作，续篇《列王的纷争》。与罗伯特·乔丹不同的是，乔治·马丁牢牢把握住了精妙的情节和那些真实得令人惊叹的人物。《列王的纷争》具备了一部优秀奇幻小说需要的所有元素：爱情故事、宫廷阴谋、背叛和战争，并且远不止于此。乔治·马丁所展示的人物能够在不觉中触及你的灵魂深处，引发你强烈的爱憎感，如同他们本是你真实生活中的一部分。这使得《冰与火之歌》不仅仅在奇幻界堪称杰作，更是一部文学佳品。马丁拒绝演绎寻常的善恶套路，或是呈现读者可能期待的那些包裹着糖衣的英雄故事。他书中的人物具有不可思议的深度，无论善恶，他们都将赚取你的情感。这些再结合魔法元素的合理运用和对悬念与高潮设置的天赋感觉，造就了《列王的纷争》，如同《权力的游戏》这本你全心爱上的小说一样，也使乔治·马丁跻身当代最卓越的作家之列。");
         author = new Author("乔治▪R▪R▪马丁", "");
-        category = new Category("科幻小说");
         publisher = new Publisher("重庆出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -143,9 +142,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787806570920", "飘", "", 40, 40.00, "作品在描绘人物生活与爱情的同时，勾勒出南北双方在政治，经济，文化各个层次的异同，具有浓厚的史诗风格，堪称美国历史转折时期的真实写照，同时也成为历久不衰的爱情经典。");
         author = new Author("玛格丽特▪米切尔", "");
         publisher = new Publisher("译林出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -156,10 +154,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787506365437", "活着", "", 50, 20.00, "《活着(新版)》讲述了农村人福贵悲惨的人生遭遇。福贵本是个阔少爷，可他嗜赌如命，终于赌光了家业，一贫如洗。他的父亲被他活活气死，母亲则在穷困中患了重病，福贵前去求药，却在途中被国民党抓去当壮丁。经过几番波折回到家里，才知道母亲早已去世，妻子家珍含辛茹苦地养大两个儿女。此后更加悲惨的命运一次又一次降临到福贵身上，他的妻子、儿女和孙子相继死去，最后只剩福贵和一头老牛相依为命，但老人依旧活着，仿佛比往日更加洒脱与坚强。");
         author = new Author("余华", "");
-        category = new Category("文学小说");
         publisher = new Publisher("作家出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -170,7 +167,7 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("978753021113", "撒哈拉的故事", "", 50, 24.00, "三毛作品中最脍炙人口当属《撒哈拉的故事》，本书由十几篇精彩动人的散文结合而成，其中《沙漠中的饭店》，是三毛适应荒凉单调的沙漠生活后，重新拾笔的第一篇文章，从此之后，三毛便写出一系列以沙漠为背景的故事，倾倒了全世界的华文读者。");
         author = new Author("三毛", "");
-        category = new Category("散文著作");
+        Category category = new Category("散文著作");
         publisher = new Publisher("北京十月文艺出版社");
         book.addAuthors(author);
         book.addCategories(category);
@@ -198,10 +195,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787508647357", "人类简史", "", 50, 68.00, "《人类简史：从动物到上帝》为什么能够在国际畅销书榜上爆冲？原因很简单，它处理的是历史的大问题、现代世界的大问题，而且，它的写作风格是刻骨铭心的生动。你会爱上它！");
         author = new Author("尤瓦尔▪赫拉利", "");
-        category = new Category("历史著作");
         publisher = new Publisher("中信出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category2);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -212,10 +208,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787544253994", "百年孤独", "", 50, 39.00, "《百年孤独》是魔幻现实主义文学的代表作，描写了布恩迪亚家族七代人的传奇故事，以及加勒比海沿岸小镇马孔多的百年兴衰，反映了拉丁美洲一个世纪以来风云变幻的历史。作品融入神话传说、民间故事、宗教典故等神秘因素，巧妙地糅合了现实与虚幻，展现出一个瑰丽的想象世界，成为20世纪最重要的经典文学巨著之一。1982年加西亚•马尔克斯获得诺贝尔文学奖，奠定世界级文学大师的地位，很大程度上乃是凭借《百年孤独》的巨大影响。");
         author = new Author("加西亚▪马尔克斯", "");
-        category = new Category("文学小说");
         publisher = new Publisher("南海出版公司");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -227,9 +222,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787536693968", "三体-Ⅱ", "", 50, 32.00, "自1999年处女作《鲸歌》问世以来，刘慈欣已发表短篇科幻小说三十余篇、出版长篇科幻小说六部，并创下连续八年荣获中国科幻最高奖“银河奖”的纪录。他的长篇作品《三体》开创《科幻世界》月刊连载原创作品的先例，成为2006年度最受关注、最畅销的科幻小说。");
         author = new Author("刘慈欣", "");
         publisher = new Publisher("重庆出版社");
-        category = new Category("科幻小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -240,11 +234,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787020008728", "三国演义(全二册)", "", 40, 39.00, "《三国演义》又名《三国志演义》、《三国志通俗演义》，是我国小说史上最著名最杰出的长篇章回体历史小说。 《三国演义》的作者是元末明初人罗贯中，由毛纶，毛宗岗父子批改。在其成书前，“三国故事”已经历了数百年的历史发展过程。在唐代，三国故事已广为流传，连儿童都很熟悉。随着市民文艺的发展，宋代的“说话”艺人，已有专门说三国故事的，当时称为“说三分”。元代出现的《三国志平话》，实际上是从说书人使用的本子，虽较简略粗糙，但已初肯《三国演义》的规模。罗贯中在群众传说和民间艺人创作的基础上，又依据陈寿《三国志》及裴松之注中所征引的资料（还包括《世说新语》及注中的资料），经过巨大的创作劳动，写在了规模宏伟的巨著——《三国志通俗演义》全书24卷，240回。后来经过毛纶，毛宗岗父子批改，形成我们现在所见的《三国演义》120回版");
         author = new Author("罗贯中", "");
-        publisher = new Publisher("人民文学出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addCategories(category1);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -255,9 +247,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787544258609", "白夜行", "", 40, 39.00, "一天当中，有太阳升起的时候，也有下沉的时候。人生也一样，有白天和黑夜，只是不会像真正的太阳那样，有定时的日出和日落。看个人，有些人一辈子都活在太阳的照耀下，也有些人不得不一直活在漆黑的深夜里。人害怕的，就是本来一直存在的太阳落下不再升起，也就是非常害怕原本照在身上的光芒消失。 我的天空里没有太阳，总是黑夜，但并不暗，因为有东西代替了太阳。虽然没有太阳那么明亮，但对我来说已经足够。凭借着这份光，我便能把黑夜当成白天。你明白吗？我从来就没有太阳，所以不怕失去。");
         author = new Author("东野圭吾", "");
         publisher = new Publisher("南海出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -269,9 +260,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787559614636", "房思琪的初恋乐园", "", 55, 45.00, "我不是对你失望，这个世界，或是生活、命运，或叫它神，或无论叫它什么，它好差劲。我现在读小说，如果读到赏善罚恶的好结局，我就会哭，我宁愿大家承认人间有一些痛苦是不能和解的；我最讨厌人说经过痛苦才成为更好的人，我好希望大家承认有些痛苦是毁灭的；我讨厌大团圆的抒情传统，正面思考是多么媚俗！可是，你知道我更恨什么吗？我宁愿我是一个媚俗的人，我宁愿无知，也不想要看过世界的背面。");
         author = new Author("林奕含", "");
         publisher = new Publisher("北京联合出版公司");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -282,11 +272,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         
         book = new Book("9787020042494", "小王子", "", 12, 22.00, "“你们很美，但你们是空虚的。” 小王子任然在对她们说，“没有人能为你们去死。当然咯，我的那朵玫瑰花，一个普通的过路人以为她和你们一样。可是，她单独一朵就比你们全体更重要，因为她是我浇灌的。因为她是我放在花罩中的。因为她是我用屏风保护起来的。因为她身上的毛虫是我除灭的。因为我倾听过她的怨艾和自诩，甚至有时我聆听着她的沉默。因为她是我的玫瑰。”");
         author = new Author("安东尼▪德▪圣▪埃克苏佩里", "");
-        publisher = new Publisher("人民文学出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addCategories(category1);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -297,9 +285,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787108006721", "天龙八部", "", 32, 96.00, "天龙八部乃金笔下的一部长篇小说，与《射雕》，《神雕》等 几部长篇小说一起被称为可读性最高的金庸小说。《天龙》的故事情节曲折，内容丰富，也曾多次被改编为电视作品。是金庸作品中集大成的一部。故事以北宋末年动荡的社会环境为背景，展开波澜壮阔的历史画卷，塑造了乔峰、段誉、 虚竹、慕容复等形象鲜明的人物，成为武侠史上的经典之作。故事精彩纷呈，人物命运悲壮多变，是可读性很强的作品，具有震撼人心的力量");
         author = new Author("金庸", "");
         publisher = new Publisher("生活▪读书▪新知三联书店");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -310,11 +297,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787020024759", "围城", "钱钟书", 15, 19.00, "《围城》是钱钟书所著的长篇小说。第一版于1947年由上海晨光出版公司出版。1949年之后，由于政治等方面的原因，本书长期无法在中国大陆和台湾重印，仅在香港出现过盗印本。1980年由作者重新修订之后，在中国大陆地区由人民文学出版社刊印。此后作者又曾小幅修改过几次。《围城》 自从出版以来，就受到许多人的推崇。由于1949年后长期无法重印，这本书逐渐淡出人们的视野。1960年代，旅美汉学家夏志清在《中国现代小说史》(A History of Modern Chinese Fiction)中对本书作出很高的评价，这才重新引起人们对它的关注。人们对它的评价一般集中在两方面，幽默的语言和对生活深刻的观察。从1990年代开始，也有人提出对本书的不同看法，认为这是一部被“拔高”的小说，并不是一部出色的作品。很多人认为这是一部幽默作品。除了各具特色的人物语言之外，作者夹叙其间的文字也显着机智与幽默。这是本书的一大特色。也有人认为这是作者卖弄文字，语言显得尖酸刻薄。但这一说法并不为大多数人接受。");
         author = new Author("曹雪芹/高鹗", "");
-        publisher = new Publisher("人民文学出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addCategories(category1);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -325,9 +310,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787532751471", "局外人", "", 45, 22.00, "《局外人》是法国作家加缪的成名作，同时也是存在主义文学的杰出作品之一，该书以一种客观记录式的“零度风格”，粗线条地描述了主人公默尔索在荒谬的世界中经历的种种荒谬的事，以及自身的荒诞体验。从参加母亲的葬礼到偶然成了杀人犯，再到被判处死刑，默尔索似乎对一切都无动于衷，他像一个象征性的符号，代表了一种普遍的存在，又像是一个血红色的灯塔，具有高度的警示性。然而，局外人现象的产生无疑是由这个世界本身所孕育的，默尔索的存在有其深刻的外部原因。");
         author = new Author("阿尔贝▪加缪", "");
         publisher = new Publisher("上海译文出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -353,9 +337,8 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787544211765", "许三观卖血记", "", 65, 16.80, "《许三观卖血记》是余华1995年创作的一部长篇小说，它以博大的温情描绘了磨难中的人生，以激烈的故事形式表达了人在面对厄运时求生的欲望。小说讲述了许三观靠着卖血渡过了人生的一个个难关，战胜了命运强加给他的惊涛骇浪，而当他老了，知道自己的血再也没有人要时，精神却崩溃了。");
         author = new Author("余华", "");
         publisher = new Publisher("南海出版社");
-        category = new Category("文学小说");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -408,10 +391,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787539957173", "永恒的终结", "", 48, 32.00, "24世纪，人类发明了时间力场。27世纪，人类在掌握时间旅行技术后，成立了一个叫做永恒时空（Eternity）的组织，在每个时代的背后，默默地守护着人类社会的发展。永恒时空以一个世纪为单位，并视每个世纪的发展需要而加以微调，以避免社会全体受到更大伤害。通过纠正过去的错误，将所有灾难扼杀在萌芽中，人类终于获得安宁的未来。然而，这种“绝对安全”的未来却在某一天迎来了终结。不知不觉中形成的因果链，仿佛从四面八方涌来的黑暗，即将吞噬全人类。");
         author = new Author("艾萨克▪阿西莫夫", "");
-        category = new Category("科幻小说");
         publisher = new Publisher("江苏凤凰文艺出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -436,10 +418,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787806249420", "基地", "", 36, 21.00, "向来，过去才是历史，昨天才是历史。阿西莫夫却与众不同，他的《基地》系列写的是“未来的历史”，是“遥远未来的历史”，是“明天的历史”！");
         author = new Author("艾萨克▪阿西莫夫", "");
-        category = new Category("科幻小说");
         publisher = new Publisher("天地出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -450,11 +431,10 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787101001105", "唐诗三百首", "", 120, 45.60, "《唐诗三百首》的旧注本亦有许多种，其中以陈婉俊的补注本简明精当，流行最广。她的注解除简介作者生平外，比较注重语词名物的诠释，博引旁征，字梳句栉，对今天的读者仍有一定的参考价值。");
         author = new Author("蘅塘退士", "");
-        publisher = new Publisher("中华书局");
         category = new Category("诗歌");
         book.addAuthors(author);
         book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addPublishers(publisher2);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -521,10 +501,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787020036509", "茶馆", "", 75, 9.80, "三幕话剧《茶馆》以北京一家大茶馆为背景，描写了清末、民初、抗战胜利以后三个历史时期的北京生活风貌，深刻地写出了王利发等人的真实命运。");
         author = new Author("老舍", "");
         category = new Category("戏剧");
-        publisher = new Publisher("人民文学出版社");
         book.addAuthors(author);
         book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -535,10 +514,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787020018567", "雷雨", "", 65, 9.20, "《雷雨》所展示的是一幕人生大悲剧，是命运对人残忍的作弄。专制、伪善的家长，热情、单纯的青年，被情爱烧疯了心的魅惑的女人，痛悔着罪孽却又不自知地犯下更大罪孽的公子哥，还有家庭的秘密，身世的秘密，所有这一切在一个雷雨夜爆发。有罪的，无辜的人一起走向毁灭。曹禺以极端的雷雨般狂飙恣肆的方式，发泄被抑压的愤懑，毁谤中国的家庭和社会。");
         author = new Author("曹禺", "");
         category = new Category("戏剧");
-        publisher = new Publisher("人民文学出版社");
         book.addAuthors(author);
         book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -618,10 +596,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787532777532", "长日将尽", "", 42, 48.00, "《长日将尽》是诺奖得主石黑一雄1989年获布克奖的作品，也是石黑一雄最重要的代表作。小说以管家史蒂文斯的回忆展开，讲述了自己为达林顿勋爵服务的三十余年时光里的种种经历；虽然达到了职业巅峰，但史蒂文斯过于冷酷地压抑自我情感，追求完美履行职责，而在父亲临终前错过最后一面，之后又与爱情擦肩而过。小说通过主人公的回忆，将一个人的生命旅程在读者眼前抽丝剥茧，同时也折射出一战与二战之间那段非常时期的国际政治格局。");
         author = new Author("石黑一雄", "");
-        category = new Category("文学小说");
         publisher = new Publisher("上海译文出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -632,10 +609,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787532744800", "荒原狼", "", 45, 13.00, "小说的主人公哈勒尔是个正直的作家，他鄙视现代社会生活方式，常常闭门不出，令人窒息的空气使他陷于精神分裂的境地。一天他偶尔读到一本《评荒原狼》的小书，顿觉大梦初醒，认为自己就是一个“人性”和“狼性”并存的荒原狼。之后他应邀参加聚会，发现与会者都有狭隘的民族主义观点，而他的反战言论遭到斥责，更觉自己孤独；回家时他遇到酒吧女郎赫尔米娜，获得肉欲欢乐；经赫尔米娜介绍他又结识了音乐人帕布洛和一姑娘玛丽亚，他在音乐和感官享受中忘却了一切烦恼和忧虑。但当他看到赫尔米娜和帕布洛亲近时，便“狼性”大发，出于嫉妒将赫尔米娜杀死。小说幻想色彩浓郁，象征意味深远，被认为有“超现实主义”风格；托马斯·曼称它为“德国的尤利西斯”。");
         author = new Author("赫尔曼▪黑塞", "");
-        category = new Category("文学小说");
         publisher = new Publisher("上海译文出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -647,10 +623,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787020035946", "哈姆雷特", "", 36, 7.00, "本书具有很强的经典性及学术性，该书不仅是语言文学专业大学生从事专业学习和学术研究不可缺少的重要书籍，同时也是其他专业大学生加强人文素养、丰富文化底蕴、促进专业学习的重要读物。可供不同专业的大学生阅读收藏。");
         author = new Author("威廉▪莎士比亚", "");
         category = new Category("戏剧");
-        publisher = new Publisher("人民文学出版社");
         book.addAuthors(author);
         book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -674,10 +649,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787544258661", "了不起的盖茨比", "", 12, 25.00, "中西部小子盖茨比到东部闯荡一夕致富，他在自己的豪宅夜夜宴客，俨然慷慨荒唐的富豪大亨；他梦幻地看着纽约长岛上一座闪着绿光的灯塔，寻觅着梦寐以求的女人黛西。邻居尼克，眼看着盖茨比的宾客们接受他的招待却冷漠无情，眼看着盖茨比奋力追求那腐败的虚华。盖兹比最后的结局，让尼克对东部浮华的名流生活梦碎，宛如看着繁华楼起再看着它楼塌。");
         author = new Author("弗▪司各特▪菲茨杰拉德", "");
-        category = new Category("文学小说");
         publisher = new Publisher("南海出版公司");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -689,10 +663,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
         book = new Book("9787020015092", "牡丹亭", "", 26, 14.00, "《牡丹亭》是明代大曲家汤显祖的代表作，这时作家的思想和艺术都已经成熟。明代话本小说《杜丽娘慕色还魂》为《牡丹亭》提供了基本情节。《牡丹亭》在《惊梦》《寻梦》《闹殇》各出的宾白中还保留了话本的若干原句。在小说中，杜丽娘还魂后，门当户对的婚姻顺利缔成；而在戏曲中，汤显祖进 行了脱胎换骨的创造性劳动，把小说中的传说故事同明代社会的现实生活结合起来，使它具有强烈的反礼教、反封建色彩，焕发出追求个性自由的光辉理想。");
         author = new Author("汤显祖", "");
         category = new Category("戏剧");
-        publisher = new Publisher("人民文学出版社");
         book.addAuthors(author);
         book.addCategories(category);
-        book.addPublishers(publisher);
+        book.addPublishers(publisher1);
         try {
             bookRepository.save(book);
         } catch (Exception e) {
@@ -702,10 +675,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787806574317", "海底两万里", "", 20, 19.00, "本书是法国举世闻名的科幻小说作家儒尔·凡尔纳的代表作之一。");
         author = new Author("儒勒▪凡尔纳", "");
-        category = new Category("科幻小说");
         publisher = new Publisher("译林出版社");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category3);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
@@ -758,10 +730,9 @@ class DemoCommandLineRunner implements CommandLineRunner {
 
         book = new Book("9787544270878", "解忧杂货店", "", 25, 39.00, "如今回顾写作过程，我发现自己始终在思考一个问题：站在人生的岔路口，人究竟应该怎么做？我希望读者能在掩卷时喃喃自语：我从未读过这样的小说。——东野圭吾");
         author = new Author("东野圭吾", "");
-        category = new Category("文学小说");
         publisher = new Publisher("南海出版公司");
         book.addAuthors(author);
-        book.addCategories(category);
+        book.addCategories(category1);
         book.addPublishers(publisher);
         try {
             bookRepository.save(book);
