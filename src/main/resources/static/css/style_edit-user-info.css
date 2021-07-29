@@ -1,0 +1,244 @@
+body
+{
+    margin:0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-repeat: no-repeat;
+    background-color: #efedee;
+
+    /* object-fit:contain; */
+    overflow:hidden;
+}
+
+.header_text
+{
+    color: rgba(146, 96, 49, 1);
+    font-size: 40px;
+
+    margin-bottom: 30px;
+    margin-left: 40px;
+    margin-top: 90px;
+}
+
+.imageBox
+{
+    z-index: 10;
+
+    width: 500px;
+    height: 100%;
+
+    transform: rotate(141deg);
+
+    margin-top: -200px;
+    margin-right: -230px;
+
+}
+
+.cards
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-body
+{
+    width: 900px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    padding: 40px 30px;
+}
+
+.imageBox .rec_2
+{
+    width: 800px;
+    height: 80px;
+
+    border-radius: 40px;
+    background-color: rgba(146, 96, 49, 0.5);
+    transition: all 0.5s ease-out;
+}
+
+
+#rec6{margin-left: -250px;}
+#rec6:hover{margin-left: -200px; transition-timing-function:ease-in-out;}
+
+#rec5{margin-left: -100px;}
+#rec5:hover{margin-left: -30px; transition-timing-function:ease-in-out;}
+
+#rec4{margin-left: 30px;}
+#rec4:hover{margin-left: -90px; transition-timing-function:ease-in-out;}
+
+.imageBox .rec_1
+{
+    width: 800px;
+    height: 80px;
+
+    border-radius: 40px;
+    background-color:rgba(243, 210, 179, 0.3);
+
+    transition: all 0.5s ease-out;
+}
+
+#rec3{margin-left: -200px;}
+#rec3:hover{margin-left: -300px; transition-timing-function:ease-in-out;}
+
+#rec2{margin-left: -100px;}
+#rec2:hover{margin-left: -30px; transition-timing-function:ease-in-out;}
+
+#rec1{margin-left: 30px;}
+#rec1:hover{margin-left: -100px; transition-timing-function:ease-in-out;}
+
+.card-body
+{
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #e7e6e6 0%, #efedee 100%);
+    box-shadow: 5px 5px 10px -1px rgba(156, 154, 150, 0.3),
+    -4px -6px 10px -3px rgb(250, 249, 248);
+
+
+
+}
+
+#informationBox
+{
+    z-index: 11;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+
+#informationBox .inputs
+{
+    display: flex;
+
+    width: 400px;
+    margin-top: 15px;
+
+}
+
+#informationBox .inputs input
+{
+    height: 40px;
+    width: 300px;
+
+    margin-top: 7px;
+
+    border-radius: 8px;
+    border: none;
+    outline: none;
+
+    background-color: #fafafa;
+
+    color: rgba(146, 96, 49, 0.8);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#informationBox .inputs input::placeholder
+{
+    color: rgba(188, 185, 175, 0.8);
+
+}
+
+#informationBox .inputs .icons
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+
+    margin-right: 20px;
+
+}
+
+#informationBox .inputs .icons .img_icon
+{
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #e7e6e6 0%, #efedee 100%);
+    box-shadow: 2px 2px 4px -1px rgba(156, 154, 150, 0.3),
+    -2px -2px 6px -2px rgb(250, 249, 248);
+}
+
+#informationBox .inputs .icons .img_icon:hover
+{
+    background: linear-gradient(135deg, #ecebeb 0%, #f7f5f6 100%);
+}
+
+#informationBox .inputs .icons .img_icon img
+{
+    max-width: 30px;
+    max-height: 30px;
+}
+
+#informationBox .inputs .icons label
+{
+    color: rgba(87, 54, 22, 0.8);
+}
+
+#button
+{
+    margin-top: 30px;
+    padding: 10px 20px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+    color: #fff;
+
+    background: rgba(146, 96, 49, 0.6);
+    /* box-shadow: 2px 2px 2px -1px rgba(156, 154, 150, 0.4),
+        -2px -2px 6px -2px rgb(250, 249, 248); */
+}
+
+#button:hover
+{
+    color: rgb(243, 239, 239);
+
+    background: rgba(207, 158, 111, 0.6);
+}
+
+#button:active
+{
+    color: rgb(243, 239, 239);
+
+    background: rgba(233, 189, 149, 0.6);
+}

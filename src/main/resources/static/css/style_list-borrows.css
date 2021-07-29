@@ -1,0 +1,266 @@
+body
+{
+    background: #c5ecd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-repeat: no-repeat;
+}
+
+.header_text
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 900px;
+
+    margin-top: 80px;
+
+}
+
+.header_text label
+{
+
+    color: #07c160;
+    font-size: 60px;
+    top:10px;
+
+    font-weight: 600;
+
+}
+
+
+
+.card
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.card .card-body
+{
+    width: 900px;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 15px;
+
+    background:rgb(243, 244, 246);
+    box-shadow: -8px -9px 15px -2.5px rgba(255, 255, 255, 0.1),
+    17px 17px 40px -3px rgba(35, 115, 76, 0.5);
+
+
+}
+
+.table
+{
+    border-collapse: collapse;
+    color: #08c261;
+
+    margin: 30px 30px 30px 30px;
+
+}
+
+.table th, td
+{
+    width: 200px;
+    height: 50px;
+}
+
+
+.card-body table thead tr,th
+{
+    border: 2.5px solid rgb(255, 255, 255);
+}
+
+.card-body table thead tr th:hover
+{
+    background-color: #07c160;
+    color: rgb(243, 244, 246);
+}
+
+.table tfoot
+{
+    border: 2.5px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+}
+
+.table tfoot td
+{
+    height: 15px;
+}
+
+.table tbody
+{
+    border: 2.5px solid rgb(255, 255, 255);
+}
+
+
+.table tbody tr, td
+{
+    text-align: center;
+    border-top: 2.5px solid rgba(255, 255, 255);
+}
+
+.card-body table tbody tr:hover td:nth-child(2),
+.card-body table tbody tr:hover td:last-child
+{
+    background-color: #e1e3eb;
+    color: #0ab45c;
+}
+
+.card-body table tbody tr:hover td:nth-child(3),
+.card-body table tbody tr:hover td:first-child
+{
+    background-color: #ebecf1;
+    color: #0ab45c;
+}
+
+
+.table tbody tr td:nth-child(2), .table tbody tr td:last-child
+{
+    background-color: #ebecf0;
+}
+
+body
+{
+    background: #c5ecd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-repeat: no-repeat;
+}
+
+.header_text
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 900px;
+
+    margin-top: 80px;
+
+}
+
+.header_text label
+{
+
+    color: #07c160;
+    font-size: 60px;
+    top:10px;
+
+    font-weight: 600;
+
+}
+
+
+
+.card
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.card .card-body
+{
+    width: 900px;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 15px;
+
+    background:rgb(243, 244, 246);
+    box-shadow: -8px -9px 15px -2.5px rgba(255, 255, 255, 0.1),
+    17px 17px 40px -3px rgba(35, 115, 76, 0.5);
+
+
+}
+
+.table
+{
+    border-collapse: collapse;
+    color: #08c261;
+
+    margin: 30px 30px 30px 30px;
+
+}
+
+.table th, td
+{
+    width: 200px;
+    height: 50px;
+}
+
+
+.card-body table thead tr,th
+{
+    border: 2.5px solid rgb(255, 255, 255);
+}
+
+.card-body table thead tr th:hover
+{
+    background-color: #07c160;
+    color: rgb(243, 244, 246);
+}
+
+.table tfoot
+{
+    border: 2.5px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+}
+
+.table tfoot td
+{
+    height: 15px;
+}
+
+.table tbody
+{
+    border: 2.5px solid rgb(255, 255, 255);
+}
+
+
+.table tbody tr, td
+{
+    text-align: center;
+    border-top: 2.5px solid rgba(255, 255, 255);
+}
+
+.card-body table tbody tr:hover td:nth-child(2),
+.card-body table tbody tr:hover td:last-child
+{
+    background-color: #e1e3eb;
+    color: #0ab45c;
+}
+
+.card-body table tbody tr:hover td:nth-child(3),
+.card-body table tbody tr:hover td:first-child
+{
+    background-color: #ebecf1;
+    color: #0ab45c;
+}
+
+
+.table tbody tr td:nth-child(2), .table tbody tr td:last-child
+{
+    background-color: #ebecf0;
+}
+
