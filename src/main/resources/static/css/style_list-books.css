@@ -387,6 +387,18 @@ body
 /* 分界线 */
 /* 分界线 */
 /* 分界线 */
+
+
+
+
+
+
+
+
+
+
+
+
 .container_details
 {
     display: none;
@@ -544,7 +556,7 @@ body
 
 
 
-.button
+.details_button
 {
     margin-top: 30px;
     padding: 5px 10px;
@@ -781,9 +793,26 @@ body
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 .container_borrow
 {
     display: none;
+    position: absolute;
+
+    z-index: 20;
+
+    top: 50%;
+    left: 50%;
 }
 
 .card_borrow

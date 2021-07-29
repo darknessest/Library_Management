@@ -1,89 +1,99 @@
-function open_details() {
-    let card_details = document.getElementById("details_card");
-    card_details.style.display = "block";
-    card_details.style.opacity = 1;
 
-    let card = document.getElementById("container");
+    function open_details()
+    {
+        let card_details = document.getElementById("details_card");
+        card_details.style.display = "block";
+        card_details.style.opacity = 1;
 
-    card.style.opacity = 0.3;
+        let card= document.getElementById("container");
 
-    console.log("nmsl");
-}
+        card.style.opacity = 0.3;
 
-function close_details() {
-    let card_details = document.getElementById("details_card");
-    card_details.style.display = "none";
-    card_details.style.opacity = 0;
+        console.log("nmsl");
+    }
 
-    let card = document.getElementById("container");
+    function close_details()
+    {
+        let card_details = document.getElementById("details_card");
+        card_details.style.display = "none";
+        card_details.style.opacity = 0;
 
-    card.style.opacity = 1;
-}
+        let card= document.getElementById("container");
 
-function getCurDate() {
-    // let x = $("#start_date");
-    // x.val() = new Date();
+        card.style.opacity = 1;
+    }
 
-    let now = new Date();
+    function getCurDate()
+    {
+        // let x = $("#start_date");
+        // x.val() = new Date();
 
-    var day = ("0" + now.getDate()).slice(-2);
-    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-    var year = now.getFullYear();
-    var date = year + "-" + (month) + "-" + (day);
+        let now = new Date();
 
-    let y = document.getElementById("start_date");
-    y.value = date
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var year = now.getFullYear();
+        var date = year+"-"+(month)+"-"+(day);
 
-    console.log(date);
+        let y = document.getElementById("start_date");
+        y.value = date
 
-}
+        console.log(date);
 
-function open_borrow() {
-    let card = document.getElementById("borrow_card");
-    card.style.display = "block";
-    card.style.opacity = 1;
+    }
 
-    getCurDate()
+    function open_borrow()
+    {
+        let card = document.getElementById("borrow_card");
+        card.style.display = "block";
+        card.style.opacity = 1;
 
-    let card2 = document.getElementById("container");
+        getCurDate()
 
-    card2.style.opacity = 0.3;
-}
+        let card2= document.getElementById("container");
 
-function close_borrow() {
-    let card = document.getElementById("borrow_card");
-    card.style.display = "none";
-    card.style.opacity = 0;
+        card2.style.opacity = 0.3;
+    }
 
-    let card2 = document.getElementById("container");
+    function close_borrow()
+    {
+        let card = document.getElementById("borrow_card");
+        card.style.display = "none";
+        card.style.opacity = 0;
 
-    card2.style.opacity = 1;
-}
+        let card2= document.getElementById("container");
 
-function open_add() {
-    let card = document.getElementById("add_card");
-    card.style.display = "block";
-    card.style.opacity = 1;
+        card2.style.opacity = 1;
+    }
 
-    // let card2 = document.getElementById("container");
-    // card2.style.opacity = 0.3;
-}
+    function open_add()
+    {
+        let card = document.getElementById("add_card");
+        card.style.display = "block";
+        card.style.opacity = 1;
 
-function close_add() {
-    let card = document.getElementById("add_card");
-    card.style.display = "flex";
-    card.style.opacity = 0;
+        let card2= document.getElementById("container");
 
-    let card2 = document.getElementById("container");
+        card2.style.opacity = 0.3;
+    }
 
-    card2.style.opacity = 1;
-}
+    function close_add()
+    {
+        let card = document.getElementById("add_card");
+        card.style.display = "flex";
+        card.style.opacity = 0;
 
-function isDateIllegal() {
-    let d1 = $("#start_date");
-    let d2 = $("#end_date");
+        let card2= document.getElementById("container");
 
-    var tag = true;
+        card2.style.opacity = 1;
+    }
+
+    function isDateIllegal()
+    {
+        let d1 = $("#start_date");
+        let d2 = $("#end_date");
+
+        var tag = true;
 
 
-}
+    }

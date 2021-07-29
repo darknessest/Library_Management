@@ -5,9 +5,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
     <link rel="stylesheet" th:href = "@{/css/style_register.css}">
+    <link rel="stylesheet" th:href = "@{/css/style_header.css}">
 </head>
 <body>
-<!--    <div th:insert="fragments/header :: header"></div>-->
+    <div th:insert="fragments/header :: header"></div>
     <div class="registerBox">
         <form role="form" th:action="@{/register}" th:method="post" th:object="${user}">
             
