@@ -26,7 +26,7 @@ public class AdminUserController {
         User new_user = new User();
 
         model.addAttribute("users", users);
-//        model.addAttribute("new_user", new_user);
+        model.addAttribute("new_user", new_user);
 
         return "list-users";
     }

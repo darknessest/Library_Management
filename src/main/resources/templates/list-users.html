@@ -36,7 +36,7 @@
             </div>
             <div class="items_add_user-info" id="add_password">
                 <label for="input_add_password" class="label_add_user-info">密码</label>
-                <input id="input_add_password" type="text" th:field="*{password}" th:field="*{password}" class="input_add_user-info" id="mypwd">
+                <input id="input_add_password" type="text" th:field="*{password}" class="input_add_user-info">
             </div>
 
             <div class="add_buttonBox" id="add_buttonBox">
@@ -97,6 +97,7 @@
 
     <div class="card_body" th:each="user : ${users}">
         <div class="imageBox">
+            <!--    todo: relative path   ↓    -->
             <img src="/C:\Users\Ramsac\Desktop\temp\花\flower2.jpg" id="myimage">
         </div>
 
